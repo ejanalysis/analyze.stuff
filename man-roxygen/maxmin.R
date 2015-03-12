@@ -1,0 +1,29 @@
+#' @details
+#' ** NOTE: max() and min() default to na.rm=FALSE, but this function defaults to na.rm=TRUE because that just seems more frequently useful.
+#' \cr\cr
+#' ** NOTE: \code{\link{min}} and \code{\link{max}} & this function will handle character elements by coercing all others in the column to character
+#' (see the help for Comparison \url{http://127.0.0.1:45798/help/library/base/help/Comparison})
+#' which can be confusing -- e.g., note that min(c(8,10,'txt')) returns '10' not '8' and max returns 'txt'
+#' \cr\cr
+#' ** NOTE: The useful \link{matrixStats} package uses some of the same names for some functions in this package.
+#' \cr\cr
+#' If this worked just like max() and min(), cols that are factors would make this fail.
+#' max or min of a factor fails, even if as.character() of the factor would return a valid numeric vector.
+#' That isn't an issue with a matrix, but a data.frame might have numbers stored as factor.
+#' To fix that, this uses \code{\link{factor.as.numeric}} with parameters that try to convert character or factor columns to numeric.
+#' \cr\cr
+#' Based on how \code{\link{min}} and \code{\link{max}} behave, return Inf or -Inf if no non-missing arguments to min or max respectively.
+#' To suppress that warning when using this function, use \code{\link{suppressWarnings}}( func(x) )
+#' \cr\cr
+#' @param df Data.frame or matrix, required.
+#' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when any NA is in a col.
+#' @return Returns a vector of numbers of length equal to number of columns in df.
+#' @family functions for max and min of rows and columns
+#' @seealso  \code{\link{factor.as.numeric}} \code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{colMins}} \code{\link{colMins2}} \code{\link{colMins3}}\code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
+#' @examples
+#' blah <- rbind(NA, data.frame(a=c(0, 0:8), b=c(0.1+(0:9)), c=c(1:10), d=c(rep(NA, 10)), e=TRUE, f=factor('factor'), g='words', stringsAsFactors=FALSE) )
+#' cbind(blah, min=rowMins(blah), max=rowMaxs(blah))
+#' rbind(blah, min=colMins(blah), max=colMaxs(blah))
+#' blah <- blah[ , sapply(blah, function(x) is.numeric(x) || is.logical(x)) ]
+#' cbind(blah, min=rowMins(blah), max=rowMaxs(blah), mean=rowMeans(blah, na.rm=TRUE), sum=rowSums(blah, na.rm=TRUE))
+#' rbind(blah, min=colMins(blah), max=colMaxs(blah), mean=colMeans(blah, na.rm=TRUE), sum=colSums(blah, na.rm=TRUE))

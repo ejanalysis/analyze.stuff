@@ -27,7 +27,8 @@ Returns a vector of numbers of length equal to number of columns in df.
 Count the number or percent of rows (for each col of a data.frame) where the value exceeds some specified cutoff(s)
 }
 \details{
-below=FALSE by default, reports on those above (or tied with, if or.tied) cutoff. But if below=TRUE, this reports on those below  (or tied with, if or.tied) cutoff.
+If wts is population counts, for example, this gives the COUNT of people (not rows) for whom value in df[,x] exceeds benchmark for each column x
+If below=FALSE by default, reports on those above (or tied with, if or.tied) cutoff. But if below=TRUE, this reports on those below  (or tied with, if or.tied) cutoff.
 \cr
 If df (passed to the function) is a data.frame or matrix, the function returns a vector of length= length(df) or number of cols in matrix.
 \cr If df is just a vector, it is treated like a 1-column data.frame, so the function returns a single value.
@@ -53,6 +54,10 @@ These could be renamed  rows.above.count(), rows.above.pct(), rows.above.which()
 \cr and *** should make param names consistent, like x not df, cutoff(s) not benchmarks?, or.tied not gte
 \cr but *** cols versions and all should have wts, na.rm, benchmarks as vector not just 1 number, benchnames, params
 \cr and ** should have a "below" version for each variant
+}
+\note{
+Future work: these functions could have wts, na.rm, &
+allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
 }
 \examples{
 x <- data.frame(a=1:20, b=10, c=c(1:9,100:110))
@@ -94,6 +99,13 @@ count.above(x, c(3,1), wts=mywts) # 3,1 is recycled as 3,1,3 since x has 3 cols
 pct.above(x, benchnames=mynames, wts=mywts)  # ignores names since default benchmarks are column means
 }
 \seealso{
-\code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{pct.above}} \code{\link{pct.below}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
+\code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} to see, for each column, the count or percent of rows that have values above or below a cutoff.
+
+\code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
+
+Other functions for above and below: \code{\link{cols.above.count}};
+  \code{\link{cols.above.pct}};
+  \code{\link{cols.above.which}}; \code{\link{pct.above}};
+  \code{\link{pct.below}}
 }
 

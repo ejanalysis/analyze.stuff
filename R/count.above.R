@@ -3,9 +3,8 @@
 #' @description
 #' Count the number or percent of rows (for each col of a data.frame) where the value exceeds some specified cutoff(s)
 #' @details
-# If wts is population counts, for example, this gives the COUNT of people (not rows) for whom value in df[,x] exceeds benchmark for each column x
-#'
-#' below=FALSE by default, reports on those above (or tied with, if or.tied) cutoff. But if below=TRUE, this reports on those below  (or tied with, if or.tied) cutoff.
+#' If wts is population counts, for example, this gives the COUNT of people (not rows) for whom value in df[,x] exceeds benchmark for each column x
+#' If below=FALSE by default, reports on those above (or tied with, if or.tied) cutoff. But if below=TRUE, this reports on those below  (or tied with, if or.tied) cutoff.
 #' \cr
 #' If df (passed to the function) is a data.frame or matrix, the function returns a vector of length= length(df) or number of cols in matrix.
 #' \cr If df is just a vector, it is treated like a 1-column data.frame, so the function returns a single value.
@@ -38,7 +37,7 @@
 #' @param below Logical, FALSE by default, which counts how many are above cutoff (or tied if or.tied). If TRUE, counts how many are below (or tied with) cutoff.
 #' @param wts Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.
 #' @return Returns a vector of numbers of length equal to number of columns in df.
-#' @seealso \code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{pct.above}} \code{\link{pct.below}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
+#' @template abovebelow
 #' @examples
 #' x <- data.frame(a=1:20, b=10, c=c(1:9,100:110))
 #' mywts <- c(rep(1,10), rep(2,10))
@@ -154,6 +153,4 @@ count.above <- function(df, benchmarks='mean', benchnames='cutoff', or.tied=FALS
   names( results) <- paste(mytext, benchnames, ".for.", names(results), sep="")
 
   return( results)
-
 }
-

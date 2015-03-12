@@ -27,21 +27,28 @@ Returns a vector of number indicating how many of the columns are at/above the c
 Can be used in identifying places (rows) where some indicator(s) is/are at/above a cutoff, threshold value.
 }
 \note{
-Future work: these functions could have wts, na.rm, & allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
+Future work: these functions could have wts, na.rm, &
+allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
 }
 \examples{
 out <- cols.above.count(x<-data.frame(a=1:10, b=rep(7,10), c=7:16), cutoff=7)
 out
 out # default is or.tied=FALSE
-out <- cols.above.count(data.frame(a=1:10, b=rep(7,10), c=7:16), cutoff=7, or.tied=TRUE, below=TRUE)
+out <- cols.above.count(data.frame(a=1:10, b=rep(7,10), c=7:16),
+  cutoff=7, or.tied=TRUE, below=TRUE)
 out
-out <- cols.above.count(data.frame(a=1:10, b=rep(7,10), c=7:16) )  # Compares each number in each row to the row's mean.
+out <- cols.above.count(data.frame(a=1:10, b=rep(7,10), c=7:16) )
+ # Compares each number in each row to the row's mean.
 out
-}
-\author{
-author
 }
 \seealso{
-\code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{pct.above}} \code{\link{pct.below}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
+\code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} to see, for each column, the count or percent of rows that have values above or below a cutoff.
+
+\code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
+
+Other functions for above and below: \code{\link{cols.above.pct}};
+  \code{\link{cols.above.which}};
+  \code{\link{count.above}}; \code{\link{pct.above}};
+  \code{\link{pct.below}}
 }
 

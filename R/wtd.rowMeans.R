@@ -6,11 +6,7 @@
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when any NA is in a vector.
 #' @param dims dims=1 is default. Not used. integer: Which dimensions are regarded as 'rows' or 'columns' to sum over. For row*, the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.
 #' @return Returns a vector of numbers of length equal to number of rows in df.
-#' @seealso \code{\link{wtd.colMeans}} \code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMins}}
-#' @examples
-#' x=data.frame(a=c(NA, 2:10), b=rep(100,10), c=rep(3,10))
-#' w=c(1.1, 2, NA)
-#' cbind(x, wtd.rowMeans(x, w) )
+#' @template meansum
 #' @export
 wtd.rowMeans <- function(x, wts=1, na.rm = FALSE, dims = 1) {
 

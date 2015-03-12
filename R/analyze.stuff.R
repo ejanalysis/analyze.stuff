@@ -1,4 +1,3 @@
-#' @docType package
 #' @title Basic Tools for Analyzing Datasets
 #' @name analyze.stuff
 #' @aliases analyze.stuff-package analyze.stuff
@@ -33,3 +32,4 @@
 #'
 #' \url{http://www.ejanalysis.com}\cr
 #'
+NULL

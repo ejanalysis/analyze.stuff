@@ -10,23 +10,35 @@ rowMaxs(df, na.rm = TRUE)
 \item{df}{Data.frame or matrix, required.}
 
 \item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed first. Otherwise result will be NA when any NA is in the given vector.}
+
+\item{df}{Data.frame or matrix, required.}
+
+\item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when any NA is in a col.}
 }
 \value{
 Returns a vector of numbers of length equal to number of rows in df.
+
+Returns a vector of numbers of length equal to number of columns in df.
 }
 \description{
 Returns maximum value of each row of a data.frame or matrix.
 }
 \details{
-** Note than max() and min() default to na.rm=FALSE, but this function defaults to na.rm=TRUE because that just seems more frequently useful
+** NOTE: max() and min() default to na.rm=FALSE, but this function defaults to na.rm=TRUE because that just seems more frequently useful.
 \cr\cr
-Also see the \pkg{matrixStats} package which uses some of the same names for some functions.
-\cr\cr
-Based on how min() and max() behave, return Inf or -Inf if no non-missing arguments to min or max respectively?
-to call this and suppress that warning, use suppressWarnings( f(x) )
-\cr\cr
-NOTE: max() and min() & this function will handle character elements by coercing all others to character (see the help for Comparison \url{http://127.0.0.1:45798/help/library/base/help/Comparison})
+** NOTE: \code{\link{min}} and \code{\link{max}} & this function will handle character elements by coercing all others in the column to character
+(see the help for Comparison \url{http://127.0.0.1:45798/help/library/base/help/Comparison})
 which can be confusing -- e.g., note that min(c(8,10,'txt')) returns '10' not '8' and max returns 'txt'
+\cr\cr
+** NOTE: The useful \link{matrixStats} package uses some of the same names for some functions in this package.
+\cr\cr
+If this worked just like max() and min(), cols that are factors would make this fail.
+max or min of a factor fails, even if as.character() of the factor would return a valid numeric vector.
+That isn't an issue with a matrix, but a data.frame might have numbers stored as factor.
+To fix that, this uses \code{\link{factor.as.numeric}} with parameters that try to convert character or factor columns to numeric.
+\cr\cr
+Based on how \code{\link{min}} and \code{\link{max}} behave, return Inf or -Inf if no non-missing arguments to min or max respectively.
+To suppress that warning when using this function, use \code{\link{suppressWarnings}}( func(x) )
 \cr\cr
 }
 \examples{
@@ -36,14 +48,13 @@ rbind(blah, min=colMins(blah), max=colMaxs(blah))
 blah <- blah[ , sapply(blah, function(x) is.numeric(x) || is.logical(x)) ]
 cbind(blah, min=rowMins(blah), max=rowMaxs(blah), mean=rowMeans(blah, na.rm=TRUE), sum=rowSums(blah, na.rm=TRUE))
 rbind(blah, min=colMins(blah), max=colMaxs(blah), mean=colMeans(blah, na.rm=TRUE), sum=colSums(blah, na.rm=TRUE))
-had been doing this:
-mymin <- do.call(pmin, c(bg[,names.ej.pctile], na.rm=TRUE))
-mymax <- do.call(pmax, c(bg[,names.ej.pctile], na.rm=TRUE))
-now can do this:
-mymin <- rowMins(bg[,names.ej.pctile])
-mymax <- rowMaxs(bg[,names.ej.pctile])
 }
 \seealso{
-\code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{count.above}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
+\code{\link{factor.as.numeric}} \code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{colMins}} \code{\link{colMins2}} \code{\link{colMins3}}\code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
+
+Other functions for max and min of rows and columns: \code{\link{colMaxsapply}};
+  \code{\link{colMaxs}}; \code{\link{colMins2}};
+  \code{\link{colMins3}}; \code{\link{colMins}};
+  \code{\link{rowMins}}
 }
 

@@ -27,27 +27,27 @@ Returns a logical matrix, with TRUE for each cell that is at/above the cutoff.
 Can be used in identifying places (rows) where some indicator(s) is/are at/above a cutoff, threshold value.
 }
 \note{
-Future work: these functions could have wts, na.rm, & allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
+Future work: these functions could have wts, na.rm, &
+allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
 }
 \examples{
 out <- cols.above.which(x<-data.frame(a=1:10, b=rep(7,10), c=7:16), cutoff=7)
 out
 out # default is or.tied=FALSE
-out <- cols.above.which(data.frame(a=1:10, b=rep(7,10), c=7:16), cutoff=7, or.tied=TRUE, below=TRUE)
+out <- cols.above.which(data.frame(a=1:10, b=rep(7,10), c=7:16),
+  cutoff=7, or.tied=TRUE, below=TRUE)
 out
-out <- cols.above.which(data.frame(a=1:10, b=rep(7,10), c=7:16) )  # Compares each number in each row to the row's mean.
+out <- cols.above.which(data.frame(a=1:10, b=rep(7,10), c=7:16) )
+ # Compares each number in each row to the row's mean.
 out
-}
-\author{
-author
 }
 \seealso{
-flagged.by which is another name for the exact same function.
+\code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} to see, for each column, the count or percent of rows that have values above or below a cutoff.
 
-cols.above.count or cols.above.pct to see, for each row, count or fraction of columns with numbers at/above/below cutoff.
+\code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
 
-flagged.only.by to find cells that are the only one in the row that is at/above/below the cutoff.
-
-\code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{pct.above}} \code{\link{pct.below}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
+Other functions for above and below: \code{\link{cols.above.count}};
+  \code{\link{cols.above.pct}}; \code{\link{count.above}};
+  \code{\link{pct.above}}; \code{\link{pct.below}}
 }
 

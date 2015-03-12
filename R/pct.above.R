@@ -39,7 +39,45 @@
 #' @param wts Number or vector, default is 1. Length must be a factor of # rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before value is found. Otherwise result will be NA when any NA is in a col.
 #' @return Returns a vector of numbers of length equal to number of columns in df.
-#' @seealso \code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{count.above}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
+#' @template abovebelow
+#' @examples
+#' x <- data.frame(a=1:20, b=10, c=c(1:9,100:110))
+#' mywts <- c(rep(1,10), rep(2,10))
+#' mybench <- c(3,100,10)
+#' mynames <- c("HI","USavg","HealthStandard")
+#'
+#' count.above(x, 0, wts=mywts)
+#' count.above(x, 100, wts=mywts)
+#' count.above(x, 10, wts=mywts)
+#' count.above(x, mybench, wts=mywts)
+#' cbind(count= count.above(x, mybench, mynames, wts=mywts))
+#' cbind(pct= pct.above(x, benchmarks=mybench, benchnames=mynames, wts=mywts) )
+#' cbind(
+#'   count= count.above(x, mybench, mynames, wts=mywts),
+#'   pct= pct.above(x, benchmarks=mybench, benchnames=mynames, wts=mywts) )
+#' cbind(stat= pct.above(as.matrix(x), mybench, mynames, wts=mywts) )
+#' cbind(stat= pct.above(1:100, 98 , wts=mywts))  # If only a single vector is passed, not a data.frame "Warning: df is a vector... converting to data.frame"
+#'
+#' # to find how many PLACES are at/above the 95th population-weighted percentile (won't be exactly 5% of places, just 5% of people):
+#' mybench2 <- sapply(x, function(z) wtd.quantile(z, mywts, probs=0.95, na.rm=TRUE))
+#' count.above(x, benchmarks=mybench2, benchnames=paste('pop.95th.', names(x), sep=''), wts=1 )
+#' # to find how many PLACES are at/above the MEDIAN pop-wtd place (won't be exactly half of places, just half of people):
+#' mybench2 <- sapply(x, function(z) wtd.quantile(z, mywts, probs=0.50, na.rm=TRUE))
+#' count.above(x, benchmarks=mybench2, benchnames=paste('pop.median.', names(x), sep=''), wts=1 )
+#'
+#' # to find how many PEOPLE are at/above the 95th percentile place (won't be exactly 5% of people, just 5% of places):
+#' mybench2 <- sapply(x, function(z) quantile(z, probs=0.95, na.rm=TRUE))
+#' count.above(x, benchmarks=mybench2, benchnames=paste('95th.', names(x), sep=''), wts=mywts )
+#' # to find how many PEOPLE are at/above the MEDIAN place (won't be exactly 50% of people, just 50% of places):
+#' mybench2 <- sapply(x, function(z) quantile(z, probs=0.50, na.rm=TRUE))
+#' count.above(x, benchmarks=mybench2, benchnames=paste('median.', names(x), sep=''), wts=mywts )
+#'
+#' cbind( pct.above(1:100, wts=mywts) )  # does not recycle weights in this situation of a single vector argument
+#' count.above(data.frame(a=c(1:10, NA)), 2, wts=mywts)   # does not work if NA values
+#' cbind( pct.above(data.frame(a=c(1:10, NA)), 0 , wts=mywts)) # "Error: wts must be a vector whose length is a factor of # rows in df, so length(df[,1]) is an integer multiple of length(wts) "
+#' pct.above(data.frame(a=c(NA, NA, NA)), 3, wts=mywts) # "Error - df is a single NA value or single column with only NA values"
+#' count.above(x, c(3,1), wts=mywts) # 3,1 is recycled as 3,1,3 since x has 3 cols
+#' pct.above(x, benchnames=mynames, wts=mywts)  # ignores names since default benchmarks are column means
 pct.above <- function(df, benchmarks='mean', benchnames='cutoff', na.rm=FALSE, or.tied=FALSE, below=FALSE, wts=1, of.what='all') {
 
   if (is.matrix(df)) {df <- as.data.frame(df) } #warning("df is a matrix... converting to data.frame")

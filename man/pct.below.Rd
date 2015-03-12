@@ -31,7 +31,18 @@ Count the number or percent of rows (for each col of a data.frame) where the val
 \details{
 See \code{\link{pct.above}} for details, for which this is a wrapper.
 }
+\note{
+Future work: these functions could have wts, na.rm, &
+allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
+}
 \seealso{
-\code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{count.above}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
+\code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} to see, for each column, the count or percent of rows that have values above or below a cutoff.
+
+\code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
+
+Other functions for above and below: \code{\link{cols.above.count}};
+  \code{\link{cols.above.pct}};
+  \code{\link{cols.above.which}};
+  \code{\link{count.above}}; \code{\link{pct.above}}
 }
 

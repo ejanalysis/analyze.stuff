@@ -12,9 +12,11 @@
 #' @param type passed through to lines() for the lowess
 #' @param cex scaling for lowess
 #' @param show.lowess Logical value, optional, TRUE by default. Defines if lowess is shown
+#' @param show.lm Logical value, optional, TRUE by default. Defines if lm line is shown
 #' @param show.line Logical value, optional, TRUE by default. Defines if should show abline(coef(line(x,y)))
 #' @return Provides a plot just as a side effect
 #' @examples
+#' \dontrun{
 #'     # see
 #' #?lm  or  ?aov   or  ?glm
 #' # ?line
@@ -27,8 +29,9 @@
 #' # ?predict
 #' # ?lowess
 #' # ?scatterplot
-#' # The scatterplot( ) function in the car package offers many enhanced features, including
-#' #    fit lines, marginal box plots, conditioning on a factor, and interactive point identification. Each of these features is optional.
+#' #The scatterplot( ) function in the car package offers many enhanced features, including
+#' #fit lines, marginal box plots, conditioning on a factor, and interactive point identification.
+#' #Each of these features is optional.
 #' # Enhanced Scatterplot of MPG vs. Weight
 #' # by Number of Car Cylinders
 #'  library(car)
@@ -36,6 +39,7 @@
 #'              xlab="Weight of Car", ylab="Miles Per Gallon",
 #'              main="Enhanced Scatter Plot",
 #'              labels=row.names(mtcars))
+#' }
 #' @export
 linefit <- function(x, y, type='b', cex=4, show.lowess=TRUE, show.lm=TRUE, show.line=TRUE) {
   if (show.lowess) { lines(lowess(x, y), type=type, col="blue", pch='.', cex=cex) } # lowess line (x, y)

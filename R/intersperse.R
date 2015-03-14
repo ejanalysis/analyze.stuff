@@ -1,8 +1,8 @@
 #' @title Intersperse the elements of a vector, mixing 2d half of the list in with the 1st half
 #' @description
-#' This function will take a vector and split it in half (it must have an even # of elements) and 
+#' This function will take a vector and split it in half (it must have an even # of elements) and
 #' then will intersperse the elements, so for example, if the vector's starting order is 1,2,3, 4,5,6
-#' the function returns the vector ordered as 1,4, 2,5, 3,6  
+#' the function returns the vector ordered as 1,4, 2,5, 3,6
 #' @details
 #' This is useful for example in reformatting a data.frame of Census data where the first n fields are estimates
 #' and the next n fields are margin of error values corresponding to those estimates.
@@ -10,7 +10,8 @@
 #' @param x A vector with an even number of elements, required, character or numeric works.
 #' @return Returns a vector that contains all the elements of the original, but reordered.
 #' @examples
-#' mydf <- data.frame(e1=101:120, e2=102:121, e3=111:130, m1=(101:120)*0.01, m2=(102:121)*0.01, m3=(111:130)*0.01)
+#' mydf <- data.frame(e1=101:120, e2=102:121, e3=111:130,
+#'   m1=(101:120)*0.01, m2=(102:121)*0.01, m3=(111:130)*0.01)
 #' mydf
 #' mydf <- mydf[ , intersperse(names(mydf))]
 #' mydf

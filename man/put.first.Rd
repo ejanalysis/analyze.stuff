@@ -18,7 +18,10 @@ Returns a transformed data.frame with cols in new order
 Returns a data.frame with specified columns put first, before the others.
 }
 \examples{
-#
+before <- data.frame(year=c(2,2,2), ID=3, numbers=4, last=1)
+put.first(before, c('ID', 'numbers'))
+after <- put.first(before, names(before)[length(before)] ) # put last column first
+before; after
 }
 \seealso{
 \code{\link{change.fieldnames}}

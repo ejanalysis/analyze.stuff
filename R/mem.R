@@ -2,8 +2,10 @@
 #' @description
 #' See a list of the largest objects in memory, and how much RAM they are using up
 #' Uses \code{\link{object.size}}  to return info on memory consumption for largest n objects
+#' @param n Numeric, default is 10. How many objects to show (e.g., top 10)
 #' @return Results in printing a list of objects and their sizes
 #' @examples
+#' \dontrun{
 #'  mem()
 #' mem(15)
 #'
@@ -28,7 +30,8 @@
 #'
 #' # object.sizes() to see memory total used by objects:
 #'
-#' # NOTE: THIS DOES NOT MATCH TOTAL GIVEN BY memory.size(); it is only about half as much in the case I tried:
+#' # NOTE: THIS DOES NOT MATCH TOTAL GIVEN BY memory.size();
+#' #  it is only about half as much in the case I tried:
 #' sum(as.numeric(object.sizes()))
 #' # same, in MEGABYTES:
 #' unclass(sum(as.numeric(object.sizes())))/1e6
@@ -36,6 +39,7 @@
 #' object.sizes()
 #' #	see a list of the top few variables:
 #' head(cbind(object.sizes()))
+#' }
 #' @export
 mem <- function(n=10) {
   object.sizes <- function() {

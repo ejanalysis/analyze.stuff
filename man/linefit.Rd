@@ -18,6 +18,8 @@ linefit(x, y, type = "b", cex = 4, show.lowess = TRUE, show.lm = TRUE,
 
 \item{show.lowess}{Logical value, optional, TRUE by default. Defines if lowess is shown}
 
+\item{show.lm}{Logical value, optional, TRUE by default. Defines if lm line is shown}
+
 \item{show.line}{Logical value, optional, TRUE by default. Defines if should show abline(coef(line(x,y)))}
 }
 \value{
@@ -32,7 +34,8 @@ DOESN'T SEEM TO WORK IF log='xy' was used in original plot()
 NOTE: coef(line())  and lm()  give different results
 }
 \examples{
-# see
+\dontrun{
+    # see
 #?lm  or  ?aov   or  ?glm
 # ?line
 require(graphics)
@@ -44,8 +47,9 @@ plot(residuals(z) ~ fitted(z), main = deparse(z$call))
 # ?predict
 # ?lowess
 # ?scatterplot
-# The scatterplot( ) function in the car package offers many enhanced features, including
-#    fit lines, marginal box plots, conditioning on a factor, and interactive point identification. Each of these features is optional.
+#The scatterplot( ) function in the car package offers many enhanced features, including
+#fit lines, marginal box plots, conditioning on a factor, and interactive point identification.
+#Each of these features is optional.
 # Enhanced Scatterplot of MPG vs. Weight
 # by Number of Car Cylinders
  library(car)
@@ -53,5 +57,6 @@ plot(residuals(z) ~ fitted(z), main = deparse(z$call))
              xlab="Weight of Car", ylab="Miles Per Gallon",
              main="Enhanced Scatter Plot",
              labels=row.names(mtcars))
+}
 }
 

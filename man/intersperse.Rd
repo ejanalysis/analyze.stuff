@@ -23,7 +23,8 @@ and the next n fields are margin of error values corresponding to those estimate
 This function applied to the field names can reorder them to pair each estimate followed by its MOE.
 }
 \examples{
-mydf <- data.frame(e1=101:120, e2=102:121, e3=111:130, m1=(101:120)*0.01, m2=(102:121)*0.01, m3=(111:130)*0.01)
+mydf <- data.frame(e1=101:120, e2=102:121, e3=111:130,
+  m1=(101:120)*0.01, m2=(102:121)*0.01, m3=(111:130)*0.01)
 mydf
 mydf <- mydf[ , intersperse(names(mydf))]
 mydf

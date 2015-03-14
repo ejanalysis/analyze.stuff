@@ -23,10 +23,11 @@
 #' df <- data.frame(REGION=301:310, ID=1:10, PCTILE=101:110, OTHER=1:10)
 #' names(df) <- change.fieldnames(names(df), oldnames, newnames); names(df)
 #' names(df) <- change.fieldnames(names(df), "ID", "identification"); names(df)
-#' # names(df) <- change.fieldnames(names(df)); names(df)  # does not work on MacOSX (unless possibly have xwindows or something?)
+#' # names(df) <- change.fieldnames(names(df)); names(df)  # does not work on MacOSX?
 #' # names(df) <- change.fieldnames(names(df), 'saved fieldnames.csv'); names(df)
 #' df[ change.fieldnames(names(df), c('ID', 'OTHER', 'REGION', 'PCTILE'), sort=TRUE)]
-#' # much like df[ , c('ID', 'OTHER', 'REGION', 'PCTILE') ] #  change.fieldnames is more useful when file specified
+#' # much like df[ , c('ID', 'OTHER', 'REGION', 'PCTILE') ]
+#' #  change.fieldnames is more useful when file specified
 #' @export
 change.fieldnames <- function(allnames, oldnames, newnames, file=NA, sort=FALSE) {
 

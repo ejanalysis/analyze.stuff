@@ -22,11 +22,13 @@ calc.fields <- function(mydf, formulas, keep) {
 	    # This will only work if the calculated variable is followed by a space, or = sign, or <- in the formula
 		keep <- substr(formulas, 1, regexpr('[<= ]', formulas) -1)
 	}
+
 	attach(mydf)
 	for (thisformula in formulas) {
 		eval(parse(text=thisformula))
 	}
 	detach(mydf)
+
 	outdf <- data.frame( mget(keep), stringsAsFactors=FALSE)
 	return(outdf)
 }

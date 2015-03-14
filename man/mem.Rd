@@ -6,6 +6,9 @@
 \usage{
 mem(n = 10)
 }
+\arguments{
+\item{n}{Numeric, default is 10. How many objects to show (e.g., top 10)}
+}
 \value{
 Results in printing a list of objects and their sizes
 }
@@ -14,7 +17,8 @@ See a list of the largest objects in memory, and how much RAM they are using up
 Uses \code{\link{object.size}}  to return info on memory consumption for largest n objects
 }
 \examples{
-mem()
+\dontrun{
+ mem()
 mem(15)
 
 # draw pie chart
@@ -38,7 +42,8 @@ print(paste('R is using', memory.size(), 'MB out of limit', memory.limit(), 'MB'
 
 # object.sizes() to see memory total used by objects:
 
-# NOTE: THIS DOES NOT MATCH TOTAL GIVEN BY memory.size(); it is only about half as much in the case I tried:
+# NOTE: THIS DOES NOT MATCH TOTAL GIVEN BY memory.size();
+#  it is only about half as much in the case I tried:
 sum(as.numeric(object.sizes()))
 # same, in MEGABYTES:
 unclass(sum(as.numeric(object.sizes())))/1e6
@@ -46,5 +51,6 @@ unclass(sum(as.numeric(object.sizes())))/1e6
 object.sizes()
 #	see a list of the top few variables:
 head(cbind(object.sizes()))
+}
 }
 

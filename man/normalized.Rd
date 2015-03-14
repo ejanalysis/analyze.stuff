@@ -21,7 +21,7 @@ Provides a data.frame that takes the matrix or data.frame
 and finds the weighted mean of each column and then divides each column of values by the column's weighted mean.
 }
 \details{
-require(Hmisc) for \code{\link{scale}[Hmisc]}
+Uses \code{\link{scale}}
 }
 \examples{
 \dontrun{
@@ -30,6 +30,6 @@ require(Hmisc) for \code{\link{scale}[Hmisc]}
 }
 }
 \seealso{
-\code{\link{scale}[Hmisc]}
+\code{\link{scale}}
 }
 

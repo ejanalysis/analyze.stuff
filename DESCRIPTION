@@ -2,16 +2,24 @@ Package: analyze.stuff
 Type: Package
 Title: Tools that Help Analyze Data
 Version: 0.1.0
-Date: 2015-03-11
+Date: 2015-03-14
 Author: info@ejanalysis.com
-Maintainer: ejanalysis.com<info@ejanalysis.com>
+Maintainer: ejanalysis.com <info@ejanalysis.com>
 Description: Tools that simplify some basic tasks in
   exploring and analyzing a dataset in a matrix or data.frame.
-  Key functions include mem, change.fieldnames, calc.fields, similar.p,
-  setdiff2, pct.above, cols.above.pct, rowMaxs, colMaxs,
-  wtd.rowMeans, wtd.colMeans, wtd.pctiles, na.check, pctiles, length2, dir2.
+  Key functions help to change many fieldnames to new names using a map of old to new names,
+  create many calculated fields based on formulas specified or saved as text fields (character vector),
+  see how many rows or cols have values above certain cutoffs,
+  get rowMaxs, colMaxs, wtd.rowMeans, wtd.colMeans,
+  see a table of values at 100 weighted percentiles,
+  see how many values are NA or non-NA in each column, etc.
 Depends: R (>= 3.1.2)
-License: MIT license
-LazyData: true
+License: MIT + file LICENSE
+Suggests:
+  graphics, data.table
+Requires:
+  data.table
 Imports:
-  matrixStats, Hmisc
+  Hmisc, matrixStats
+URL: http://www.ejanalysis.com
+

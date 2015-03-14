@@ -3,7 +3,7 @@
 #' @description
 #' Returns minimum value of each row of a data.frame or matrix.
 #' @param df Data.frame or matrix, required.
-#' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed first. Otherwise min will be NA when any NA is in the given vector.
+#' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed first. Otherwise result will be NA when any NA is in the given vector.
 #' @return Returns a vector of numbers of length equal to number of rows in df.
 #' @template maxmin
 #' @export

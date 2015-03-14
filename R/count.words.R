@@ -11,17 +11,23 @@
 #' @return Returns a data.frame with term (term) and frequencies (freq) sorted by frequency,
 #' showing the number of times a given word appears in the file. The rownames are also the words found.
 #' @examples
+#' \dontrun{
 #'   counts <- count.words('speech.txt'); tail(counts, 15)
 #' counts <- count.words('speech.txt', ignore.case=FALSE); head(counts[order(counts$term), ], 15)
-#' counts <- count.words('speech.txt', stopwords=c('The', 'the', 'And', 'and', 'A', 'a')); tail(counts, 15)
+#' counts <- count.words('speech.txt', stopwords=c('The', 'the', 'And', 'and', 'A', 'a'))
+#' tail(counts, 15)
 #' counts <- count.words('speech.txt', 3); tail(counts, 30)
 #' #
 #' counts['the', ]
 #' counts[c('the', 'and', 'notfoundxxxxx'), ] # works only if you are sure all are found
-#' counts[rownames(counts) %in% c('the', 'and', 'notfoundxxxxx'), ]  # works even if specified word wasn't found
-#' counts[counts$term %in% c('the', 'and', 'notfoundxxxxx'), ]  # works even if specified word wasn't found
+#' counts[rownames(counts) %in% c('the', 'and', 'notfoundxxxxx'), ]
+#'   # that works even if specified word wasn't found
+#' counts[counts$term %in% c('the', 'and', 'notfoundxxxxx'), ]
+#'   # that works even if specified word wasn't found
 #' counts <- count.words('C:/mypath/speech.txt')
-#' counts <- count.words('speech.txt', sep='.') # whole sentences (sort of - splits up at decimal places as well)
+#' counts <- count.words('speech.txt', sep='.')
+#'   # that is for whole sentences (sort of - splits up at decimal places as well)
+#' }
 #' @export
 count.words <- function(file, wordclump=1, ignore.case=TRUE, stopwords='', string, numbers.keep=TRUE, ...) {
 

@@ -1,11 +1,19 @@
 #' @details
-#' ** NOTE: max() and min() default to na.rm=FALSE, but this function defaults to na.rm=TRUE because that just seems more frequently useful.
+#' ** NOTE: The useful \link{matrixStats} package will provide the basis for extended rowMins, rowMax, colMins, colMaxs functions to be made available through this package.
+#' Source: Henrik Bengtsson (2015). matrixStats: Methods that Apply to Rows and Columns of a Matrix. R package version 0.13.1-9000. \url{https://github.com/HenrikBengtsson/matrixStats}
+#' \cr
+#' Initially, separate functions were written here for those four functions, and the versions here were more flexible and convenient for some purposes,
+#' e.g., handling data.frames and different na.rm defaults, but the matrixStats versions are much faster (e.g., by 4x or more).
+#' Ideally, this analyze.stuff package will be modified to just extend those functions by provide them methods to handle data.frames, not just matrix class objects,
+#' and perhaps provide new or different parameters or defaults, such as defaulting to na.rm=TRUE instead of FALSE,
+#' and handling factor class columns in a data.frame.
+#' That has not been done yet, so colMaxs() etc. refer to the slower more flexible ones, and the faster matrix-only ones are via matrixStats::colMaxs etc.
+#' \cr\cr
+#' ** NOTE: max() and min() and matrixStats::colMaxs etc. default to na.rm=FALSE, but this function defaults to na.rm=TRUE because that just seems more frequently useful.
 #' \cr\cr
 #' ** NOTE: \code{\link{min}} and \code{\link{max}} & this function will handle character elements by coercing all others in the column to character
 #' (see the help for Comparison \url{http://127.0.0.1:45798/help/library/base/help/Comparison})
 #' which can be confusing -- e.g., note that min(c(8,10,'txt')) returns '10' not '8' and max returns 'txt'
-#' \cr\cr
-#' ** NOTE: The useful \link{matrixStats} package uses some of the same names for some functions in this package.
 #' \cr\cr
 #' If this worked just like max() and min(), cols that are factors would make this fail.
 #' max or min of a factor fails, even if as.character() of the factor would return a valid numeric vector.
@@ -15,15 +23,26 @@
 #' Based on how \code{\link{min}} and \code{\link{max}} behave, return Inf or -Inf if no non-missing arguments to min or max respectively.
 #' To suppress that warning when using this function, use \code{\link{suppressWarnings}}( func(x) )
 #' \cr\cr
-#' @param df Data.frame or matrix, required.
-#' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when any NA is in a col.
-#' @return Returns a vector of numbers of length equal to number of columns in df.
 #' @family functions for max and min of rows and columns
 #' @seealso  \code{\link{factor.as.numeric}} \code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{colMins}} \code{\link{colMins2}} \code{\link{colMins3}}\code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
 #' @examples
-#' blah <- rbind(NA, data.frame(a=c(0, 0:8), b=c(0.1+(0:9)), c=c(1:10), d=c(rep(NA, 10)), e=TRUE, f=factor('factor'), g='words', stringsAsFactors=FALSE) )
+#' blah <- rbind(NA, data.frame(a=c(0, 0:8), b=c(0.1+(0:9)), c=c(1:10), d=c(rep(NA, 10)),
+#'   e=TRUE, f=factor('factor'), g='words', stringsAsFactors=FALSE) )
 #' cbind(blah, min=rowMins(blah), max=rowMaxs(blah))
 #' rbind(blah, min=colMins(blah), max=colMaxs(blah))
 #' blah <- blah[ , sapply(blah, function(x) is.numeric(x) || is.logical(x)) ]
-#' cbind(blah, min=rowMins(blah), max=rowMaxs(blah), mean=rowMeans(blah, na.rm=TRUE), sum=rowSums(blah, na.rm=TRUE))
-#' rbind(blah, min=colMins(blah), max=colMaxs(blah), mean=colMeans(blah, na.rm=TRUE), sum=colSums(blah, na.rm=TRUE))
+#' cbind(blah, min=rowMins(blah), max=rowMaxs(blah),
+#'   mean=rowMeans(blah, na.rm=TRUE), sum=rowSums(blah, na.rm=TRUE))
+#' rbind(blah, min=colMins(blah), max=colMaxs(blah),
+#'   mean=colMeans(blah, na.rm=TRUE), sum=colSums(blah, na.rm=TRUE))
+#'   # ** Actually, matrixStats does this ~4x as quickly, although no practical difference unless large dataset:
+#'   n <- 1e7
+#' t1=Sys.time(); x=analyze.stuff::colMaxs( cbind(a=1:n, b=2, c=3, d=4, e=5)); t2=Sys.time();print(difftime(t2,t1))
+#' t1=Sys.time(); x=  matrixStats::colMaxs( cbind(a=1:n, b=2, c=3, d=4, e=5)); t2=Sys.time();print(difftime(t2,t1))
+#' # Note the latter cannot handle a data.frame:
+#' \Dontrun{
+#' # This would fail:
+#' matrixStats::colMaxs(   data.frame(a=1:10, b=2))
+#' # This works:
+#' analyze.stuff::colMaxs( data.frame(a=1:10, b=2))
+#' }

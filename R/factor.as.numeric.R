@@ -4,6 +4,7 @@
 #' Try to convert back to numeric any numbers stored as factors, e.g., in a data.frame that did not use stringsAsFactors.
 #' @details Uses as.numeric(as.character(x)) on the factor cols or vector,
 #' but if there are both numbers and characters, it leaves it as factor, not numeric (which would put NA values in place of character elements).
+#' NOTE: ** Not optimized for speed yet, so it is slow.
 #' @param x Data.frame or vector, required. (If matrix, it is returned unaltered as a matrix).
 #' @param stringsAsFactors Logical, TRUE by default, in which case a factor vector or col that has character elements,
 #' and thus cannot be coerced to numeric without creating NA values, is left as a factor.
@@ -14,7 +15,7 @@
 #' Logical is returned as logical. \cr
 #' When stringsAsFactors is TRUE, factor is returned as factor if it has any text that cannot be coerced to non-NA numeric.\cr
 #' When stringsAsFactors is FALSE, factor is returned as character if it has any text that cannot be coerced to non-NA numeric.\cr
-#' @seealso \code{\link{as.vector}}, \code{\link{factor}}, \code{\link{data.table}}, \code{\link{matrix}}
+#' @seealso \code{\link{as.vector}}, \code{\link{factor}}, \code{\link{data.table}[data.table]}, \code{\link{matrix}}
 #' @examples
 #' a=factor(c(2,3,5)); b=factor(c('2', '3', '5')); c=factor(c('two','three','five'))
 #' d=factor(c(2,'3','5')); e=factor(c(2,'three','five')); f=factor(c('2','three','5'))
@@ -29,7 +30,10 @@
 #' cat('\n'); str(z);
 #' cat('\n'); str( factor.as.numeric(x, stringsAsFactors=FALSE) )
 #' for (i in 1:length(x)) {out<-factor.as.numeric(x[,i]);cat(class(out), out,'\n') }
-#' for (i in 1:length(x)) {out<-factor.as.numeric(x[,i], stringsAsFactors = FALSE);cat(class(out), out,'\n') }
+#' for (i in 1:length(x)) {
+#'   out<-factor.as.numeric(x[,i], stringsAsFactors = FALSE)
+#'   cat(class(out), out,'\n')
+#' }
 #' @export
 factor.as.numeric <- function(x, stringsAsFactors=TRUE) {
 

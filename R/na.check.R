@@ -10,10 +10,9 @@
 #' @param mydat Matrix or data.frame to examine. Cannot be a single vector currently.
 #' @param min.text Logical, optional, defaults to FALSE. If TRUE, tries to find minimum of numbers stored as text? Slows it down.
 #' @return Returns a vector of results, one per col of df
-#' @examples
-#' na.check.m(data.frame(a=-1:10, b='text', c=c(NA, 1, 2)))
+#' @template nachecks
 #' @export
-na.check = function(mydat, min.text=FALSE) {
+na.check <- function(mydat, min.text=FALSE) {
   if (is.vector(mydat)) {
     #stop('cannot yet handle a single vector, only a data.frame or matrix')
     mydat <- data.frame(mydat, seq=1:length(mydat)) # quick fix, just adds a useless column to make it a data.frame, for now.
@@ -40,9 +39,9 @@ na.check = function(mydat, min.text=FALSE) {
   #    min.nonzero[want.min.col] <- sapply(mydat[ , want.min.col], function(x) ifelse(all(x==0) || all(is.na(x)), NA, min(x[!is.na(x) & x!=0]))) #, # ~best but would be faster and return #s if avoid character cols
   #  }
   # this is almost as fast as above and much simpler:
-#  min.nonzero.val <- sapply(mydat, function(x) ifelse( (!min.text & mode(x)!='numeric') || all(x==0) || all(is.na(x)), NA, min(x[!is.na(x) & x!=0]))) #, # ~best but would be faster and return #s if avoid character cols
-#  since then I defined a function min.nonzero() that is pretty fast
-  min.nonzero.val <- min.nonzero(mydat)
+  #  min.nonzero.val <- sapply(mydat, function(x) ifelse( (!min.text & mode(x)!='numeric') || all(x==0) || all(is.na(x)), NA, min(x[!is.na(x) & x!=0]))) #, # ~best but would be faster and return #s if avoid character cols
+  #  since then I defined a function minNonzero() that is pretty fast
+  min.nonzero.val <- minNonzero(mydat)
 
   #  require(matrixStats) # quick way to get counts of negative, NA, and zero values
   signtabs <- matrix(NA, nrow=4, ncol=length(cols))
@@ -66,7 +65,7 @@ na.check = function(mydat, min.text=FALSE) {
      not.blank.not.na= mynbna <- myvalid - myblank,
      pct.nbna= round(100 * mynbna / mycount, 1),
 
-     # slowest lines are min.nonzero and unique.not.na
+     # slowest lines are minNonzero and unique.not.na
      unique.not.na= sapply(mydat, function(x) ifelse(any(is.na(x)), length(unique(x)) - 1, length(unique(x)))) ,
      min.nonzero=   min.nonzero.val,
     #max= colMaxs(mydat, na.rm=TRUE), # WOULD NEED TO HANDLE non-numeric cols

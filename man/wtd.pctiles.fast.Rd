@@ -9,7 +9,7 @@ wtd.pctiles.fast(x, wts = NULL, na.rm = TRUE)
 \arguments{
 \item{x}{Required numeric vector of values whose distribution you want to look at.}
 
-\item{wts}{NULL by default, or vector of numbers to use as weights in wtd.quantile}
+\item{wts}{NULL by default, or vector of numbers to use as weights in Hmisc::wtd.quantile}
 
 \item{na.rm}{Logical optional TRUE by default, in which case NA values are removed first.}
 }
@@ -34,10 +34,10 @@ quantile(1:12, probs=(1:10)/10, type=1)\cr
 ###########################\cr
 **** IMPORTANT ***\cr
 ###########################\cr
-*** WARNING: The wtd.quantile function DOES interpolate between values, even if type='i/n'\cr
-There does not seem to be a way to fix that for the wtd.quantile() function.
+*** WARNING: The Hmisc::wtd.quantile function DOES interpolate between values, even if type='i/n'\cr
+There does not seem to be a way to fix that for the Hmisc::wtd.quantile() function.
 For example, \cr
-wtd.quantile(1:12, probs=(1:10)/10, type='i/n', weights=rep(1,12))\cr
+Hmisc::wtd.quantile(1:12, probs=(1:10)/10, type='i/n', weights=rep(1,12))\cr
  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% \cr
  1.2  2.4  3.6  4.8  6.0  7.2  8.4  9.6 10.8 12.0 \cr
 }

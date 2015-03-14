@@ -10,11 +10,11 @@ wtd.pctiles.exact(x, wts = NULL, na.rm = TRUE, type = "i/n",
 \arguments{
 \item{x}{Required numeric vector of values whose distribution you want to look at.}
 
-\item{wts}{NULL by default, or vector of numbers to use as weights in wtd.quantile}
+\item{wts}{NULL by default, or vector of numbers to use as weights in Hmisc::wtd.quantile}
 
 \item{na.rm}{Logical optional TRUE by default, in which case NA values are removed first.}
 
-\item{type}{'i/n' is default. See help for \code{\link{wtd.quantile}}()}
+\item{type}{'i/n' is default. See help for \code{\link{wtd.quantile}[Hmisc]}()}
 
 \item{probs}{fractions 0-1, optional, (1:100)/100 by default, define quantiles to use}
 }
@@ -25,7 +25,7 @@ Returns a data.frame
 Get a quick look at a weighted distribution by seeing the 100 values that are the percentiles 1-100
 }
 \details{
-Provides weighted percentiles using \code{\link{wtd.quantile}}
+Provides weighted percentiles using \code{\link{wtd.quantile}[Hmisc]}
 \cr\cr
 #  NOTE: THIS ONLY SHOWS PERCENTILES AND MEAN FOR THE VALID (NOT NA) VALUES !# Defining these types as type=1 and type="i/n" will create simple discontinuous quantiles, without interpolation where there are jumps in the values analyzed.
 This is how  should be calculating percentiles as of 2/2013.
@@ -39,10 +39,10 @@ quantile(1:12, probs=(1:10)/10, type=1)\cr
 ###########################\cr
 **** IMPORTANT ***\cr
 ###########################\cr
-*** WARNING: The wtd.quantile function DOES interpolate between values, even if type='i/n'\cr
-There does not seem to be a way to fix that for the wtd.quantile() function.
+*** WARNING: The Hmisc::wtd.quantile function DOES interpolate between values, even if type='i/n'\cr
+There does not seem to be a way to fix that for the Hmisc::wtd.quantile() function.
 For example, \cr
-wtd.quantile(1:12, probs=(1:10)/10, type='i/n', weights=rep(1,12))\cr
+Hmisc::wtd.quantile(1:12, probs=(1:10)/10, type='i/n', weights=rep(1,12))\cr
  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% \cr
  1.2  2.4  3.6  4.8  6.0  7.2  8.4  9.6 10.8 12.0 \cr
 }

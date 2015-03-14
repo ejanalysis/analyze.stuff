@@ -4,16 +4,16 @@
 \alias{pctiles}
 \title{Show the rounded values at 100 percentiles}
 \usage{
-pctiles(x)
+pctiles(x, probs = (1:100)/100, na.rm = TRUE, digits = 3)
 }
 \arguments{
 \item{x}{Required numeric vector of values whose distribution you want to look at.}
 
-\item{type}{1 by default. See help for \code{\link{quantile}}()}
-
 \item{probs}{Optional vector of fractions specifying percentiles. (1:100)/100 by default.}
 
 \item{na.rm}{TRUE by default, specifies if NA values should be removed first.}
+
+\item{digits}{Number, 3 by default, how many decimal places to round to}
 }
 \value{
 Returns a data.frame

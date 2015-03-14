@@ -8,7 +8,7 @@
 #' w=c(1.1, 2, NA, 0)
 #' print(cbind(x,w, wtd=w*x))
 #' print(wtd.colMeans(x, w, na.rm=TRUE))
-#' #rbind(cbind(x, w, wtd=w*x), c(wtd.colMeans(x, w, na.rm=TRUE), 'wtd.colMeans', rep(NA,length(w))) )
+#' #rbind(cbind(x,w,wtd=w*x), c(wtd.colMeans(x,w,na.rm=TRUE), 'wtd.colMeans', rep(NA,length(w))))
 #'
 #' x=data.frame(a=c(NA, 2:10), b=rep(100,10), c=rep(3,10))
 #' w=c(1.1, 2, NA, rep(1, 7))

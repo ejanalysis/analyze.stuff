@@ -13,6 +13,8 @@ cols.above.count(x, cutoff, or.tied = FALSE, na.rm = TRUE, below = FALSE)
 
 \item{or.tied}{Logical. Default is FALSE, which means we check if number in x is greater than the cutoff (>). If TRUE, check if greater than or equal (>=).}
 
+\item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when a row has an NA value in any column.}
+
 \item{below}{Logical. Default is FALSE. If TRUE, uses > or >= cutoff. If FALSE, uses < or <= cutoff.}
 }
 \value{

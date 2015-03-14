@@ -4,10 +4,14 @@
 \alias{pctiles.a.over.b}
 \title{Show the rounded values at 100 percentiles for a/b (or zero if b=0)}
 \usage{
-pctiles.a.over.b(a, b)
+pctiles.a.over.b(a, b, digits = 3)
 }
 \arguments{
-\item{x}{Required numeric vector of values whose distribution you want to look at.}
+\item{a}{Required numeric vector of values that are numerator of ratio whose distribution you want to look at.}
+
+\item{b}{Required numeric vector of values that are denominator of ratio whose distribution you want to look at.}
+
+\item{digits}{Number, 3 by default, specifying how many decimal places to round to}
 }
 \value{
 Returns a data.frame
@@ -28,10 +32,10 @@ quantile(1:12, probs=(1:10)/10, type=1)\cr
 ###########################\cr
 **** IMPORTANT ***\cr
 ###########################\cr
-*** WARNING: The wtd.quantile function DOES interpolate between values, even if type='i/n'\cr
-There does not seem to be a way to fix that for the wtd.quantile() function.
+*** WARNING: The Hmisc::wtd.quantile function DOES interpolate between values, even if type='i/n'\cr
+There does not seem to be a way to fix that for the Hmisc::wtd.quantile() function.
 For example, \cr
-wtd.quantile(1:12, probs=(1:10)/10, type='i/n', weights=rep(1,12))\cr
+Hmisc::wtd.quantile(1:12, probs=(1:10)/10, type='i/n', weights=rep(1,12))\cr
  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% \cr
  1.2  2.4  3.6  4.8  6.0  7.2  8.4  9.6 10.8 12.0 \cr
 }

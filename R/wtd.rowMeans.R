@@ -10,9 +10,9 @@
 #' @export
 wtd.rowMeans <- function(x, wts=1, na.rm = FALSE, dims = 1) {
 
-  stop(' **** THIS IS WORK IN PROGRESS AS IS wtd.colMeans() !!! ****')
+  warning(' **** THIS IS WORK IN PROGRESS AS IS wtd.colMeans() !!! ****')
 
-  rowMeans(t(t(x) * wts), na.rm=na.rm) * length(w) / sum(w, na.rm=na.rm)
+  rowMeans(t(t(x) * wts), na.rm=na.rm) * length(wts) / sum(wts, na.rm=na.rm)
 
   # this might not work right handling NA VALUES IN wts vs in x ???****
   # instead of length(w) might want length2(w, na.rm=na.rm) or just na.rm=TRUE ???

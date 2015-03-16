@@ -44,5 +44,6 @@ n <- 1e6
   wtd.colMeans(mydf, by='REGION', wts=mydf$pop)
   mydf2 <- data.frame(a=1:3, b=c(1,2,NA))
   wtd.colMeans(mydf2)
+  wtd.colMeans(mydf2, na.rm=TRUE)
 }
 

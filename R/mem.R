@@ -42,11 +42,16 @@
 #' }
 #' @export
 mem <- function(n=10) {
-  object.sizes <- function() {
-    return(round(rev(sort(sapply(ls(envir=.GlobalEnv), function (object.name)
-      object.size(get(object.name)))))/1e6,3))
+  if (length(ls(envir=.GlobalEnv)) > 0) {
+    object.sizes <- function() {
+      return(round(rev(sort(sapply(ls(envir=.GlobalEnv), function (object.name)
+        object.size(get(object.name)))))/1e6,3))
+    }
+    cat(paste('R is using', memory.size(), 'MB out of limit', memory.limit(), 'MB\n'))
+    cat("Objects using the most memory (in MB):\n")
+    ( head(cbind(MB=object.sizes()),n) )
+
+  } else {
+    cat('Nothing found in memory using ls(envir=.GlobalEnv)\n')
   }
-  print(paste('R is using', memory.size(), 'MB out of limit', memory.limit(), 'MB'))
-	print("Objects using the most memory (in MB):")
-	print( head(cbind(object.sizes()),n) )
 }

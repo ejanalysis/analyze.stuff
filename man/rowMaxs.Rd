@@ -30,9 +30,9 @@ That has not been done yet, so colMaxs() etc. refer to the slower more flexible 
 \cr\cr
 ** NOTE: max() and min() and matrixStats::colMaxs etc. default to na.rm=FALSE, but this function defaults to na.rm=TRUE because that just seems more frequently useful.
 \cr\cr
-** NOTE: \code{\link{min}} and \code{\link{max}} & this function will handle character elements by coercing all others in the column to character
-(see the help for Comparison \url{http://127.0.0.1:45798/help/library/base/help/Comparison})
-which can be confusing -- e.g., note that min(c(8,10,'txt')) returns '10' not '8' and max returns 'txt'
+** NOTE: \code{\link{min}} and \code{\link{max}} & this function will handle character elements by coercing all others in the column to character, which can be confusing
+ -- e.g., note that min(c(8,10,'txt')) returns '10' not '8' and max returns 'txt'
+ (also see the help for \code{\link{Comparison}})
 \cr\cr
 If this worked just like max() and min(), cols that are factors would make this fail.
 max or min of a factor fails, even if as.character() of the factor would return a valid numeric vector.
@@ -68,7 +68,7 @@ analyze.stuff::colMaxs( data.frame(a=1:10, b=2))
 \seealso{
 \code{\link{factor.as.numeric}} \code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{colMins}} \code{\link{colMins2}} \code{\link{colMins3}}\code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
 
-Other functions for max and min of rows and columns: \code{\link{colMaxsapply}};
+Other functions.for.max.and.min.of.rows.and.columns: \code{\link{colMaxsapply}};
   \code{\link{colMaxs}}; \code{\link{colMins2}};
   \code{\link{colMins3}}; \code{\link{colMins}};
   \code{\link{rowMins}}

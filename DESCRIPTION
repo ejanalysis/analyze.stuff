@@ -1,6 +1,6 @@
 Package: analyze.stuff
 Type: Package
-Title: Tools that Help Analyze Data
+Title: Tools that help analyze data
 Version: 0.1.0
 Date: 2015-03-14
 Author: info@ejanalysis.com
@@ -21,5 +21,5 @@ Requires:
   data.table
 Imports:
   Hmisc, matrixStats
-URL: http://www.ejanalysis.com
-
+URL: https://github.com/ejanalysis/ejanalysis/
+        http://www.ejanalysis.com/

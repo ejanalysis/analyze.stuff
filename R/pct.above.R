@@ -114,16 +114,16 @@ pct.above <- function(df, benchmarks='mean', benchnames='cutoff', na.rm=FALSE, o
     benchnames <- 'cutoff'
   }
 
-  counts.above <- count.above(df, benchmarks, benchnames, or.tied=or.tied, below=below, wts=wts)
+  mycounts.above <- count.above(df, benchmarks, benchnames, or.tied=or.tied, below=below, wts=wts)
 
-  if (length(counts.above)==1 && is.na(counts.above)) {print("Error in counts.above"); return(NA)}
+  if (length(mycounts.above)==1 && is.na(mycounts.above)) {print("Error in counts.above"); return(NA)}
 
   recycles <- length(df[ , 1]) / length(wts) # ensure sum of wts is right if it was recycled
 
   # THIS HAS NOT BEEN TESTED:
-  denominator <- ifelse(na.rm,    sum( rep(wts, recycles)[!is.na(counts.above)] , na.rm=TRUE)  ,  sum( rep(wts, recycles), na.rm=TRUE))
+  denominator <- ifelse(na.rm,    sum( rep(wts, recycles)[!is.na(mycounts.above)] , na.rm=TRUE)  ,  sum( rep(wts, recycles), na.rm=TRUE))
 
-  results <- counts.above / denominator
+  results <- mycounts.above / denominator
 
   if (or.tied) {mytext <- 'above.or.tied.with.'} else {mytext <- 'above.'}
   mytext <- paste('pct.of', of.what, mytext, sep='.')

@@ -1,7 +1,7 @@
 #' @docType package
 #' @title Basic Tools for Analyzing Datasets
-#' @name analyze.stuff
-#' @aliases analyze.stuff-package analyze.stuff
+#' @name analyze.stuff-package
+#' @aliases analyze.stuff
 #' @description This package provides some useful tools for analyzing data in matrices and data.frames,
 #' such as functions to find the weighted mean of each column of data, add leading zeroes, or
 #' find what percent of rows are above some cutoff for each column.
@@ -31,3 +31,4 @@
 #' **Acknowledgements:
 #' The useful package \pkg{sp} \code{\link[sp]{spDists}} \link{matrixStats} package will provide the basis for extended versions of rowMins, rowMax, colMins, colMaxs functions to be made available through this package.
 #' Source: Henrik Bengtsson (2015). matrixStats: Methods that Apply to Rows and Columns of a Matrix. R package version 0.13.1-9000. \url{https://github.com/HenrikBengtsson/matrixStats}
+NULL

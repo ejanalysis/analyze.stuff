@@ -12,3 +12,10 @@
 .Rproj.user
 
 *.Rproj
+analyze.stuff.Rproj
+*.log
+.Rd2pdf27655/Rd2.idx
+*.ind
+.Rd2pdf27655/Rd2.ilg
+*.Rproj
+*.Rproj

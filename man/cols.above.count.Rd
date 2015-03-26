@@ -48,9 +48,9 @@ out
 
 \code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
 
-Other functions for above and below: \code{\link{cols.above.pct}};
+Other functions.for.above.and.below: \code{\link{cols.above.pct}};
   \code{\link{cols.above.which}};
-  \code{\link{count.above}}; \code{\link{pct.above}};
-  \code{\link{pct.below}}
+  \code{\link{count.above}}; \code{\link{count.below}};
+  \code{\link{pct.above}}; \code{\link{pct.below}}
 }
 

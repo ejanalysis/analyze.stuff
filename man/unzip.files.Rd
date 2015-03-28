@@ -4,11 +4,11 @@
 \alias{unzip.files}
 \title{Unzip multiple zip files}
 \usage{
-unzip.files(zipfile, files = NULL, exdir = ".", todir = getwd(),
-  unzip = "internal", overwrite = TRUE, ...)
+unzip.files(zipfile, files = NULL, exdir = ".", unzip = "internal",
+  overwrite = TRUE, ...)
 }
 \arguments{
-\item{zipfile}{}
+\item{zipfile}{vector of names of files to unzip}
 
 \item{files}{Optional, NULL by default which signifies all files in each zipfile will be extracted.
 Otherwise, a list, with the nth element being a vector (length 1 or more) of character string names of files to extract from the nth zipfile.}

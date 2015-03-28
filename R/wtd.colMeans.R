@@ -1,14 +1,14 @@
 #' @title Weighted Mean of each Column - WORK IN PROGRESS
 #' @description
 #' Returns weighted mean of each column of a data.frame or matrix, based on specified weights, one weight per row.
-#' Now based on \code{\link{data.table::data.table}[data.table]} unlike \code{\link{wtd.colMeans2}}
+#' Now based on \code{\link[data.table]{data.table}} unlike \code{\link{wtd.colMeans2}}
 #' @details For cols with NA values, mean uses total number of rows (or sum of non-NA weights) as denominator,
 #' not just rows where the actual value is non-NA!
 #' @param x Data.frame or matrix, required.
 #' @param wts Weights, optional, defaults to 1 which is unweighted, numeric vector of length equal to number of rows
 #' @param by Optional vector, default is none, that can provide a single column name (as character) or character vector of column names,
 #' specifying what to group by, producing the weighted mean within each group.
-#' See help for \code{\link{data.table::data.table}[data.table]}
+#' See help for \code{\link[data.table]{data.table}}
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found.
 #'   Otherwise result will be NA when any NA is in a vector.
 #' @param dims dims=1 is default. Not used. integer: Which dimensions are regarded as 'rows' or 'columns' to sum over.

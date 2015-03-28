@@ -2,7 +2,7 @@
 % Please edit documentation in R/minNonzero.R
 \name{minNonzero}
 \alias{minNonzero}
-\title{Find minimum non-zero number(s)}
+\title{Find minimum non-zero number(s) - BUT EXCLUDES COLUMNS THAT ARE NOT NUMERIC OR ARE FACTOR**}
 \usage{
 minNonzero(mydf)
 }
@@ -17,6 +17,7 @@ Returns minimum nonzero numbers in vector, matrix, or data.frame
 }
 \examples{
 minNonzero(-1:6)
-minNonzero(data.frame(a=0:10, b=1:11, c=c(0,1,NA)))
+minNonzero(data.frame(a=0:10, b=1:11, c=c(0,1:9,NA), d='text', stringsAsFactors = FALSE))
+minNonzero(data.frame(a=0:10, b=1:11, c=c(0,1:9,NA), d='3', stringsAsFactors = TRUE))
 }
 

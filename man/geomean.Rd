@@ -23,7 +23,7 @@ Is not as strongly influenced by extreme outliers as the arithmetic mean.
 See \url{http://en.wikipedia.org/wiki/Geometric_mean} for many applications.
 }
 \examples{
-geomean(4,9) # is the square root of 4 * 9
+geomean(c(4,9)) # is the square root of 4 * 9
 }
 \seealso{
 \code{\link{harmean}}  \code{\link{mean}}  \code{\link{rms}}

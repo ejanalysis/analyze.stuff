@@ -1,7 +1,7 @@
 #' @docType package
 #' @title Basic Tools for Analyzing Datasets
-#' @name analyze.stuff-package
-#' @aliases analyze.stuff
+#' @name analyze.stuff
+#' @aliases analyze.stuff-package
 #' @description This package provides some useful tools for analyzing data in matrices and data.frames,
 #' such as functions to find the weighted mean of each column of data, add leading zeroes, or
 #' find what percent of rows are above some cutoff for each column.

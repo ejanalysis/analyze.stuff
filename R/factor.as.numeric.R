@@ -15,7 +15,7 @@
 #' Logical is returned as logical. \cr
 #' When stringsAsFactors is TRUE, factor is returned as factor if it has any text that cannot be coerced to non-NA numeric.\cr
 #' When stringsAsFactors is FALSE, factor is returned as character if it has any text that cannot be coerced to non-NA numeric.\cr
-#' @seealso \code{\link{as.vector}}, \code{\link{factor}}, \code{\link{data.table}[data.table]}, \code{\link{matrix}}
+#' @seealso \code{\link{as.vector}}, \code{\link{factor}}, \code{\link{data.table}}, \code{\link{matrix}}
 #' @examples
 #' a=factor(c(2,3,5)); b=factor(c('2', '3', '5')); c=factor(c('two','three','five'))
 #' d=factor(c(2,'3','5')); e=factor(c(2,'three','five')); f=factor(c('2','three','5'))

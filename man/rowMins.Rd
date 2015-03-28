@@ -53,12 +53,15 @@ cbind(blah, min=rowMins(blah), max=rowMaxs(blah),
   mean=rowMeans(blah, na.rm=TRUE), sum=rowSums(blah, na.rm=TRUE))
 rbind(blah, min=colMins(blah), max=colMaxs(blah),
   mean=colMeans(blah, na.rm=TRUE), sum=colSums(blah, na.rm=TRUE))
-  # ** Actually, matrixStats does this ~4x as quickly, although no practical difference unless large dataset:
+  # ** Actually, matrixStats does this ~4x as quickly,
+  # although no practical difference unless large dataset:
   n <- 1e7
-t1=Sys.time(); x=analyze.stuff::colMaxs( cbind(a=1:n, b=2, c=3, d=4, e=5)); t2=Sys.time();print(difftime(t2,t1))
-t1=Sys.time(); x=  matrixStats::colMaxs( cbind(a=1:n, b=2, c=3, d=4, e=5)); t2=Sys.time();print(difftime(t2,t1))
+t1=Sys.time(); x=analyze.stuff::colMaxs( cbind(a=1:n, b=2, c=3, d=4, e=5)); t2=Sys.time()
+print(difftime(t2,t1))
+t1=Sys.time(); x=  matrixStats::colMaxs( cbind(a=1:n, b=2, c=3, d=4, e=5)); t2=Sys.time()
+print(difftime(t2,t1))
 # Note the latter cannot handle a data.frame:
-\\Dontrun{
+\dontrun{
 # This would fail:
 matrixStats::colMaxs(   data.frame(a=1:10, b=2))
 # This works:

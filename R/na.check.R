@@ -1,4 +1,4 @@
-#' @title Basic info on each col of data.frame
+#' @title Basic info on each col of data.frame - ** WORK IN PROGRESS - CAN CRASH ON TEXT OR FACTOR FIELDS?
 #'
 #' @description
 #' Returns basic information on each field in a data.frame, like count of rows that are zero, negative,
@@ -71,5 +71,3 @@ na.check <- function(mydat, min.text=FALSE) {
     #max= colMaxs(mydat, na.rm=TRUE), # WOULD NEED TO HANDLE non-numeric cols
     row.names=cols) # that works only for a data.frame
  }
-
-

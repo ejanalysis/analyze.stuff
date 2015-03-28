@@ -49,6 +49,6 @@ for (i in 1:length(x)) {
 }
 }
 \seealso{
-\code{\link{as.vector}}, \code{\link{factor}}, \code{\link{data.table}[data.table]}, \code{\link{matrix}}
+\code{\link{as.vector}}, \code{\link{factor}}, \code{\link{data.table}}, \code{\link{matrix}}
 }
 

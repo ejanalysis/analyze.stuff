@@ -16,10 +16,13 @@ Description: Tools that simplify some basic tasks in
 Depends: R (>= 3.1.2)
 License: MIT + file LICENSE
 Suggests:
-  graphics, data.table
+  graphics
 Requires:
   data.table
 Imports:
-  Hmisc, matrixStats
-URL: https://github.com/ejanalysis/ejanalysis/
-        http://www.ejanalysis.com/
+  Hmisc
+  matrixStats
+  analyze.stuff
+URL:
+  https://github.com/ejanalysis/ejanalysis/
+  http://www.ejanalysis.com/

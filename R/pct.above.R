@@ -31,6 +31,10 @@
 #' \cr and *** should make param names consistent, like x not df, cutoff(s) not benchmarks?, or.tied not gte
 #' \cr but *** cols versions and all should have wts, na.rm, benchmarks as vector not just 1 number, benchnames, params
 #' \cr and ** should have a "below" version for each variant
+#' \cr
+#' \cr Note Hmisc::wtd.mean is not exactly same as stats::weighted.mean since na.rm defaults differ
+#' \cr   Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ.
+#' \cr     weighted.mean(x, w,            ...,              na.rm = FALSE)
 #' @param df Data.frame or matrix, required.
 #' @param benchmarks Default is 'mean' but otherwise this must be a number or numeric vector of thresholds to compare values to.
 #' @param benchnames Default is 'cutoff' and this string is used to create colnames for the results, such as above.cutoff.for.field1
@@ -101,6 +105,7 @@ pct.above <- function(df, benchmarks='mean', benchnames='cutoff', na.rm=FALSE, o
     # use the simple mean value as the benchmark, & set benchnames <- "mean"
     # but note that may replace user-defined names if they set benchnames but not benchmarks
     # Use wtd.mean as benchmark if (wts!=1):
+
     if (any(wts!=1)) {
       benchmarks <- sapply(df, FUN=function(x) weighted.mean(x, wts, na.rm=TRUE) ) # note this part ignores the na.rm settings passed to here
     } else {

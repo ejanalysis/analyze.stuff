@@ -2,7 +2,7 @@
 % Please edit documentation in R/na.check.R
 \name{na.check}
 \alias{na.check}
-\title{Basic info on each col of data.frame}
+\title{Basic info on each col of data.frame - ** WORK IN PROGRESS - CAN CRASH ON TEXT OR FACTOR FIELDS?}
 \usage{
 na.check(mydat, min.text = FALSE)
 }

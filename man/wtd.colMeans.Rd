@@ -31,6 +31,10 @@ Now based on \code{\link[data.table]{data.table}} unlike \code{\link{wtd.colMean
 \details{
 For cols with NA values, mean uses total number of rows (or sum of non-NA weights) as denominator,
 not just rows where the actual value is non-NA!
+\cr
+\cr Note Hmisc::wtd.mean is not exactly same as stats::weighted.mean since na.rm defaults differ
+\cr   Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ.
+\cr     weighted.mean(x, w,            ...,              na.rm = FALSE)
 }
 \examples{
 n <- 1e6

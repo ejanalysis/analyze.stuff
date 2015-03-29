@@ -11,8 +11,8 @@ if (1==0) {
   #' \cr   Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ.
   #' \cr     weighted.mean(x, w,            ...,              na.rm = FALSE)
 
-require(data.table)
-mydata <- data.table(bg, key="ST")
+# require(data.table)
+mydata <- data.table::data.table(bg, key="ST")
 
 #########################################
 # if you want to manually write out each formula with specific fields:
@@ -28,6 +28,11 @@ z= mydata[, list(
 #########################################
 # to specify function once and run it for all the fields
 #########################################
+
+z = mydata[ , lapply(.SD, weighted.mean, pop, na.rm=TRUE), by=key(dt),
+     .SDcols=c('bmi','tc','pop')]
+
+# or
 
 z= mydata[, lapply(.SD,
                 function(x, wts = pop) sum(x * wts) / sum(wts)
@@ -48,9 +53,9 @@ z= mydata[, lapply(.SD,
 # MORE EXAMPLES OF VARIANTS OF THIS APPROACH:
 
 # # require(data.table)
-# # n=1e6
-# # mydf <- data.frame(pop=1000 + rnorm(n, 1000, 100), v1= runif(n, 0, 1), v2= rnorm(n, 100, 15), REGION=sample(c('R1', 'R2', 'R3'), n, replace=TRUE))
-# # dt <- data.table::data.table(mydf)
+# n=1e6
+# mydf <- data.frame(pop=1000 + rnorm(n, 1000, 100), v1= runif(n, 0, 1), v2= rnorm(n, 100, 15), REGION=sample(c('R1', 'R2', 'R3'), n, replace=TRUE))
+# dt <- data.table::data.table(mydf)
 
 #########################################
 #  # one param of weighted.mean inside lapply + shows .SDcols to select only some results:

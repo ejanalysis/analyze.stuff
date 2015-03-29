@@ -38,7 +38,7 @@ wtd.colMeans <- function(x, wts=rep(1,NROW(x)), by, na.rm = FALSE, dims = 1) {
 
   x <- data.frame(x, wts=wts, stringsAsFactors=FALSE)
 
-  xt <- data.table(x)
+  xt <- data.table::data.table(x)
 
   result <- suppressWarnings( xt[ , lapply(.SD, weighted.mean, wts, na.rm=na.rm  ), by=by ])
 
@@ -46,14 +46,12 @@ wtd.colMeans <- function(x, wts=rep(1,NROW(x)), by, na.rm = FALSE, dims = 1) {
 
   # result <-    xt[ , colMeans(.SD * t(.SD[,wts]), na.rm=na.rm, dims=dims) * colSums(!is.na(.SD), na.rm=na.rm, dims=dims) / sum(.SD[,'wts'], na.rm=na.rm) ]
 
-
   #  Examples work when just source function and use it
   #
   #   but doesn't work within package
   #
   #  something to do with requiring data.table package I think
   #
-
 
   # print(result)
   # print(1:(NCOL(result) - 1))

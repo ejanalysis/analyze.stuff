@@ -14,6 +14,7 @@
 #' @param of.what Optional, character, 'all' by default, defines xxx as the text used in "pct.above.xxx" (or below) for fieldnames in results
 #' @return Returns a vector of numbers of length equal to number of columns in df.
 #' @template abovebelow
+#' @export
 pct.below <- function(df, benchmarks='mean', benchnames='cutoff', na.rm=FALSE, or.tied=FALSE, below=TRUE, wts=1, of.what='all') {
   return(pct.above(df=df, benchmarks=benchmarks, benchnames=benchnames, na.rm=na.rm, or.tied=or.tied, below=below, wts=wts, of.what=of.what))
 }

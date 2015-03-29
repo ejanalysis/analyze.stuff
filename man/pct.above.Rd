@@ -57,6 +57,10 @@ These could be renamed  rows.above.count(), rows.above.pct(), rows.above.which()
 \cr and *** should make param names consistent, like x not df, cutoff(s) not benchmarks?, or.tied not gte
 \cr but *** cols versions and all should have wts, na.rm, benchmarks as vector not just 1 number, benchnames, params
 \cr and ** should have a "below" version for each variant
+\cr
+\cr Note Hmisc::wtd.mean is not exactly same as stats::weighted.mean since na.rm defaults differ
+\cr   Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ.
+\cr     weighted.mean(x, w,            ...,              na.rm = FALSE)
 }
 \note{
 Future work: these functions could have wts, na.rm, &

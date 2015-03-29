@@ -13,16 +13,23 @@ Description: Tools that simplify some basic tasks in
   get rowMaxs, colMaxs, wtd.rowMeans, wtd.colMeans,
   see a table of values at 100 weighted percentiles,
   see how many values are NA or non-NA in each column, etc.
+  The analyze.stuff, proxistat, ejanalysis, and countyhealthrankings packages,
+  once made public can be installed from github using the devtools package:
+  devtools::install_github(c("ejanalysis/analyze.stuff", "ejanalysis/proxistat",
+  "ejanalysis/ejanalysis", "ejanalysis/countyhealthrankings"))
 Depends: R (>= 3.1.2)
 License: MIT + file LICENSE
 Suggests:
-  graphics
-Requires:
-  data.table
+  graphics,
+  ejanalysis,
+  proxistat,
+  countyhealthrankings,
+  sp,
+  foreign
 Imports:
-  Hmisc
+  Hmisc,
+  data.table,
   matrixStats
-  analyze.stuff
 URL:
   https://github.com/ejanalysis/ejanalysis/
   http://www.ejanalysis.com/

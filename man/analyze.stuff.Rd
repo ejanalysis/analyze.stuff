@@ -9,6 +9,14 @@
 This package provides some useful tools for analyzing data in matrices and data.frames,
 such as functions to find the weighted mean of each column of data, add leading zeroes, or
 find what percent of rows are above some cutoff for each column.
+\cr\cr
+These tools simplify some basic tasks in
+exploring and analyzing a dataset in a matrix or data.frame
+that contains data on demographics (e.g., counts of residents in poverty)
+and local environmental indicators (e.g., an air quality index),
+with one row per spatial location (e.g., Census block group).
+Key functions help to find relative risk or similar ratios of means in demographic groups,
+, etc.
 }
 \details{
 Key functions include
@@ -25,6 +33,20 @@ Key functions include
 \item \code{\link{na.check}}, \code{\link{length2}}: How many NA or non-NA values in each column
 \item \code{\link{mem}}: What objects are taking up the most memory
 \item \code{\link{dir2}}, \code{\link{dirr}}, \code{\link{dirdirs}}: Directory listing with wildcards, etc.
+}
+
+May add later:
+\cr
+\itemize{
+\item cols.below.count
+\item cols.below.pct
+\item cols.below.which
+\item rows.above.count
+\item rows.above.pct
+\item rows.above.which
+\item rows.below.count
+\item rows.below.pct
+\item rows.below.which
 }
 }
 \author{

@@ -44,8 +44,12 @@
 mem <- function(n=10) {
   if (length(ls(envir=.GlobalEnv)) > 0) {
     object.sizes <- function() {
-      return(round(rev(sort(sapply(ls(envir=.GlobalEnv), function (object.name)
-        object.size(get(object.name)))))/1e6,3))
+      return(round(
+        rev(sort(sapply(ls(envir=.GlobalEnv), function (object.name)
+        object.size(get(object.name)))))/1e6,
+        3))
+      # format(object.size(get(object.name)), units = "MB")
+      # could be used now instead of round( /1e6,3).
     }
     cat(paste('R is using', memory.size(), 'MB out of limit', memory.limit(), 'MB\n'))
     cat("Objects using the most memory (in MB):\n")

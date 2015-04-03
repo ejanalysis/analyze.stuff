@@ -17,19 +17,12 @@ Description: Tools that simplify some basic tasks in
   once made public can be installed from github using the devtools package:
   devtools::install_github(c("ejanalysis/analyze.stuff", "ejanalysis/proxistat",
   "ejanalysis/ejanalysis", "ejanalysis/countyhealthrankings"))
-Depends: R (>= 3.1.2)
-License: MIT + file LICENSE
-Suggests:
-  graphics,
-  ejanalysis,
-  proxistat,
-  countyhealthrankings,
-  sp,
-  foreign
-Imports:
+Depends:  R (>= 3.1.2),
   Hmisc,
   data.table,
   matrixStats
+License: MIT + file LICENSE
+Suggests:  sp
 URL:
   https://github.com/ejanalysis/ejanalysis/
   http://www.ejanalysis.com/

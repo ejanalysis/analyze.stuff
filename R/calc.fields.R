@@ -31,4 +31,5 @@ calc.fields <- function(mydf, formulas, keep) {
 
 	outdf <- data.frame( mget(keep), stringsAsFactors=FALSE)
 	return(outdf)
+  # #
 }

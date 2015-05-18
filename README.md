@@ -1,4 +1,4 @@
 # analyze-stuff
-Tools that help analyze data in data.frames and matrices  
+Tools that help analyze data in data.frames and matrices using R  
 
-http://ejanalysis.github.io/analyze.stuff/
+[analyze.stuff package](http://ejanalysis.github.io/analyze.stuff/)

@@ -14,3 +14,5 @@
 .Rproj.user/BC4C44B8/sdb/prop/FF447C57
 .Rproj.user/BC4C44B8/sdb/prop/FFC66B06
 .Rproj.user
+*.Rprofile
+*.log

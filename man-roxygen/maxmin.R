@@ -30,7 +30,7 @@
 #'   e=TRUE, f=factor('factor'), g='words', stringsAsFactors=FALSE) )
 #' cbind(blah, min=rowMins(blah), max=rowMaxs(blah))
 #' rbind(blah, min=colMins(blah), max=colMaxs(blah))
-#' blah <- blah[ , sapply(blah, function(x) is.numeric(x) || is.logical(x)) ]
+#' blah <- blah[ , sapply(blah, function(x) is.numeric(x) | is.logical(x)) ]
 #' cbind(blah, min=rowMins(blah), max=rowMaxs(blah),
 #'   mean=rowMeans(blah, na.rm=TRUE), sum=rowSums(blah, na.rm=TRUE))
 #' rbind(blah, min=colMins(blah), max=colMaxs(blah),

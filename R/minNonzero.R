@@ -13,11 +13,28 @@
 minNonzero <- function(mydf) {
 
   if (is.data.frame(mydf)) {
-    return( sapply(mydf[ , sapply(mydf, mode)=='numeric' & !sapply(mydf, is.factor)], function(x) {zero <- (!x);   ifelse(all(zero) || all(is.na(x)), NA, min(x[!zero],  na.rm=TRUE))})  )
+    return(
+      sapply(
+        mydf[ , sapply(mydf, mode)=='numeric' & !sapply(mydf, is.factor)],
+        function(x) {
+          zero <- (!x)
+          ifelse(all(zero) || all(is.na(x)), NA, min(x[!zero],  na.rm=TRUE))
+        }
+      )
+    )
   }
 
   if (is.matrix(mydf)) {
-    return( apply(mydf[ , apply(mydf, 2, mode)=='numeric' & !apply(mydf, 2, is.factor)], 2, function(x) {zero <- (!x);   ifelse(all(zero) || all(is.na(x)), NA, min(x[!zero],  na.rm=TRUE))})  )
+    return(
+      apply(
+        mydf[ , apply(mydf, 2, mode)=='numeric' & !apply(mydf, 2, is.factor)],
+        2,
+        function(x) {
+          zero <- (!x)
+          ifelse(all(zero) || all(is.na(x)), NA, min(x[!zero],  na.rm=TRUE))
+        }
+      )
+    )
   }
 
   if (is.vector(mydf)) {

@@ -6,17 +6,9 @@
 \alias{analyze.stuff-package}
 \title{Basic Tools for Analyzing Datasets}
 \description{
-This package provides some useful tools for analyzing data in matrices and data.frames,
+This R package provides some useful tools for analyzing data in matrices and data.frames,
 such as functions to find the weighted mean of each column of data, add leading zeroes, or
 find what percent of rows are above some cutoff for each column.
-\cr\cr
-These tools simplify some basic tasks in
-exploring and analyzing a dataset in a matrix or data.frame
-that contains data on demographics (e.g., counts of residents in poverty)
-and local environmental indicators (e.g., an air quality index),
-with one row per spatial location (e.g., Census block group).
-Key functions help to find relative risk or similar ratios of means in demographic groups,
-, etc.
 }
 \details{
 Key functions include
@@ -53,6 +45,7 @@ May add later:
 info@ejanalysis.com <info@ejanalysis.com>
 }
 \references{
+\url{http://ejanalysis.github.io}\cr
 \url{http://www.ejanalysis.com}\cr
 
 **Acknowledgements:

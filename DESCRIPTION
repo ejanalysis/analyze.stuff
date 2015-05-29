@@ -1,8 +1,8 @@
 Package: analyze.stuff
 Type: Package
 Title: Tools that help analyze data
-Version: 0.1.0
-Date: 2015-03-14
+Version: 0.2.0
+Date: 2015-05-29
 Author: info@ejanalysis.com
 Maintainer: ejanalysis.com <info@ejanalysis.com>
 Description: Tools that simplify some basic tasks in
@@ -14,7 +14,7 @@ Description: Tools that simplify some basic tasks in
   see a table of values at 100 weighted percentiles,
   see how many values are NA or non-NA in each column, etc.
   The analyze.stuff, proxistat, ejanalysis, and countyhealthrankings packages,
-  once made public can be installed from github using the devtools package:
+  once made public can be installed from GitHub.com using the devtools package:
   devtools::install_github(c("ejanalysis/analyze.stuff", "ejanalysis/proxistat",
   "ejanalysis/ejanalysis", "ejanalysis/countyhealthrankings"))
 Depends:  R (>= 3.1.2),

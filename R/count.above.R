@@ -36,6 +36,7 @@
 #' @param or.tied Logical, FALSE by default, reporting on those > cutoff. But, if or.tied=TRUE, this reports on those >= cutoff.
 #' @param below Logical, FALSE by default, which counts how many are above cutoff (or tied if or.tied). If TRUE, counts how many are below (or tied with) cutoff.
 #' @param wts Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.
+#' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed first. Otherwise result will be NA when any NA is in a col.
 #' @return Returns a vector of numbers of length equal to number of columns in df.
 #' @template abovebelow
 #' @examples
@@ -89,7 +90,7 @@
 #'   # ignores names since default benchmarks are column means
 #' }
 #' @export
-count.above <- function(df, benchmarks='mean', benchnames='cutoff', or.tied=FALSE, below=FALSE, wts=1 ) {
+count.above <- function(df, benchmarks='mean', benchnames='cutoff', or.tied=FALSE, below=FALSE, wts=1, na.rm=TRUE ) {
 
   if ( any(is.na(benchmarks))) {print("Error - benchmarks cannot include NA values."); return(NA)}
 
@@ -146,15 +147,15 @@ count.above <- function(df, benchmarks='mean', benchnames='cutoff', or.tied=FALS
 
   if (below) {
     if (or.tied) {
-      results <- colSums( wts * (df <= benchmarks), na.rm=TRUE)
+      results <- colSums( wts * (df <= benchmarks), na.rm=na.rm)
     } else {
-      results <- colSums( wts * (df < benchmarks), na.rm=TRUE)
+      results <- colSums( wts * (df < benchmarks), na.rm=na.rm)
     }
   } else {
     if (or.tied) {
-      results <- colSums( wts * (df >= benchmarks), na.rm=TRUE)
+      results <- colSums( wts * (df >= benchmarks), na.rm=na.rm)
     } else {
-      results <- colSums( wts * (df > benchmarks), na.rm=TRUE)
+      results <- colSums( wts * (df > benchmarks), na.rm=na.rm)
     }
   }
 

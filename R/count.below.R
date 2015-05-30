@@ -11,9 +11,8 @@
 #' @param below Logical, TRUE by default, which counts how many are below cutoff (or tied if or.tied). If FALSE, counts how many are above (or tied with) cutoff.
 #' @param wts Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed first. Otherwise result will be NA when any NA is in a col.
-#' @param of.what Optional, character, 'all' by default, defines xxx as the text used in "count.below.xxx" (or above) for fieldnames in results
 #' @return Returns a vector of numbers of length equal to number of columns in df.
 #' @template abovebelow
-count.below <- function(df, benchmarks='mean', benchnames='cutoff', na.rm=FALSE, or.tied=FALSE, below=TRUE, wts=1, of.what='all') {
-  return(count.above(df=df, benchmarks=benchmarks, benchnames=benchnames, na.rm=na.rm, or.tied=or.tied, below=below, wts=wts, of.what=of.what))
+count.below <- function(df, benchmarks='mean', benchnames='cutoff', na.rm=TRUE, or.tied=FALSE, below=TRUE, wts=1) {
+  return(count.above(df=df, benchmarks=benchmarks, benchnames=benchnames, na.rm=na.rm, or.tied=or.tied, below=below, wts=wts) )
 }

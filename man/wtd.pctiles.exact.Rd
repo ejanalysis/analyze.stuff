@@ -47,6 +47,6 @@ Hmisc::wtd.quantile(1:12, probs=(1:10)/10, type='i/n', weights=rep(1,12))\cr
  1.2  2.4  3.6  4.8  6.0  7.2  8.4  9.6 10.8 12.0 \cr
 }
 \seealso{
-\code{\link{pctiles}} \code{\link{pctiles.exact}} \code{\link{pctiles.a.over.b}} \code{\link{wtd.pctiles.exact}} \code{\link{wtd.pctiles}} \code{\link{wtd.pctiles.fast}} \code{\link{wtd.pctiles.fast.1}}
+\code{\link{pctiles}} \code{\link{pctiles.exact}} \code{\link{pctiles.a.over.b}} \code{\link{wtd.pctiles.exact}} \code{\link{wtd.pctiles}} \code{\link{wtd.pctiles.fast}}
 }
 

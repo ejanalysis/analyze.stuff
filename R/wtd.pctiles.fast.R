@@ -1,12 +1,12 @@
 #' @title Show the values at 100 weighted percentiles
 #'
 #' @description
-#' Get a quick look at a distribution by seeing the 100 values that are the weighted percentiles 1-100
+#' Get a quick look at a weighted distribution by seeing the 100 values that are the weighted percentiles 1-100
 #' @details
-#' Provides weighted percentiles without using \code{\link{wtd.quantile}}
+#' Provides weighted percentiles without using \code{\link{wtd.quantile}[Hmisc]}
 #' \cr\cr
-#' #  NOTE: THIS ONLY SHOWS PERCENTILES AND MEAN FOR THE VALID (NOT NA) VALUES !# Defining these types as type=1 and type="i/n" will create simple discontinuous quantiles, without interpolation where there are jumps in the values analyzed.
-#' This is how  should be calculating percentiles as of 2/2013.
+#' #  NOTE: THIS ONLY SHOWS PERCENTILES AND MEAN FOR THE VALID (NOT NA) VALUES !
+#' Defining these types as type=1 and type="i/n" will create simple discontinuous quantiles, without interpolation where there are jumps in the values analyzed.
 #' *** WARNING: Unless set type=1, the default type=7 in which case quantile() FUNCTION INTERPOLATES, WHICH ISN'T OBVIOUS IN EVERY DATASET!
 #' use type=1 to avoid interpolation.
 #' and pctiles() rounded results so interpolation would be even less apparent.\cr
@@ -27,7 +27,7 @@
 #' @param wts NULL by default, or vector of numbers to use as weights in Hmisc::wtd.quantile
 #' @param na.rm Logical optional TRUE by default, in which case NA values are removed first.
 #' @return Returns a data.frame
-#' @seealso  \code{\link{pctiles}} \code{\link{pctiles.exact}} \code{\link{pctiles.a.over.b}} \code{\link{wtd.pctiles.exact}} \code{\link{wtd.pctiles}} \code{\link{wtd.pctiles.fast}} \code{\link{wtd.pctiles.fast.1}}
+#' @seealso  \code{\link{pctiles}} \code{\link{pctiles.exact}} \code{\link{pctiles.a.over.b}} \code{\link{wtd.pctiles.exact}} \code{\link{wtd.pctiles}} \code{\link{wtd.pctiles.fast}}
 #' @export
 wtd.pctiles.fast <- function(x, wts=NULL, na.rm=TRUE) {
 

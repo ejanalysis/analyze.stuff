@@ -2,7 +2,7 @@
 % Please edit documentation in R/na.check2.R
 \name{na.check2}
 \alias{na.check2}
-\title{Basic info on each col of data.frame}
+\title{Basic info on each col of data.frame - testing faster way, but returns text}
 \usage{
 na.check2(df)
 }
@@ -21,16 +21,14 @@ Leaves out logical, complex?, character, etc. cols
 this version fails to handle fields that are factor class!?
 }
 \examples{
-print(Sys.time()); x= na.check(data.frame(a=-1:1e6, b='text', c=c(NA, 1, 2)), min.text=FALSE)
-print(Sys.time())
-print(Sys.time()); x= na.check(data.frame(a=-1:1e6, b='text', c=c(NA, 1, 2)), min.text=TRUE)
-print(Sys.time())
+\dontrun{
+system.time(x= na.check(data.frame(a=-1:1e6, b='text', c=c(NA, 1, 2)), min.text=FALSE) )
+system.time(x= na.check2(data.frame(a=-1:1e6, b='text', c=c(NA, 1, 2)), min.text=TRUE) )
 na.check(data.frame(a=-1:10, b='text', c=c(NA, 1, 2)))
-na.check1(data.frame(a=-1:10, b='text', c=c(NA, 1, 2)))
 na.check2(data.frame(a=-1:10, b='text', c=c(NA, 1, 2)))
-na.check3(data.frame(a=-1:10, b='text', c=c(NA, 1, 2)))
+}
 }
 \seealso{
-\code{\link[matrixStats]{signTabulate}} \code{\link{minNonzero}} and experimental variations on na.check: \code{\link{na.check}} \code{\link{na.check1}} \code{\link{na.check2}} \code{\link{na.check3}}
+\code{signTabulate} in \pkg{matrixStats} \code{\link{minNonzero}} and experimental variations on na.check: \code{\link{na.check}} \code{\link{na.check2}}
 }
 

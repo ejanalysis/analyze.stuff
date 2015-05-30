@@ -5,7 +5,7 @@
 \title{Number or percent of rows (for each col) where value exceeds cutoff(s)}
 \usage{
 count.above(df, benchmarks = "mean", benchnames = "cutoff",
-  or.tied = FALSE, below = FALSE, wts = 1)
+  or.tied = FALSE, below = FALSE, wts = 1, na.rm = TRUE)
 }
 \arguments{
 \item{df}{Data.frame or matrix, required.}
@@ -19,6 +19,8 @@ count.above(df, benchmarks = "mean", benchnames = "cutoff",
 \item{below}{Logical, FALSE by default, which counts how many are above cutoff (or tied if or.tied). If TRUE, counts how many are below (or tied with) cutoff.}
 
 \item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.}
+
+\item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed first. Otherwise result will be NA when any NA is in a col.}
 }
 \value{
 Returns a vector of numbers of length equal to number of columns in df.
@@ -115,7 +117,7 @@ pct.above(x, benchnames=mynames, wts=mywts)
 
 \code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
 
-Other functions.for.above.and.below: \code{\link{cols.above.count}};
+Other functions for above and below: \code{\link{cols.above.count}};
   \code{\link{cols.above.pct}};
   \code{\link{cols.above.which}};
   \code{\link{count.below}}; \code{\link{pct.above}};

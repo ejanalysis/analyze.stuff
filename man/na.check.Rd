@@ -2,12 +2,12 @@
 % Please edit documentation in R/na.check.R
 \name{na.check}
 \alias{na.check}
-\title{Basic info on each col of data.frame - ** WORK IN PROGRESS - CAN CRASH ON TEXT OR FACTOR FIELDS?}
+\title{Basic info on each col of data.frame}
 \usage{
-na.check(mydat, min.text = FALSE)
+na.check(df, min.text = FALSE)
 }
 \arguments{
-\item{mydat}{Matrix or data.frame to examine. Cannot be a single vector currently.}
+\item{df}{Matrix or data.frame to examine. Cannot be a single vector currently.}
 
 \item{min.text}{Logical, optional, defaults to FALSE. If TRUE, tries to find minimum of numbers stored as text? Slows it down.}
 }
@@ -20,19 +20,16 @@ NA, infinite, etc.
 \cr\cr
 Slow - work in progress
 Leaves out logical, complex?, character, etc. cols
-this version fails to handle fields that are factor class!
 }
 \examples{
-print(Sys.time()); x= na.check(data.frame(a=-1:1e6, b='text', c=c(NA, 1, 2)), min.text=FALSE)
-print(Sys.time())
-print(Sys.time()); x= na.check(data.frame(a=-1:1e6, b='text', c=c(NA, 1, 2)), min.text=TRUE)
-print(Sys.time())
+\dontrun{
+system.time(x= na.check(data.frame(a=-1:1e6, b='text', c=c(NA, 1, 2)), min.text=FALSE) )
+system.time(x= na.check2(data.frame(a=-1:1e6, b='text', c=c(NA, 1, 2)), min.text=TRUE) )
 na.check(data.frame(a=-1:10, b='text', c=c(NA, 1, 2)))
-na.check1(data.frame(a=-1:10, b='text', c=c(NA, 1, 2)))
 na.check2(data.frame(a=-1:10, b='text', c=c(NA, 1, 2)))
-na.check3(data.frame(a=-1:10, b='text', c=c(NA, 1, 2)))
+}
 }
 \seealso{
-\code{\link[matrixStats]{signTabulate}} \code{\link{minNonzero}} and experimental variations on na.check: \code{\link{na.check}} \code{\link{na.check1}} \code{\link{na.check2}} \code{\link{na.check3}}
+\code{signTabulate} in \pkg{matrixStats} \code{\link{minNonzero}} and experimental variations on na.check: \code{\link{na.check}} \code{\link{na.check2}}
 }
 

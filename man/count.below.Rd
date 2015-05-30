@@ -4,8 +4,8 @@
 \alias{count.below}
 \title{Number or percent of rows (for each col) where value is below cutoff(s)}
 \usage{
-count.below(df, benchmarks = "mean", benchnames = "cutoff", na.rm = FALSE,
-  or.tied = FALSE, below = TRUE, wts = 1, of.what = "all")
+count.below(df, benchmarks = "mean", benchnames = "cutoff", na.rm = TRUE,
+  or.tied = FALSE, below = TRUE, wts = 1)
 }
 \arguments{
 \item{df}{Data.frame or matrix, required.}
@@ -21,8 +21,6 @@ count.below(df, benchmarks = "mean", benchnames = "cutoff", na.rm = FALSE,
 \item{below}{Logical, TRUE by default, which counts how many are below cutoff (or tied if or.tied). If FALSE, counts how many are above (or tied with) cutoff.}
 
 \item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.}
-
-\item{of.what}{Optional, character, 'all' by default, defines xxx as the text used in "count.below.xxx" (or above) for fieldnames in results}
 }
 \value{
 Returns a vector of numbers of length equal to number of columns in df.
@@ -42,7 +40,7 @@ allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
 
 \code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
 
-Other functions.for.above.and.below: \code{\link{cols.above.count}};
+Other functions for above and below: \code{\link{cols.above.count}};
   \code{\link{cols.above.pct}};
   \code{\link{cols.above.which}};
   \code{\link{count.above}}; \code{\link{pct.above}};

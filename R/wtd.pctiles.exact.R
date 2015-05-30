@@ -29,7 +29,7 @@
 #' @param probs fractions 0-1, optional, (1:100)/100 by default, define quantiles to use
 #' @param na.rm Logical optional TRUE by default, in which case NA values are removed first.
 #' @return Returns a data.frame
-#' @seealso  \code{\link{pctiles}} \code{\link{pctiles.exact}} \code{\link{pctiles.a.over.b}} \code{\link{wtd.pctiles.exact}} \code{\link{wtd.pctiles}} \code{\link{wtd.pctiles.fast}} \code{\link{wtd.pctiles.fast.1}}
+#' @seealso  \code{\link{pctiles}} \code{\link{pctiles.exact}} \code{\link{pctiles.a.over.b}} \code{\link{wtd.pctiles.exact}} \code{\link{wtd.pctiles}} \code{\link{wtd.pctiles.fast}}
 #' @export
 wtd.pctiles.exact <- function(x, wts=NULL, na.rm=TRUE, type="i/n", probs=(1:100)/100) {
 

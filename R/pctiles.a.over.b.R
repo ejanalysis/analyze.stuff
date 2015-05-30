@@ -25,7 +25,7 @@
 #' @param b Required numeric vector of values that are denominator of ratio whose distribution you want to look at.
 #' @param digits Number, 3 by default, specifying how many decimal places to round to
 #' @return Returns a data.frame
-#' @seealso  \code{\link{pctiles}} \code{\link{pctiles.exact}} \code{\link{pctiles.a.over.b}} \code{\link{wtd.pctiles.exact}} \code{\link{wtd.pctiles}} \code{\link{wtd.pctiles.fast}} \code{\link{wtd.pctiles.fast.1}}
+#' @seealso  \code{\link{pctiles}} \code{\link{pctiles.exact}} \code{\link{pctiles.a.over.b}} \code{\link{wtd.pctiles.exact}} \code{\link{wtd.pctiles}} \code{\link{wtd.pctiles.fast}}
 #' @examples
 #' #
 #' @export

@@ -1,4 +1,4 @@
-#' @title Basic info on each col of data.frame
+#' @title Basic info on each col of data.frame - testing faster way, but returns text
 #'
 #' @description
 #' Returns basic information on each field in a data.frame, like count of rows that are zero, negative,
@@ -14,31 +14,31 @@
 na.check2 = function(df) {
 
   cols=names(df)
+  #df <- as.matrix(df)
 
   myfun <- function(x) {
     c(
-      mycount <- length(x),
-      myvalid <- sum(!is.na(x)),
-      mycount - myvalid,
-      round(100 * myvalid / mycount, 1),
+      length(x),
+      sum(!is.na(x)),
+      sum(is.na(x)),
+      round(100 * sum(!is.na(x)) / length(x), 1),
       sum(x==0, na.rm=TRUE),
       sum(x < 0, na.rm=TRUE),
-      sum(is.infinite(x), na.rm=TRUE),
-
-      myblank <-  if (mode(x)=='character') {sum(!nzchar(x), na.rm=TRUE)} else {0},
-
-      myblank <- sum(x=='', na.rm=TRUE),
-      mynbna <- myvalid - myblank,
-      round(100 * mynbna / mycount, 1),
-      #sum(!is.na(unique(x)))  , # this was 3% slower
-      ifelse(any(is.na(x)), length(unique(x)) - 1, length(unique(x))),
-      ifelse(all(x==0) || all(is.na(x)), NA, min(x[!is.na(x) & x!=0]))
+      sum(is.infinite(x)),
+      sum(x=='', na.rm=TRUE),
+      sum(x!='', na.rm=TRUE),
+      round(100 * sum(x!='', na.rm=TRUE) / length(x), 1),
+      sum(!is.na(unique(x))),
+      ifelse(all(x==0) | all(is.na(x)), NA, min(x[!is.na(x) & x!=0]))
     )
   }
 
-  results <- data.frame( sapply(df, FUN=myfun), stringsAsFactors=FALSE)
-  names(results) <- c(
-    'count',
+  # FASTER THAN na.check(), but returns character fields
+
+  results <- matrix( sapply(df[ , cols], FUN=myfun), nrow=length(cols), byrow=TRUE)
+  rownames(results) <- cols
+  colnames(results) <- c(
+    'bcount',
     'not.na',
     'na',
     'pct.not.na',
@@ -49,9 +49,6 @@ na.check2 = function(df) {
     'not.blank.not.na',
     'pct.nbna',
     'unique.not.na',
-    'min.nonzero'
-  )
-
+    'min.nonzero')
   return(results)
 }
-

@@ -27,7 +27,10 @@ This function returns a matrix or vector showing how many rows in vector a are w
 }
 \examples{
 similar(1:10, (1:10) * 1.001 )
- similar(data.frame(x=1:10, y=101:110), data.frame(other=1.001*(1:10), other2=c(101:109, 110.01) )
+ similar(
+  data.frame(x=1:10, y=101:110),
+  data.frame(other=1.001*(1:10), other2=c(101:109, 110.01) )
+ )
 }
 \seealso{
 \code{\link{similar}}, \code{\link{all.equal}}, \code{\link{identical}}, \code{\link{isTRUE}}, \code{\link{==}}, \code{\link{all}}

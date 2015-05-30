@@ -35,7 +35,7 @@ print(wtd.colMeans(x, w, na.rm=TRUE))
 x=data.frame(a=c(NA, 2:10), b=rep(100,10), c=rep(3,10))
 w=c(1.1, 2, NA, rep(1, 7))
 print(cbind(x,w, wtd=w*x))
-rbind(cbind(x, w), c(wtd.colMeans(x, w, na.rm=TRUE), 'wtd.colMeans') )
+rbind(cbind(x, w), cbind(wtd.colMeans(x, w, na.rm=TRUE), w='wtd.colMeans') )
 print(w*cbind(x,w))
 }
 \seealso{

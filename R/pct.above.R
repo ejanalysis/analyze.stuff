@@ -69,6 +69,7 @@
 #' #  (won't be exactly 5% of places, just 5% of people):
 #' mybench2 <- sapply(x, function(z) Hmisc::wtd.quantile(z, mywts, probs=0.95, na.rm=TRUE))
 #' count.above(x, benchmarks=mybench2, benchnames=paste('pop.95th.', names(x), sep=''), wts=1 )
+#' \dontrun{
 #' # to find how many PLACES are at/above the MEDIAN pop-wtd place
 #' #  (won't be exactly half of places, just half of people):
 #' mybench2 <- sapply(x, function(z) Hmisc::wtd.quantile(z, mywts, probs=0.50, na.rm=TRUE))
@@ -94,6 +95,7 @@
 #' count.above(x, c(3,1), wts=mywts) # 3,1 is recycled as 3,1,3 since x has 3 cols
 #' pct.above(x, benchnames=mynames, wts=mywts)
 #' # that ignores names since default benchmarks are column means
+#' }
 #' @export
 pct.above <- function(df, benchmarks='mean', benchnames='cutoff', na.rm=FALSE, or.tied=FALSE, below=FALSE, wts=1, of.what='all') {
 

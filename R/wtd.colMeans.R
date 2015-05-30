@@ -1,4 +1,4 @@
-#' @title Weighted Mean of each Column - WORK IN PROGRESS
+#' @title Weighted Mean of each Column - WORK IN PROGRESS - NA HANDLING NOT YET RIGHT
 #' @description
 #' Returns weighted mean of each column of a data.frame or matrix, based on specified weights, one weight per row.
 #' Now based on \code{\link[data.table]{data.table}} unlike \code{\link{wtd.colMeans2}}
@@ -32,16 +32,16 @@
 #'   wtd.colMeans(mydf2)
 #'   wtd.colMeans(mydf2, na.rm=TRUE)
 #' @export
-wtd.colMeans <- function(x, wts=rep(1,NROW(x)), by, na.rm = FALSE, dims = 1) {
-
+wtd.colMeans <- function(x, wts=rep(1,NROW(x)), by, na.rm = TRUE, dims = 1) {
+  # require(data.table)
   # if (any(is.na(x)) | any(is.na(wts))) {warning('For cols with NA values, mean uses total number of rows (or sum of non-NA weights) as denominator, not just rows where the actual value is non-NA!')}
-
+  myna.rm <- na.rm
   x <- data.frame(x, wts=wts, stringsAsFactors=FALSE)
 
   xt <- data.table::data.table(x)
 
-  result <- suppressWarnings( xt[ , lapply(.SD, weighted.mean, wts, na.rm=na.rm  ), by=by ])
-
+  #  result <- suppressWarnings( xt[ , lapply(.SD, weighted.mean, wts, na.rm=myna.rm  ), by=by ])
+  result <-  ( xt[ , lapply(.SD, weighted.mean, wts, na.rm=myna.rm  ), by=by ])
   # result <- suppressWarnings( xt[, lapply(.SD, function(a) {sum(a * wts, na.rm=na.rm) / sum(wts, na.rm=na.rm)} ), by = by, with=TRUE])
 
   # result <-    xt[ , colMeans(.SD * t(.SD[,wts]), na.rm=na.rm, dims=dims) * colSums(!is.na(.SD), na.rm=na.rm, dims=dims) / sum(.SD[,'wts'], na.rm=na.rm) ]

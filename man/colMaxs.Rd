@@ -84,8 +84,7 @@ analyze.stuff::colMaxs( data.frame(a=1:10, b=2))
   \code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}}
   \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
 
-Other functions for max and min of rows and columns: \code{\link{colMaxsapply}};
-  \code{\link{colMins}}; \code{\link{rowMaxs}};
-  \code{\link{rowMins}}
+Other functions for max and min of rows and columns: \code{\link{colMins}};
+  \code{\link{rowMaxs}}; \code{\link{rowMins}}
 }
 

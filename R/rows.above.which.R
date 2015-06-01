@@ -1,4 +1,4 @@
-#' @title Does each Column have a Value at or above Cutoff(s)
+#' @title Does each Row have a Value at or above Cutoff(s)
 #'
 #' @description Flag which cells are at or above some cutoff(s) or mean.
 #' @details For a matrix with a few cols of related data, find which cells are at/above (or below) some cutoff.
@@ -24,7 +24,7 @@
 #' @export
 cols.above.which <- function(x, cutoff, or.tied=FALSE, below=FALSE) {
   if (is.null(dim(x))) {stop('expected data.frame or matrix as x but has only 1 dimension')}
-  if (missing(cutoff)) {cutoff <- rowMeans(x)}
+  if (missing(cutoff)) {cutoff <- colMeans(x)}
   if (below) {
     if (or.tied)  {logical.matrix <- (x <= cutoff) }
     if (!or.tied) {logical.matrix <- (x <  cutoff) }

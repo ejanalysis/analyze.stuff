@@ -6,7 +6,10 @@
 #' Can be used in identifying places (rows) where some indicator(s) is/are at/above a cutoff, threshold value.
 #'
 #' @param x Data.frame or matrix of numbers to be compared to cutoff value.
-#' @param cutoff The numeric threshold or cutoff to which numbers are compared. Default is arithmetic mean of row. Usually one number, but can be a vector of same length as number of rows, in which case each row can use a different cutoff.
+#' @param cutoff The numeric threshold or cutoff to which numbers are compared.
+#'   Default is arithmetic mean of row.
+#'   Usually one number, but can be a vector of same length as number of rows,
+#'   in which case each row can use a different cutoff.
 #' @param or.tied Logical. Default is FALSE, which means we check if number in x is greater than the cutoff (>). If TRUE, check if greater than or equal (>=).
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when a row has an NA value in any column.
 #' @param below Logical. Default is FALSE. If TRUE, uses > or >= cutoff. If FALSE, uses < or <= cutoff.

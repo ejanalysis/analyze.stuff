@@ -6,7 +6,7 @@
 #'
 #' @details
 #' This function returns a character vector of length equal to the number of oldnames (the parameter or the field in the file).
-#' #' \cr\cr
+#' \cr\cr
 #' @param allnames Character vector, optional. A vector of all the original fieldnames, such as the results of names(mydataframe).
 #' @param oldnames Character vector, optional. A vector of only those original fieldnames that you want to change, in any order.
 #' @param newnames Character vector, optional. A vector of new names, sorted in an order corresponding to oldnames.

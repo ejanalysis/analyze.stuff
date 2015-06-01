@@ -3,7 +3,6 @@
 export(calc.fields)
 export(change.fieldnames)
 export(colMaxs)
-export(colMaxsapply)
 export(colMins)
 export(cols.above.count)
 export(cols.above.pct)

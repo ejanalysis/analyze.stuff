@@ -9,7 +9,10 @@ cols.above.count(x, cutoff, or.tied = FALSE, na.rm = TRUE, below = FALSE)
 \arguments{
 \item{x}{Data.frame or matrix of numbers to be compared to cutoff value.}
 
-\item{cutoff}{The numeric threshold or cutoff to which numbers are compared. Default is arithmetic mean of row. Usually one number, but can be a vector of same length as number of rows, in which case each row can use a different cutoff.}
+\item{cutoff}{The numeric threshold or cutoff to which numbers are compared.
+Default is arithmetic mean of row.
+Usually one number, but can be a vector of same length as number of rows,
+in which case each row can use a different cutoff.}
 
 \item{or.tied}{Logical. Default is FALSE, which means we check if number in x is greater than the cutoff (>). If TRUE, check if greater than or equal (>=).}
 
@@ -49,8 +52,13 @@ out
 \code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
 
 Other functions for above and below: \code{\link{cols.above.pct}};
+  \code{\link{cols.above.which}},
   \code{\link{cols.above.which}};
   \code{\link{count.above}}; \code{\link{count.below}};
-  \code{\link{pct.above}}; \code{\link{pct.below}}
+  \code{\link{pct.above}}; \code{\link{pct.below}};
+  \code{\link{rows.above.count}};
+  \code{\link{rows.above.pct}};
+  \code{\link{rows.below.count}};
+  \code{\link{rows.below.pct}}
 }
 

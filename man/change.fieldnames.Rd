@@ -29,7 +29,7 @@ This provides a convenient way to specify which names will be replaced with whic
 }
 \details{
 This function returns a character vector of length equal to the number of oldnames (the parameter or the field in the file).
-#' \cr\cr
+\cr\cr
 }
 \examples{
 oldnames <- c('PCTILE', 'REGION')

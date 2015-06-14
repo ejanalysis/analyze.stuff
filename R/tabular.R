@@ -1,12 +1,12 @@
 #' @title Format a table in roxygen documentation of function in a package
-#'
-#' @description taken from help section on formatting in \pkg{roxygen2} package
+#' @description modified version of func in help section on formatting in \pkg{roxygen2} package
 #' @param df data.frame required
 #' @param ... optional parameters passed through to lapply(df, format, ...)
 #' @return Returns text that can be pasted into documentation of a function or data in a package
 #' @seealso Help on formatting in \pkg{roxygen2}
 #' @examples
-#'   # cat(tabular(mtcars[1:5, 1:5]))
+#'   tabular(mtcars[1:5, 1:5])
+#'   tabular(df = data.frame(a=7:16, b='stuff', c=999, d=c('blah','junk')) )
 #' @export
 tabular <- function(df, ...) {
   stopifnot(is.data.frame(df))
@@ -16,8 +16,9 @@ tabular <- function(df, ...) {
 
   cols <- lapply(df, format, ...)
   contents <- do.call("paste",
-                      c(cols, list(sep = " \\tab ", collapse = "\\cr\n  ")))
+                      c(cols, list(sep = " \\tab ", collapse = "\\cr\n#'  ")))
 
-  paste("\\tabular{", paste(col_align, collapse = ""), "}{\n  ",
-        contents, "\n}\n", sep = "")
+  cat( paste("#' \\tabular{", paste(col_align, collapse = ""), "}{\n#'  ",
+        contents, "\n#' }\n", sep = "")
+  )
 }

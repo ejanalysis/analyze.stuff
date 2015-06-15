@@ -15,10 +15,11 @@ tabular(df, ...)
 Returns text that can be pasted into documentation of a function or data in a package
 }
 \description{
-taken from help section on formatting in \pkg{roxygen2} package
+modified version of func in help section on formatting in \pkg{roxygen2} package
 }
 \examples{
-# cat(tabular(mtcars[1:5, 1:5]))
+tabular(mtcars[1:5, 1:5])
+  tabular(df = data.frame(a=7:16, b='stuff', c=999, d=c('blah','junk')) )
 }
 \seealso{
 Help on formatting in \pkg{roxygen2}

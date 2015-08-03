@@ -18,18 +18,36 @@
 #'   keep=c('calcvar2','calcvar3'))
 #' @export
 calc.fields <- function(mydf, formulas, keep) {
-	if (missing(keep)) {
-	    # This will only work if the calculated variable is followed by a space, or = sign, or <- in the formula
-		keep <- substr(formulas, 1, regexpr('[<= ]', formulas) -1)
-	}
+  if (missing(keep)) {
+    # This will only work if the calculated variable is followed by a space, or = sign, or <- in the formula
+    keep <- substr(formulas, 1, regexpr('[<= ]', formulas) -1)
+  }
 
-	attach(mydf)
-	for (thisformula in formulas) {
-		eval(parse(text=thisformula))
-	}
-	detach(mydf)
+  warning('not working yet') # ***********************
 
-	outdf <- data.frame( mget(keep), stringsAsFactors=FALSE)
-	return(outdf)
+  suppressMessages(attach(mydf))
+
+  for (thisformula in formulas) {
+
+    # Trying to handle cases where formula relies on some variable that was not provided in mydf
+
+    y=try( eval(parse(text=thisformula) ), silent = TRUE)
+    if (class(y)=="try-error") {
+      cat('Cannot use formula: '); print(thisformula)
+    } else {
+      eval(parse(text=thisformula) )
+    }
+
+    #     y=tryCatch( eval(parse(text=thisformula) ),
+    #                 error=function(x) {print('problem with formula'); invokeRestart()})
+
+  }
+  suppressMessages(detach(mydf))
+
+  # RETURN ONLY THE ONES SUCCESSFULLY CREATED, OUT OF ALL REQUESTED TO BE KEPT
+  keep <- keep[sapply(keep, FUN=exists)]
+
+  outdf <- data.frame( mget(keep), stringsAsFactors=FALSE)
+  return(outdf)
   # #
 }

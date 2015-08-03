@@ -22,6 +22,7 @@ calc.fields <- function(mydf, formulas, keep) {
     # This will only work if the calculated variable is followed by a space, or = sign, or <- in the formula
     keep <- substr(formulas, 1, regexpr('[<= ]', formulas) -1)
   }
+  formulas <- formulas[!is.na(formulas)]
 
   warning('not working yet') # ***********************
 

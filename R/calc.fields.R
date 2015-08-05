@@ -3,52 +3,90 @@
 #' @description
 #' Create calculated fields from formulas that are specified as character strings, returning data.frame of specified results (not all intermediate variables necessarily)
 #' e.g., create calculated demographic variables from raw American Community Survey counts.
+#' This function is useful if you are working with a dataset with numerous fields,
+#' and you want to calculate numerous derived fields from those original fields,
+#' and you find it convenient to store all of the formulas in a text file, for example.
+#' You could read in the formulas from the file, and apply them to a new version of the dataset
+#' to calculate a new version of all of your derived fields.
 #'
 #' @details
 #' This function returns a matrix or vector of results of applying specified formulas to the fields in the input data.frame.
 #' Each row of data is used in a formula to provide a row of results.
-#' @param mydf Required. A data.frame with strings that are field names that may appear in formulas. e.g., mydf=data.frame(a=1:10, b=2:11)
-#' @param formulas Required. A vector of strings that are formulas such as "formulas=c('calcvar1 = b+1', 'calcvar2=calcvar1 + a')"
-#' @param keep Optional. A vector of strings that are calculated variables to return, in case not all intermediate variables are needed. Default is all results of formulas.
+#' @param mydf Required. A data.frame with strings that are field names (input variables) that may appear in formulas. See example.
+#' @param formulas Required. A vector of strings that are formulas based on input variables and/or variables calculated from previous formulas. See example.
+#' @param keep Optional. A vector of strings that are the input and/or calculated variables to return, in case not all intermediate variables are needed.
+#'   Default is all results of formulas but not any input variables.
 #' @return A data.frame of new variables where columns are defined by keep (or all calculated variables if keep is not specified).
 #' @seealso \code{\link{change.fieldnames}}
 #' @examples
-#' calc.fields(mydf=data.frame(a=1:10, b=2:11),
-#'   formulas=c('calcvar1 = b+1', 'calcvar2=calcvar1 + a', 'calcvar3<- paste(a,"x",sep="")'),
-#'   keep=c('calcvar2','calcvar3'))
+#'  myforms <- c('calcvar1 = b+1', 'calcvar2=calcvar1 + a', 'calcvar3<- paste(a,"x",sep="")')
+#'  # Saving to and reading from a file that stores all these formulas:
+#'  # write.csv(myforms, file='testforms.csv', row.names = FALSE)
+#'  # myforms <- read.csv('testforms.csv')
+#'  mydat  <- data.frame(a=1:10, b=2:11)
+#'  x <- calc.fields(mydat, myforms); x
+#'  # Return only some of the input/output variables:
+#'  calc.fields(mydf=mydat, formulas=myforms, keep=c('a', 'calcvar2','calcvar3') )
 #' @export
 calc.fields <- function(mydf, formulas, keep) {
   if (missing(keep)) {
     # This will only work if the calculated variable is followed by a space, or = sign, or <- in the formula
     keep <- substr(formulas, 1, regexpr('[<= ]', formulas) -1)
   }
+
+
   formulas <- formulas[!is.na(formulas)]
 
-  warning('not working yet') # ***********************
+  #warning('**** NOT WORKING YET ****') # ***********************
 
+  #  cat('\n formulas: ', formulas,'\n\n')
+  #  cat('\n keep: ', keep,'\n\n')
+
+  # make fields in mydf available for use in formulas and exists()
   suppressMessages(attach(mydf))
+  tryCatch({
+    for (thisformula in formulas) {
 
-  for (thisformula in formulas) {
-
-    # Trying to handle cases where formula relies on some variable that was not provided in mydf
-
-    y=try( eval(parse(text=thisformula) ), silent = TRUE)
-    if (class(y)=="try-error") {
-      cat('Cannot use formula: '); print(thisformula)
-    } else {
-      eval(parse(text=thisformula) )
+      # Trying to handle cases where formula relies on some variable that was not provided in mydf
+      y=try( eval(parse(text=thisformula) ), silent = TRUE)
+      if (class(y)=="try-error") {
+        cat('Cannot use formula: '); print(as.character(parse(text=thisformula)))
+      } else {
+        eval(parse(text=thisformula) )
+      }
     }
 
-    #     y=tryCatch( eval(parse(text=thisformula) ),
-    #                 error=function(x) {print('problem with formula'); invokeRestart()})
+    # RETURN ONLY THE ONES SUCCESSFULLY CREATED, OUT OF ALL REQUESTED TO BE KEPT
+    # attach() allows exists function to see fields in mydf, as specified by keep
+    # but it does not allow mget() to obtain them!
 
-  }
-  suppressMessages(detach(mydf))
+    #print(' keep at first: '); print(keep)
+    #print('in memory now: ls() = '); print(ls())
+    #print(' keep now after using exists(): '); print(keep)
+    # note this will crash with error if keep is invalid, such as '' or NA or c('', '') etc.
+    keep.from.mydf <- keep[keep %in% names(mydf)]
+    keep.other <- keep[!(keep %in% keep.from.mydf)]
+    #print(' keep.from.mydf: '); print(keep.from.mydf)
+    #print(' keep.other: '); print(keep.other)
+    #print('ls() ');print(ls())
+    #print('sapply exists ' ); print(sapply(keep.other, FUN=exists))
+    # DOES NOT WORK SO USE ls() instead:  #if (length(keep.other) > 0) {keep.other <- keep.other[sapply(keep.other, FUN=exists)] }
+    if (length(keep.other) > 0) {keep.other <- keep.other[keep.other %in% ls()] }
+    # print(' keep.other after check if exists: '); print(keep.other)
 
-  # RETURN ONLY THE ONES SUCCESSFULLY CREATED, OUT OF ALL REQUESTED TO BE KEPT
-  keep <- keep[sapply(keep, FUN=exists)]
+    # COULD ADD WARNINGS HERE ABOUT VARIABLES USER ASKED TO KEEP THAT DO NOT EXIST
 
-  outdf <- data.frame( mget(keep), stringsAsFactors=FALSE)
-  return(outdf)
-  # #
+    if (length(keep.other) > 0) {
+      outdf <- data.frame( mydf[ , keep.from.mydf, drop=FALSE], mget(keep.other), stringsAsFactors=FALSE)
+    } else {
+      outdf <- data.frame( mydf[ , keep.from.mydf, drop=FALSE], stringsAsFactors=FALSE)
+    }
+
+    suppressMessages(detach(mydf))
+
+    return(outdf)
+    # #
+
+  }, finally = if ('mydf' %in% search()) {detach(mydf)} )
+
 }

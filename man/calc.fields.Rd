@@ -7,11 +7,12 @@
 calc.fields(mydf, formulas, keep)
 }
 \arguments{
-\item{mydf}{Required. A data.frame with strings that are field names that may appear in formulas. e.g., mydf=data.frame(a=1:10, b=2:11)}
+\item{mydf}{Required. A data.frame with strings that are field names (input variables) that may appear in formulas. See example.}
 
-\item{formulas}{Required. A vector of strings that are formulas such as "formulas=c('calcvar1 = b+1', 'calcvar2=calcvar1 + a')"}
+\item{formulas}{Required. A vector of strings that are formulas based on input variables and/or variables calculated from previous formulas. See example.}
 
-\item{keep}{Optional. A vector of strings that are calculated variables to return, in case not all intermediate variables are needed. Default is all results of formulas.}
+\item{keep}{Optional. A vector of strings that are the input and/or calculated variables to return, in case not all intermediate variables are needed.
+Default is all results of formulas but not any input variables.}
 }
 \value{
 A data.frame of new variables where columns are defined by keep (or all calculated variables if keep is not specified).
@@ -19,15 +20,25 @@ A data.frame of new variables where columns are defined by keep (or all calculat
 \description{
 Create calculated fields from formulas that are specified as character strings, returning data.frame of specified results (not all intermediate variables necessarily)
 e.g., create calculated demographic variables from raw American Community Survey counts.
+This function is useful if you are working with a dataset with numerous fields,
+and you want to calculate numerous derived fields from those original fields,
+and you find it convenient to store all of the formulas in a text file, for example.
+You could read in the formulas from the file, and apply them to a new version of the dataset
+to calculate a new version of all of your derived fields.
 }
 \details{
 This function returns a matrix or vector of results of applying specified formulas to the fields in the input data.frame.
 Each row of data is used in a formula to provide a row of results.
 }
 \examples{
-calc.fields(mydf=data.frame(a=1:10, b=2:11),
-  formulas=c('calcvar1 = b+1', 'calcvar2=calcvar1 + a', 'calcvar3<- paste(a,"x",sep="")'),
-  keep=c('calcvar2','calcvar3'))
+myforms <- c('calcvar1 = b+1', 'calcvar2=calcvar1 + a', 'calcvar3<- paste(a,"x",sep="")')
+ # Saving to and reading from a file that stores all these formulas:
+ # write.csv(myforms, file='testforms.csv', row.names = FALSE)
+ # myforms <- read.csv('testforms.csv')
+ mydat  <- data.frame(a=1:10, b=2:11)
+ x <- calc.fields(mydat, myforms); x
+ # Return only some of the input/output variables:
+ calc.fields(mydf=mydat, formulas=myforms, keep=c('a', 'calcvar2','calcvar3') )
 }
 \seealso{
 \code{\link{change.fieldnames}}

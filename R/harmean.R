@@ -8,13 +8,13 @@
 #' @param x Vector of numbers, required.
 #' @param na.rm Logical value, optional, FALSE by default. If FALSE, result is NA if any of the values in x is NA. If TRUE, remove the NA values first.
 #' @return Returns a single number
-#' @seealso \code{\link{geomean}}  \code{\link{mean}}  \code{\link{rms}} 
+#' @seealso \code{\link{geomean}}  \code{\link{mean}}  \code{\link{rms}}
 #' @examples
-#' harmean(c(1,2,4)) 
+#' harmean(c(1,2,4))
 #' @export
 harmean <- function(x, na.rm=FALSE) {
   if (!missing(na.rm) & is.numeric(na.rm)) {stop('a single vector, x, must be specified')}
   if(na.rm) {n=sum(!is.na(x))} else {n=length(x)}
-  return(n / sum(1/x, na.rm=na.rm)) 
+  return(n / sum(1/x, na.rm=na.rm))
   # harmonic mean
 }

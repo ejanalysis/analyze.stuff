@@ -2,9 +2,9 @@
 #'
 #' @description
 #' Returns the vector that was supplied, but with leading zeroes added where needed to make all elements have specified number of characters.
-#' 
+#'
 #' @details
-#' This function can be useful in working with Census data where FIPS codes are often used. 
+#' This function can be useful in working with Census data where FIPS codes are often used.
 #' Moving data to and from a spreadsheet can remove leading zeroes that may be necessary for proper data management.
 #' This can apply to e.g., FIPS code for a block, block group, tract, county, or state.
 #' Note: Number of digits in FIPS codes, assuming leading zeroes are there:\cr
@@ -21,12 +21,12 @@
 #' @export
 lead.zeroes <- function(fips, length.desired) {
 	fips <- as.character(fips)
-	# might trim whitespace?  
+	# might trim whitespace?
 	if ( (length(length.desired) >1) & (length(fips) != length(length.desired))) {print("warning: #s of inputs don't match")}
 	if ( any(length.desired==0 | length.desired>=100) ) {stop("error: string lengths must be >0 & <100")}
 	if ( any(nchar(fips) > length.desired) ) {stop("error: some are longer than desired length")}
 
-	fips <- paste( paste( rep( rep("0", length(length.desired)), length.desired), collapse=""), fips, sep="") 
+	fips <- paste( paste( rep( rep("0", length(length.desired)), length.desired), collapse=""), fips, sep="")
 	# does that work vectorized?
 
 	# or maybe this, but can't say length.desired[i] unless it has same length as fip & can't handle recycling also:

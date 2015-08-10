@@ -5,7 +5,7 @@
 #'
 #' @details
 #' This function returns a matrix or vector showing how many rows in vector a are within 100-tol percent of the value in vector b.
-#' \cr May want to add a 3d case, where NA can match NA.
+#' May want to add a 3d case, where NA can match NA.
 #' @param a Required first vector, data.frame, or matrix
 #' @param b Required second vector, data.frame, or matrix
 #' @param tol Number, 99.99 by default, specifying tolerance as a percentage 0-100, such that "similar" is defined as the two values being within 100-tol percent of each other.

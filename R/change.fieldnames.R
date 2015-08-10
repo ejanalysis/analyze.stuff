@@ -3,10 +3,8 @@
 #' @description
 #' Returns a new set of field names, based on the old set of names, which can be specified in a file or as parameters.
 #' This provides a convenient way to specify which names will be replaced with which new names, via a map of 1-1 relationships between the old names and new names.
-#'
 #' @details
 #' This function returns a character vector of length equal to the number of oldnames (the parameter or the field in the file).
-#' \cr\cr
 #' @param allnames Character vector, optional. A vector of all the original fieldnames, such as the results of names(mydataframe).
 #' @param oldnames Character vector, optional. A vector of only those original fieldnames that you want to change, in any order.
 #' @param newnames Character vector, optional. A vector of new names, sorted in an order corresponding to oldnames.
@@ -14,7 +12,7 @@
 #' @param sort Logical value, optional, FALSE by default. If FALSE, return new fieldnames. If sort=TRUE, return vector of indexes giving new position of given field, based on sort order of oldnames.
 #' @return A vector of character strings, the full set of fieldnames,
 #' with some or all updated if sort=FALSE (default). Uses oldnames and newnames, or file for mapping. If those are not specified, it tries to open an interactive window for editing a mapping table to create and save it as a csv file.\cr\cr
-#' If sort=TRUE, return vector of indexes giving new position of given field, based on sort order of oldnames.\cr\cr
+#' If sort=TRUE, return vector of indexes giving new position of given field, based on sort order of oldnames.
 #' If sort=TRUE, names in oldnames that are not in allnames are ignored with warning, & names in allnames that are left out of oldnames left out of new sort order indexes.
 #' @seealso \code{\link{put.first}} which make it easier to rearrange the order of columns in a data.frame.
 #' @examples

@@ -17,7 +17,7 @@ Returns a vector of results, one per col of df
 \description{
 Returns basic information on each field in a data.frame, like count of rows that are zero, negative,
 NA, infinite, etc.
-\cr\cr
+
 Slow - work in progress
 Leaves out logical, complex?, character, etc. cols
 }

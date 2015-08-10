@@ -20,7 +20,7 @@ change.fieldnames(allnames, oldnames, newnames, file = NA, sort = FALSE)
 \value{
 A vector of character strings, the full set of fieldnames,
 with some or all updated if sort=FALSE (default). Uses oldnames and newnames, or file for mapping. If those are not specified, it tries to open an interactive window for editing a mapping table to create and save it as a csv file.\cr\cr
-If sort=TRUE, return vector of indexes giving new position of given field, based on sort order of oldnames.\cr\cr
+If sort=TRUE, return vector of indexes giving new position of given field, based on sort order of oldnames.
 If sort=TRUE, names in oldnames that are not in allnames are ignored with warning, & names in allnames that are left out of oldnames left out of new sort order indexes.
 }
 \description{
@@ -29,7 +29,6 @@ This provides a convenient way to specify which names will be replaced with whic
 }
 \details{
 This function returns a character vector of length equal to the number of oldnames (the parameter or the field in the file).
-\cr\cr
 }
 \examples{
 oldnames <- c('PCTILE', 'REGION')

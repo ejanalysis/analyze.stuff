@@ -25,7 +25,6 @@ Key functions include \cr
  \item \code{\link{mem}}: What objects are taking up the most memory
  \item \code{\link{dir2}}, \code{\link{dirr}}, \code{\link{dirdirs}}: Directory listing with wildcards, just R-related files, subfolders, etc.
  }
- \cr
  May add later:  \cr
  \itemize{
    \item cols.below.count

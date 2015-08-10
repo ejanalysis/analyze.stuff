@@ -23,7 +23,7 @@ Compare two vectors, matrices, or data.frames of numbers to see how often they a
 }
 \details{
 This function returns a matrix or vector showing how many rows in vector a are within 100-tol percent of the value in vector b.
-\cr May want to add a 3d case, where NA can match NA.
+May want to add a 3d case, where NA can match NA.
 }
 \examples{
 similar(1:10, (1:10) * 1.001 )

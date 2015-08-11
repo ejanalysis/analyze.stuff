@@ -21,9 +21,8 @@ Returns minimum value of each column of a data.frame or matrix.
 ** NOTE: The useful \link{matrixStats} package will provide the basis for extended rowMins, rowMax, colMins,
 colMaxs functions to be made available through this package.
 Source: Henrik Bengtsson (2015). matrixStats: Methods that Apply to Rows and Columns of a Matrix.
-R package version 0.13.1-9000.
-\url{https://github.com/HenrikBengtsson/matrixStats}
-\cr
+R package version 0.13.1-9000. \cr
+\url{https://github.com/HenrikBengtsson/matrixStats} \cr
 Initially, separate functions were written here for those four functions,
 and the versions here were more flexible and convenient for some purposes,
 e.g., handling data.frames and different na.rm defaults, but the matrixStats versions are much faster (e.g., by 4x or more).
@@ -32,26 +31,21 @@ providing them methods to handle data.frames, not just matrix class objects,
 and perhaps provide new or different parameters or defaults, such as defaulting to na.rm=TRUE instead of FALSE,
 and handling factor class columns in a data.frame.
 That has not been done yet, so colMaxs() etc. refer to the slower more flexible ones,
-  and the faster matrix-only ones are via matrixStats::colMaxs etc.
-\cr\cr
-** NOTE: max() and min() and matrixStats::colMaxs etc. default to na.rm=FALSE,
-but this function defaults to na.rm=TRUE because that just seems more frequently useful.
-\cr\cr
+  and the faster matrix-only ones are via matrixStats::colMaxs etc. \cr \cr
+** NOTE: max() and min() and matrixStats::colMaxs from \link{matrixStats} etc. default to na.rm=FALSE,
+but this function defaults to na.rm=TRUE because that just seems more frequently useful. \cr \cr
 ** NOTE: \code{\link{min}} and \code{\link{max}} & this function will handle character elements
 by coercing all others in the column to character, which can be confusing
  -- e.g., note that min(c(8,10,'txt')) returns '10' not '8' and max returns 'txt'
- (also see the help for \code{\link{Comparison}})
-\cr\cr
+ (also see the help for \code{\link{Comparison}}) \cr \cr
 If this worked just like max() and min(), cols that are factors would make this fail.
 max or min of a factor fails, even if as.character() of the factor would return a valid numeric vector.
 That isn't an issue with a matrix, but a data.frame might have numbers stored as factor.
 To fix that, this uses \code{\link{factor.as.numeric}}
-with parameters that try to convert character or factor columns to numeric.
-\cr\cr
+with parameters that try to convert character or factor columns to numeric. \cr \cr
 Based on how \code{\link{min}} and \code{\link{max}} behave,
 return Inf or -Inf if no non-missing arguments to min or max respectively.
-To suppress that warning when using this function, use \code{\link{suppressWarnings}}( func(x) )
-\cr\cr
+To suppress that warning when using this function, use \code{\link{suppressWarnings}}( func(x) ) \cr \cr
 }
 \examples{
 blah <- rbind(NA, data.frame(a=c(0, 0:8), b=c(0.1+(0:9)), c=c(1:10), d=c(rep(NA, 10)),

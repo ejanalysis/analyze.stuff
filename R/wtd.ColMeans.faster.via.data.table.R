@@ -5,11 +5,9 @@
 
 #############################################################
 if (1==0) {
-
-  #' \cr
-  #' \cr Note Hmisc::wtd.mean is not exactly same as stats::weighted.mean since na.rm defaults differ
-  #' \cr   Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ.
-  #' \cr     weighted.mean(x, w,            ...,              na.rm = FALSE)
+# Note Hmisc::wtd.mean is not exactly same as stats::weighted.mean since na.rm defaults differ
+# Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ.
+# weighted.mean(x, w,            ...,              na.rm = FALSE)
 
 # require(data.table)
 mydata <- data.table::data.table(bg, key="ST")

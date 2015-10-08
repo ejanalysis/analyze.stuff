@@ -17,9 +17,9 @@ os <- function(x) {
   unixisms <- c('unix')
 
   OS.type <- .Platform$OS.type
-  iswin <- OS.type=='win'
+  iswin <- OS.type %in% winonyms
   ismac <- grepl('apple', R.version$platform)
-  isunix <- OS.type=='unix'
+  isunix <- OS.type %in% unixisms
   isotherunix <- isunix & (!ismac)
 
   if (missing(x)) {

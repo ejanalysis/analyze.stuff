@@ -2,7 +2,7 @@
 % Please edit documentation in R/wtd.colMeans.R
 \name{wtd.colMeans}
 \alias{wtd.colMeans}
-\title{Weighted Mean of each Column - WORK IN PROGRESS - NA HANDLING NOT YET RIGHT}
+\title{Weighted Mean of each Column - WORK IN PROGRESS (NA HANDLING NOT YET TESTED)}
 \usage{
 wtd.colMeans(x, wts = rep(1, NROW(x)), by, na.rm = TRUE, dims = 1)
 }
@@ -23,15 +23,18 @@ For row*, the sum or mean is over dimensions dims+1, ...; for col* it is over di
 }
 \value{
 If \code{by} is not specified, returns a vector of numbers of length equal to number of columns in df.
+  If \code{by} is specified, returns weighted mean for each column in each subset defined via \code{by}.
 }
 \description{
 Returns weighted mean of each column of a data.frame or matrix, based on specified weights, one weight per row.
 Now based on \code{\link[data.table]{data.table}} unlike \code{\link{wtd.colMeans2}}
 }
 \details{
-For cols with NA values, mean uses total number of rows (or sum of non-NA weights) as denominator,
-not just rows where the actual value is non-NA! \cr \cr Note Hmisc::wtd.mean is not exactly same as stats::weighted.mean since na.rm defaults differ \cr
-Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ. \cr
+** not yet handling factor or character fields well.
+  For cols with NA values, mean uses total number of rows (or sum of non-NA weights) as denominator?***,
+  not just rows where the actual value is non-NA!  \cr
+  Note Hmisc::wtd.mean is not exactly same as stats::weighted.mean since na.rm defaults differ \cr
+  Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ. \cr
   weighted.mean(x, w,            ...,              na.rm = FALSE)
 }
 \examples{
@@ -42,8 +45,8 @@ n <- 1e6
   mydf$v1[mydf$REGION=='R2'] <- 4 * mydf$v1[mydf$REGION=='R2']
   wtd.colMeans(mydf)
   wtd.colMeans(mydf, wts=mydf$pop)
-  wtd.colMeans(mydf, by='REGION')
-  wtd.colMeans(mydf, by='REGION', wts=mydf$pop)
+  wtd.colMeans(mydf, by=mydf$REGION)
+  wtd.colMeans(mydf, by=mydf$REGION, wts=mydf$pop)
   mydf2 <- data.frame(a=1:3, b=c(1,2,NA))
   wtd.colMeans(mydf2)
   wtd.colMeans(mydf2, na.rm=TRUE)

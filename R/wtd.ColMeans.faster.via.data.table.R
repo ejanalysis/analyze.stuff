@@ -9,7 +9,7 @@ if (1==0) {
 # Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ.
 # weighted.mean(x, w,            ...,              na.rm = FALSE)
 
-# require(data.table)
+require(data.table)
 mydata <- data.table::data.table(bg, key="ST")
 
 #########################################

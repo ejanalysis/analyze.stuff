@@ -15,7 +15,7 @@ wtd.colMeans2(x, wts, by, na.rm = FALSE, dims = 1)
 
 \item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when any NA is in a vector.}
 
-\item{dims}{dims=1 is default. Not used. integer: Which dimensions are regarded as 'rows' or 'columns' to sum over. For row*, the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.}
+\item{dims}{dims=1 is default. **Not used.** integer: Which dimensions are regarded as 'rows' or 'columns' to sum over. For row*, the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.}
 }
 \value{
 Returns a vector of numbers of length equal to number of columns in df.

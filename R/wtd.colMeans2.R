@@ -7,13 +7,13 @@
 #' @param wts Weights, optional, defaults to nothing i.e. unweighted, and if specified must be vector of weights recycled to be same length as NROW(x) # not the name of the weights field in data.frame x, as single character string, e.g., "weightcol"
 #' @param by Optional vector, default is none, that can provide a single column name (as character) or character vector of column names,
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when any NA is in a vector.
-#' @param dims dims=1 is default. Not used. integer: Which dimensions are regarded as 'rows' or 'columns' to sum over. For row*, the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.
+#' @param dims dims=1 is default. **Not used.** integer: Which dimensions are regarded as 'rows' or 'columns' to sum over. For row*, the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.
 #' @return Returns a vector of numbers of length equal to number of columns in df.
 #' @template meansum
 #' @export
 wtd.colMeans2 <- function(x, wts, by, na.rm = FALSE, dims = 1) {
 
-  stop(' **** THIS IS WORK IN PROGRESS AS IS wtd.rowMeans() !!! Does not work & also check how NA values are handled ****')
+  warning(' **** THIS IS WORK IN PROGRESS AS IS wtd.rowMeans() !!! Does not work & also check how NA values are handled ****')
 
   if (!missing(wts)) {
     x <- data.frame(x, wtcolname=wts, stringsAsFactors=FALSE)
@@ -21,7 +21,9 @@ wtd.colMeans2 <- function(x, wts, by, na.rm = FALSE, dims = 1) {
   }
 
   myfun <- function(x, weights, na.rm) {
-    colMeans(x * t(weights), na.rm=na.rm, dims=dims) * colSums(!is.na(x), na.rm=na.rm, dims=dims) / sum(weights, na.rm=na.rm)
+    colMeans(x * t(weights), na.rm=na.rm, dims=dims) *
+      colSums(!is.na(x), na.rm=na.rm, dims=dims) /
+      sum(weights, na.rm=na.rm)
   }
 
   if (missing(by)) {
@@ -33,9 +35,9 @@ wtd.colMeans2 <- function(x, wts, by, na.rm = FALSE, dims = 1) {
     }
   } else {
     if (missing(wts)){
-      aggregate(x, list(x[ , by]), FUN=function(y) myfun(y, rep(1, NROW(y) ), na.rm = na.rm))
+      aggregate(x, by=list(x[ , by]), FUN=function(y) myfun(y, rep(1, NROW(y) ), na.rm = na.rm))
     } else {
-      aggregate(x, list(x[ , by]), FUN=function(y) myfun(y, y[ , wts], na.rm = na.rm))
+      aggregate(x, by=list(x[ , by]), FUN=function(y) myfun(y, y[ , wts], na.rm = na.rm))
     }
   }
 
@@ -48,7 +50,34 @@ wtd.colMeans2 <- function(x, wts, by, na.rm = FALSE, dims = 1) {
   #   mydata <- data.table::data.table(mydf)
   #   x = mydata[, lapply(.SD, function(x, y = pop) {sum(y * x)/sum(y)} ), by = "REGION"]
   #   x
-
+  ###############################
+#   # for fast rollup:  apply a function to every column, or some of them
+#   # Also see slam::rollup
+#
+#   # convert to data.table format for speed:
+#   # bg <- data.table(bg) # would make a copy
+#   setDT(bg)
+#   regions.sum  <- bg[, lapply(.SD, sum), by=REGION, .SDcols = c("pop","mins","lowinc")]
+#   states.sum   <- bg[, lapply(.SD, sum), by=FIPS.ST, .SDcols = c("pop","mins","lowinc")]
+#   counties.sum <- bg[, lapply(.SD, sum), by=FIPS.COUNTY, .SDcols = c("pop","mins","lowinc")]
+#   tracts.sum   <- bg[, lapply(.SD, sum), by=FIPS.TRACT, .SDcols = c("pop","mins","lowinc")]
+#
+#   # change back to data.frame format:
+#   setDF(regions.sum)
+#   setDF(states.sum)
+#   setDF(counties.sum)
+#   setDF(tracts.sum)
+#   setDF(bg)
+#
+#   ###############################
+#
+#   # careful:
+#   # > bg.dt[ 'blah', .N, nomatch=0]
+#   # [1] 0
+#   # > bg.dt[ 'blah', .N]
+#   # [1] 1
+#
+#
   #colSums(!is.na(x)) instead of length(w) might use all rows of given col where value in that col is not NA
   # t(wtd.rowMeans(t(x), wts, na.rm=na.rm, dims=dims)) #problem: treats value as zero if any in row is NA? ? ?
   # this might not work right handling NA VALUES IN wts vs in x ???****

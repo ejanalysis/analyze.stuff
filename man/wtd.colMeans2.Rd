@@ -22,7 +22,7 @@ Returns a vector of numbers of length equal to number of columns in df.
 }
 \description{
 Returns weighted mean of each column of a data.frame or matrix, based on specified weights, one weight per row.
-But also see \code{\link{data.table}} used for \code{\link{wtd.colMeans}}
+But also see \code{\link[data.table]{data.table}} used for \code{\link{wtd.colMeans}}
 }
 \examples{
 x=data.frame(a=c(NA, 2:10), b=rep(100,10), c=rep(3,10))

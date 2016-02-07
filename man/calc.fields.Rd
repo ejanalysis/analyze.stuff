@@ -31,7 +31,8 @@ This function returns a matrix or vector of results of applying specified formul
 Each row of data is used in a formula to provide a row of results.
 }
 \examples{
-myforms <- c('calcvar1 = b+1', 'calcvar2=calcvar1 + a', 'calcvar3<- paste(a,"x",sep="")')
+# formulas could be ejscreenformulas$formula from the ejscreen package, for example.
+ myforms <- c('calcvar1 = b+1', 'calcvar2=calcvar1 + a', 'calcvar3<- paste(a,"x",sep="")')
  # Saving to and reading from a file that stores all these formulas:
  # write.csv(myforms, file='testforms.csv', row.names = FALSE)
  # myforms <- read.csv('testforms.csv')

@@ -9,8 +9,8 @@ if (1==0) {
 # Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ.
 # weighted.mean(x, w,            ...,              na.rm = FALSE)
 
-require(data.table)
-mydata <- data.table::data.table(bg, key="ST")
+#require(data.table)
+mydata <- data.table(bg, key="ST")
 
 #########################################
 # if you want to manually write out each formula with specific fields:
@@ -53,7 +53,7 @@ z= mydata[, lapply(.SD,
 # # require(data.table)
 # n=1e6
 # mydf <- data.frame(pop=1000 + rnorm(n, 1000, 100), v1= runif(n, 0, 1), v2= rnorm(n, 100, 15), REGION=sample(c('R1', 'R2', 'R3'), n, replace=TRUE))
-# dt <- data.table::data.table(mydf)
+# dt <- data.table(mydf)
 
 #########################################
 #  # one param of weighted.mean inside lapply + shows .SDcols to select only some results:

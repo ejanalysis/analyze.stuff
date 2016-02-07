@@ -19,6 +19,7 @@
 #' @return A data.frame of new variables where columns are defined by keep (or all calculated variables if keep is not specified).
 #' @seealso \code{\link{change.fieldnames}}
 #' @examples
+#' # formulas could be ejscreenformulas$formula from the ejscreen package, for example.
 #'  myforms <- c('calcvar1 = b+1', 'calcvar2=calcvar1 + a', 'calcvar3<- paste(a,"x",sep="")')
 #'  # Saving to and reading from a file that stores all these formulas:
 #'  # write.csv(myforms, file='testforms.csv', row.names = FALSE)
@@ -34,20 +35,35 @@ calc.fields <- function(mydf, formulas, keep) {
     keep <- substr(formulas, 1, regexpr('[<= ]', formulas) -1)
   }
 
-
   formulas <- formulas[!is.na(formulas)]
-
-  #warning('**** NOT WORKING YET ****') # ***********************
 
   #  cat('\n formulas: ', formulas,'\n\n')
   #  cat('\n keep: ', keep,'\n\n')
 
   # make fields in mydf available for use in formulas and exists()
+  # Just a quick workaround would be to ensure mydf$cancer exists, since we know it conflicts with cancer data in survival package.
+  # This at least avoids a crash if a formula mentions cancer (only a problem if expected as full colname in mydf) but mydf lacks cancer as a field, and survival package is loaded.
+  # it will create a useless, perhaps misleading result, but won't crash by trying to use cancer data from that package in place of mydf$cancer.
+  if (!('cancer' %in% names(mydf)) & any(grepl('cancer', formulas))) {mydf$cancer=0}
+
   suppressMessages(attach(mydf))
+  # on.exit(detach(mydf))
   tryCatch({
     for (thisformula in formulas) {
 
       # Trying to handle cases where formula relies on some variable that was not provided in mydf
+
+      # A problem arises if a formula relies on a variable that is not in mydf but is used by some loaded package,
+      # for example if mydf does not contain the field called cancer but the survival package (required by Hmisc which is required by the ejscreen pkg) provides a dataset lazyloaded called cancer,
+      # so the formula appears to work, but it operates on the cancer from the survival package instead of the intended but missing mydf$cancer
+      # So we would ideally check the formula's inputs to see that they are all in mydf, rather than just trying to see if the formula works after attaching mydf.
+      #    textform <- strsplit(gsub('.*<-', '', parse(text=thisformula) ), split=' |[[:punct:]]| ' )[[1]]
+      #    textform <- textform[textform!='']
+      # that gets the words from the right side of the formula, but only if it is written as ....<-....
+      # and it also gets functions like sum, min, max, mean, etc. so it can't really be used to check if each variable is in mydf since some are functions not variables in the formula.
+      # and it splits up on _ etc.
+      # Just a quick workaround used above was to ensure mydf$cancer exists, since we know it conflicts with cancer data in survival package.
+
       y=try( eval(parse(text=thisformula) ), silent = TRUE)
       if (class(y)=="try-error") {
         cat('Cannot use formula: '); print(as.character(parse(text=thisformula)))

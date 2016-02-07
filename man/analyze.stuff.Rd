@@ -46,7 +46,7 @@ info@ejanalysis.com <info@ejanalysis.com>
  \url{http://www.ejanalysis.com}\cr
 
  **Acknowledgements: \cr
-  The package \link{sp} function \code{\link[sp]{spDists}}. The \link{matrixStats} package provides versions of rowMins, rowMax, colMins, colMaxs and related functions.
+  The package \pkg{sp} function \code{\link[sp]{spDists}}. The \link{matrixStats} package provides versions of rowMins, rowMax, colMins, colMaxs and related functions.
   This package could at some point provide data.frame methods that extend those, but for now it replaces them with slower versions that work on data.frames.
   Source: Henrik Bengtsson (2015). matrixStats: Methods that Apply to Rows and Columns of a Matrix. R package version 0.13.1-9000. \url{https://github.com/HenrikBengtsson/matrixStats}
 }

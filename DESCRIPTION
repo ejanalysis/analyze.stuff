@@ -5,8 +5,7 @@ Version: 0.2.0
 Date: 2015-05-29
 Author: info@ejanalysis.com
 Maintainer: ejanalysis.com <info@ejanalysis.com>
-Description: Tools that simplify some basic tasks in
-  exploring and analyzing a dataset in a matrix or data.frame.
+Description: Tools that simplify some basic tasks in exploring and analyzing a dataset in a matrix or data.frame.
   Key functions help to change many fieldnames to new names using a map of old to new names,
   create many calculated fields based on formulas specified or saved as text fields (character vector),
   see how many rows or cols have values above certain cutoffs,
@@ -17,10 +16,8 @@ Description: Tools that simplify some basic tasks in
   once made public can be installed from GitHub.com using the devtools package:
   devtools::install_github(c("ejanalysis/analyze.stuff", "ejanalysis/proxistat",
   "ejanalysis/ejanalysis", "ejanalysis/countyhealthrankings"))
-Depends:  R (>= 3.1.2),
-  Hmisc,
-  data.table,
-  matrixStats
+Depends: data.table
+Imports: Hmisc, matrixStats
 License: MIT + file LICENSE
 Suggests:  sp
 URL:

@@ -4,8 +4,9 @@
 #' @param big.m Default is a comma at every three digits (1,000,000)
 #' @param nsmall Default is 2 digits after the decimal (3.14)
 #' @param drop0trailing Default is FALSE, which means zeroes after the last nonzero digit in the decimal portion are still shown (TRUE would mean 1.2 is shown, not 1.20)
+#' @param ... other parameters passed to \code{\link{format}}
 #' @return Same as \code{\link{format}} but with some preselected defaults
-#' @seealso \code{\link{format}} 
+#' @seealso \code{\link{format}}
 #' @examples
 #'  cbind(mynum=formatcomma(c(1452345, 1.2, 4234.12345)))
 #'  cbind(mynum=formatcomma(c(1452345, 1.2, 4234.12345), drop0trailing=FALSE))

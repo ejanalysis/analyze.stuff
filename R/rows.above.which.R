@@ -22,7 +22,7 @@
 #'  # Compares each number in each row to the row's mean.
 #' out
 #' @export
-cols.above.which <- function(x, cutoff, or.tied=FALSE, below=FALSE) {
+rows.above.which <- function(x, cutoff, or.tied=FALSE, below=FALSE) {
   if (is.null(dim(x))) {stop('expected data.frame or matrix as x but has only 1 dimension')}
   if (missing(cutoff)) {cutoff <- colMeans(x)}
   if (below) {

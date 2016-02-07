@@ -5,10 +5,10 @@
 #' @param a Required vector, such as list of FIPS character codes.
 #' @param b Required vector
 #' @return Returns a list of counts, formatted for viewing as a small table. See example.
-#' @seealso \code{\link{setdiff2}}, \code{\link{sets}}, \code{\link[dplyr]{setops}}, \code{\link[plotrix]{intersectDiagram}}
+#' @seealso \code{\link{setdiff2}}, \code{\link[dplyr]{setops}}, \code{\link[plotrix]{intersectDiagram}}
 #' @examples
 #'  overlaps( c('Selectric 251','Selectric 245'), c('Selectric 245','Selectric 255','Selectric 255'))
-#'  \donotrun{
+#'  \dontrun{
 #'           unique total
 #'   in.a.only   1      1
 #'   in.b.only   1      2

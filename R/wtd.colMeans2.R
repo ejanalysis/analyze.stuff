@@ -1,7 +1,7 @@
 #' @title Weighted Mean of each Column - WORK IN PROGRESS
 #' @description
 #' Returns weighted mean of each column of a data.frame or matrix, based on specified weights, one weight per row.
-#' But also see \code{\link{data.table}} used for \code{\link{wtd.colMeans}}
+#' But also see \code{\link[data.table]{data.table}} used for \code{\link{wtd.colMeans}}
 #'
 #' @param x Data.frame or matrix, required.
 #' @param wts Weights, optional, defaults to nothing i.e. unweighted, and if specified must be vector of weights recycled to be same length as NROW(x) # not the name of the weights field in data.frame x, as single character string, e.g., "weightcol"
@@ -47,7 +47,7 @@ wtd.colMeans2 <- function(x, wts, by, na.rm = FALSE, dims = 1) {
   #   require(data.table)
   #   n=1e6
   #   mydf <- data.frame(pop=1000 + rnorm(n, 1000, 100), v1= runif(n, 0, 1), v2= rnorm(n, 100, 15), REGION=sample(c('R1', 'R2', 'R3'), n, replace=TRUE))
-  #   mydata <- data.table::data.table(mydf)
+  #   mydata <- data.table(mydf)
   #   x = mydata[, lapply(.SD, function(x, y = pop) {sum(y * x)/sum(y)} ), by = "REGION"]
   #   x
   ###############################

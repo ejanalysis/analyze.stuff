@@ -4,7 +4,7 @@
 \alias{wtd.colMeans}
 \title{Weighted Mean of each Column - WORK IN PROGRESS (NA HANDLING NOT YET TESTED)}
 \usage{
-wtd.colMeans(x, wts = rep(1, NROW(x)), by, na.rm = TRUE, dims = 1)
+wtd.colMeans(x, wts, by, na.rm = TRUE, dims = 1)
 }
 \arguments{
 \item{x}{Data.frame or matrix, required.}
@@ -40,13 +40,14 @@ Now based on \code{\link[data.table]{data.table}} unlike \code{\link{wtd.colMean
 \examples{
 n <- 1e6
   mydf <- data.frame(pop=1000 + abs(rnorm(n, 1000, 200)), v1= runif(n, 0, 1),
-    v2= rnorm(n, 100, 15), REGION=c('R1','R2',sample(c('R1', 'R2', 'R3'), n-2, replace=TRUE)))
+    v2= rnorm(n, 100, 15), REGION=c('R1','R2',sample(c('R1', 'R2', 'R3'), n-2, replace=TRUE)),
+    stringsAsFactors = FALSE)
   mydf$pop[mydf$REGION=='R2'] <- 4 * mydf$pop[mydf$REGION=='R2']
   mydf$v1[mydf$REGION=='R2'] <- 4 * mydf$v1[mydf$REGION=='R2']
-  wtd.colMeans(mydf)
-  wtd.colMeans(mydf, wts=mydf$pop)
-  wtd.colMeans(mydf, by=mydf$REGION)
-  wtd.colMeans(mydf, by=mydf$REGION, wts=mydf$pop)
+  wtd.colMeans(mydf[,1:3])
+  wtd.colMeans(mydf[,1:3], wts=mydf$pop)
+  wtd.colMeans(mydf[,1:3], by=mydf$REGION)
+  wtd.colMeans(mydf[,1:3], by=mydf$REGION, wts=mydf$pop)
   mydf2 <- data.frame(a=1:3, b=c(1,2,NA))
   wtd.colMeans(mydf2)
   wtd.colMeans(mydf2, na.rm=TRUE)

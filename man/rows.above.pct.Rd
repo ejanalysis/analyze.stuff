@@ -42,11 +42,11 @@ allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
 
 Other functions for above and below: \code{\link{cols.above.count}};
   \code{\link{cols.above.pct}};
-  \code{\link{cols.above.which}},
   \code{\link{cols.above.which}};
   \code{\link{count.above}}; \code{\link{count.below}};
   \code{\link{pct.above}}; \code{\link{pct.below}};
   \code{\link{rows.above.count}};
+  \code{\link{rows.above.which}};
   \code{\link{rows.below.count}};
   \code{\link{rows.below.pct}}
 }

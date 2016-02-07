@@ -14,6 +14,8 @@ formatcomma(x, big.m = ",", nsmall = 2, drop0trailing = FALSE, ...)
 \item{nsmall}{Default is 2 digits after the decimal (3.14)}
 
 \item{drop0trailing}{Default is FALSE, which means zeroes after the last nonzero digit in the decimal portion are still shown (TRUE would mean 1.2 is shown, not 1.20)}
+
+\item{...}{other parameters passed to \code{\link{format}}}
 }
 \value{
 Same as \code{\link{format}} but with some preselected defaults

@@ -121,11 +121,11 @@ pct.above(x, benchnames=mynames, wts=mywts)
 
 Other functions for above and below: \code{\link{cols.above.count}};
   \code{\link{cols.above.pct}};
-  \code{\link{cols.above.which}},
   \code{\link{cols.above.which}};
   \code{\link{count.above}}; \code{\link{count.below}};
   \code{\link{pct.below}}; \code{\link{rows.above.count}};
   \code{\link{rows.above.pct}};
+  \code{\link{rows.above.which}};
   \code{\link{rows.below.count}};
   \code{\link{rows.below.pct}}
 }

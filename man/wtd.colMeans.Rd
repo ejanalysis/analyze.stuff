@@ -46,7 +46,7 @@ n <- 1e6
   mydf$v1[mydf$REGION=='R2'] <- 4 * mydf$v1[mydf$REGION=='R2']
   wtd.colMeans(mydf[,1:3])
   wtd.colMeans(mydf[,1:3], wts=mydf$pop)
-  wtd.colMeans(mydf[,1:3], by=mydf$REGION)
+  wtd.colMeans(mydf, by='REGION')
   wtd.colMeans(mydf[,1:3], by=mydf$REGION, wts=mydf$pop)
   mydf2 <- data.frame(a=1:3, b=c(1,2,NA))
   wtd.colMeans(mydf2)

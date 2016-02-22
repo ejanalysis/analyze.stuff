@@ -8,9 +8,9 @@ wtd.pctiles(x, wts = NULL, na.rm = TRUE, type = "i/n",
   probs = (1:100)/100, digits = 3)
 }
 \arguments{
-\item{x}{Required numeric vector of values whose distribution you want to look at.}
+\item{x}{Required, numeric vector (or data.frame) of values whose distribution(s) you want to look at.}
 
-\item{wts}{NULL by default, or vector of numbers to use as weights in Hmisc::wtd.quantile}
+\item{wts}{NULL by default, or vector of numbers (same length as x vector or as a column of x) to use as weights in Hmisc::wtd.quantile}
 
 \item{na.rm}{Logical optional TRUE by default, in which case NA values are removed first.}
 
@@ -21,7 +21,7 @@ wtd.pctiles(x, wts = NULL, na.rm = TRUE, type = "i/n",
 \item{digits}{Number, 3 by default, specifying how many decimal places to round to in results}
 }
 \value{
-Returns a data.frame
+Returns a data.frame, one row per probs, so 100 by default (1%ile through 100%ile), one col per col of x
 }
 \description{
 Get a quick look at a weighted distribution by seeing the 100 values that are the weighted percentiles 1-100

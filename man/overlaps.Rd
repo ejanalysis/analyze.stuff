@@ -4,32 +4,35 @@
 \alias{overlaps}
 \title{Counts for Intersect, Union, etc. for Two Sets}
 \usage{
-overlaps(a, b)
+overlaps(a, b, values = FALSE)
 }
 \arguments{
 \item{a}{Required vector, such as list of FIPS character codes.}
 
 \item{b}{Required vector}
+
+\item{values}{Default is FALSE. If TRUE, output is logical data.frame with
+union of only the unique elements as rownames, indicating which of those meet each criterion.}
 }
 \value{
-Returns a list of counts, formatted for viewing as a small table. See example.
+Returns a data.frame of counts by default, formatted for viewing as a small table.
+  If values = TRUE, returns a larger data.frame (see \code{values} parameter). See examples.
 }
 \description{
 This is just a convenient way to compare two sets (vectors) that overlap,
  to count how many are in each set, how many are in a not b, in b not a, in both, etc.
 }
 \examples{
- overlaps( c('Selectric 251','Selectric 245'), c('Selectric 245','Selectric 255','Selectric 255'))
+ overlaps( c('Selectric 251','Selectric 245'),
+  c('Selectric 245','Selectric 255','Selectric 255'))
+ overlaps( c('Selectric 251','Selectric 245'),
+  c('Selectric 245','Selectric 255','Selectric 255'), values = TRUE)
+ overlaps(state.abb[1:3], state.abb[3:4])
+ colSums( overlaps(state.abb[1:3], state.abb[3:4], values = TRUE) )
+ colSums( overlaps(state.abb[1:3], state.abb[c(3:4,4,4,4,4,4)], values = TRUE) )
+ overlaps(state.abb[1:3], state.abb[c(3:4,4,4,4,4,4)])
+ overlaps(state.abb[1:3], state.abb[3:4], values = TRUE)
  \dontrun{
-          unique total
-  in.a.only   1      1
-  in.b.only   1      2
-  overlap     1      2
-  in.a        2      2
-  in.b        2      3
-  union       3      5
-  in.one.only 2      3
-
   overlaps(ejanalysis::get.state.info()$ST, state.abb)
   data(fips.state, package='acs')
   overlaps(lead.zeroes(fips.state$STATE,2), ejanalysis::get.state.info()$FIPS.ST)
@@ -37,6 +40,9 @@ This is just a convenient way to compare two sets (vectors) that overlap,
   overlaps(ejanalysis::get.county.info()$FIPS.COUNTY,
     paste(analyze.stuff::lead.zeroes(fips.county$State.ANSI,2),
     analyze.stuff::lead.zeroes(fips.county$County.ANSI,3), sep=''))
+
+  colSums( overlaps(ejanalysis::get.state.info()$ST, c(999, state.abb), values = TRUE) [ , 2:8])
+
  }
 }
 \seealso{

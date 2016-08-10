@@ -16,6 +16,7 @@ none
 }
 \description{
 Convenient way to specify packages to attach, and install any that are not already installed.
+ It only installs a package if that package is not already available locally.
 }
 \details{
 Uses \code{\link{require}} and if necessary uses \code{\link{install.packages}} or \code{\link{devtools::install_github}}

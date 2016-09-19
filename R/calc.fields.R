@@ -64,12 +64,15 @@ calc.fields <- function(mydf, formulas, keep) {
       # and it splits up on _ etc.
       # Just a quick workaround used above was to ensure mydf$cancer exists, since we know it conflicts with cancer data in survival package.
 
-      y=try( eval(parse(text=thisformula) ), silent = TRUE)
-      if (class(y)=="try-error") {
-        cat('Cannot use formula: '); print(as.character(parse(text=thisformula)))
-      } else {
-        eval(parse(text=thisformula) )
-      }
+      y <- try( eval(parse(text=thisformula) ), silent = TRUE)
+      suppressWarnings(
+        if (class(y) == "try-error") {
+          cat('Cannot use formula: '); print(as.character(parse(text=thisformula)))
+        } else {
+          eval(parse(text=thisformula) )
+        }
+        
+      ) 
     }
 
     # RETURN ONLY THE ONES SUCCESSFULLY CREATED, OUT OF ALL REQUESTED TO BE KEPT

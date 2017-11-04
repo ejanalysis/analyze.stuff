@@ -9,7 +9,7 @@
 #' @export
 rowMaxs <- function(df, na.rm=TRUE) {
 
-  if (is.matrix(df)) {df <- data.frame(df, stringsAsFactors=FALSE)}
+  if (is.matrix(df)) {df <- data.frame(df, stringsAsFactors=FALSE, drop = FALSE)}
 
   valid.cols <- sapply(df, function(x) { is.numeric(x) || is.logical(x) || is.character(x)})
   stopifnot(any(valid.cols))
@@ -17,9 +17,9 @@ rowMaxs <- function(df, na.rm=TRUE) {
   # if (!any(valid.cols)) {return(NA)}
   if (any(!valid.cols) ) {warning('using only numeric (double or integer) or logical or character columns -- ignoring other columns ')}
 
-  result <- do.call(pmax, c(df[ , valid.cols], na.rm=na.rm))
+  result <- do.call(pmax, c(df[ , valid.cols, drop = FALSE], na.rm=na.rm))
 
-  result[nononmissing <- rowSums(!is.na(df[ , valid.cols]))==0] <- -Inf
+  result[nononmissing <- rowSums(!is.na(df[ , valid.cols, drop = FALSE]))==0] <- -Inf
   if (any(nononmissing)) {warning('where no non-missing arguments, returning -Inf')}
   return(result)
 

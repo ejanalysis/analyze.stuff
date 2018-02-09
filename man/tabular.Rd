@@ -24,4 +24,3 @@ modified version of func in help section on formatting in \pkg{roxygen2} package
 \seealso{
 Help on formatting in \pkg{roxygen2}
 }
-

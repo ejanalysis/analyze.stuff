@@ -24,4 +24,3 @@ setdiff2(c('a','b','c'), c('b','c','d'))
 \seealso{
 \code{\link{setdiff}} which is a bit different
 }
-

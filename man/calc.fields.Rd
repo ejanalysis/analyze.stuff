@@ -44,4 +44,3 @@ Each row of data is used in a formula to provide a row of results.
 \seealso{
 \code{\link{change.fieldnames}}
 }
-

@@ -41,4 +41,3 @@ print(w*cbind(x,w))
 \seealso{
 \code{\link{wtd.colMeans}} \code{\link{wtd.rowMeans}} \code{\link{wtd.rowSums}} \code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMins}}
 }
-

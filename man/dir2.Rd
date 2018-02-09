@@ -28,4 +28,3 @@ dir2(path='~')  # shows only files, not folders, if no x is specified.
 \seealso{
 \code{\link{dirdirs}} \code{\link{dirr}}
 }
-

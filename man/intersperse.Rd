@@ -29,4 +29,3 @@ mydf
 mydf <- mydf[ , intersperse(names(mydf))]
 mydf
 }
-

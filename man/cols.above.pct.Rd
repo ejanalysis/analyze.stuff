@@ -43,9 +43,6 @@ out <- cols.above.pct(data.frame(a=1:10, b=rep(7,10), c=7:16) )
  # Compares each number in each row to the row's mean.
 out
 }
-\author{
-author
-}
 \seealso{
 \code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} to see, for each column, the count or percent of rows that have values above or below a cutoff.
 
@@ -61,4 +58,6 @@ Other functions for above and below: \code{\link{cols.above.count}},
   \code{\link{rows.below.count}},
   \code{\link{rows.below.pct}}
 }
-
+\author{
+author
+}

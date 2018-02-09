@@ -26,4 +26,3 @@ before; after
 \seealso{
 \code{\link{change.fieldnames}}
 }
-

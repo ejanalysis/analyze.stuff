@@ -21,4 +21,3 @@ The word pause is easier to remember than Sys.sleep, and Sys.sleep does not work
 \seealso{
 \code{\link{Sys.sleep}}
 }
-

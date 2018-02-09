@@ -30,4 +30,3 @@ Uses \code{\link{require}} and if necessary uses \code{\link{install.packages}} 
   installrequired('ej')
   }
 }
-

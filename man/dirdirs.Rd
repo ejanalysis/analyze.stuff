@@ -25,4 +25,3 @@ dirdirs()
 \seealso{
 \code{\link{dir2}} \code{\link{dirr}}
 }
-

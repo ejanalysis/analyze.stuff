@@ -28,4 +28,3 @@ This function is similar to \code{\link{expand.grid}}, in the sense that it retu
 \seealso{
 \code{\link{expand.grid}}
 }
-

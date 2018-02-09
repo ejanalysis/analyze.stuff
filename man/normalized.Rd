@@ -32,4 +32,3 @@ Uses \code{\link{scale}}
 \seealso{
 \code{\link{scale}}
 }
-

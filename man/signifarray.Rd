@@ -25,4 +25,3 @@ Given a matrix or numeric data.frame, round each column to a specified column-sp
 \seealso{
 \code{\link{signif}}
 }
-

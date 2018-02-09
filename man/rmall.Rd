@@ -12,4 +12,3 @@ prints how to do that
 \description{
 A simple way to get a reminder of how to clear all objects from memory because I always forget how
 }
-

@@ -48,4 +48,3 @@ counts <- count.words('speech.txt', sep='.')
   # that is for whole sentences (sort of - splits up at decimal places as well)
 }
 }
-

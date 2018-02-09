@@ -28,4 +28,3 @@ geomean(c(4,9)) # is the square root of 4 * 9
 \seealso{
 \code{\link{harmean}}  \code{\link{mean}}  \code{\link{rms}}
 }
-

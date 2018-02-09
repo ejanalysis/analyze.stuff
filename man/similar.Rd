@@ -35,4 +35,3 @@ May want to add a 3d case, where NA can match NA.
 \seealso{
 \code{\link{similar.p}}, \code{\link{all.equal}}, \code{\link{identical}}, \code{\link{isTRUE}}, \code{\link{==}}, \code{\link{all}}
 }
-

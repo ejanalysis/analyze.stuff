@@ -20,4 +20,3 @@ Get the arguments of a function as shown in help for \code{\link{grep}}
 \examples{
  findArgs("package:base", "warn")
 }
-

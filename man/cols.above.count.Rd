@@ -61,4 +61,3 @@ Other functions for above and below: \code{\link{cols.above.pct}},
   \code{\link{rows.below.count}},
   \code{\link{rows.below.pct}}
 }
-

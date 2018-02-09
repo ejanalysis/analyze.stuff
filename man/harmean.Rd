@@ -27,4 +27,3 @@ harmean(c(1,2,4))
 \seealso{
 \code{\link{geomean}}  \code{\link{mean}}  \code{\link{rms}}
 }
-

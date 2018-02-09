@@ -82,4 +82,3 @@ analyze.stuff::colMaxs( data.frame(a=1:10, b=2))
 Other functions for max and min of rows and columns: \code{\link{colMaxs}},
   \code{\link{colMins}}, \code{\link{rowMins}}
 }
-

@@ -25,4 +25,3 @@ Answers query about whether operating system is a certain type,
 \seealso{
 \code{\link{get.os}} which is a bit more limited
 }
-

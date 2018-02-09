@@ -28,4 +28,3 @@ Just a wrapper that Uses \code{\link{download.file}} which only downloads a sing
 \seealso{
 \code{\link{download.file}}
 }
-

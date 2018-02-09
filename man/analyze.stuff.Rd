@@ -4,6 +4,7 @@
 \name{analyze.stuff}
 \alias{analyze.stuff}
 \alias{analyze.stuff-package}
+\alias{analyze.stuff-package}
 \title{Basic Tools for Analyzing Datasets}
 \description{
 This R package provides some useful tools for analyzing data in matrices and data.frames,
@@ -38,9 +39,6 @@ Key functions include \cr
    \item rows.below.which
  }
 }
-\author{
-info@ejanalysis.com <info@ejanalysis.com>
-}
 \references{
 \url{http://ejanalysis.github.io}\cr
  \url{http://www.ejanalysis.com}\cr
@@ -50,4 +48,6 @@ info@ejanalysis.com <info@ejanalysis.com>
   This package could at some point provide data.frame methods that extend those, but for now it replaces them with slower versions that work on data.frames.
   Source: Henrik Bengtsson (2015). matrixStats: Methods that Apply to Rows and Columns of a Matrix. R package version 0.13.1-9000. \url{https://github.com/HenrikBengtsson/matrixStats}
 }
-
+\author{
+info@ejanalysis.com <info@ejanalysis.com>
+}

@@ -45,4 +45,3 @@ Hmisc::wtd.quantile(1:12, probs=(1:10)/10, type='i/n', weights=rep(1,12))\cr
 \seealso{
 \code{\link{pctiles}} \code{\link{pctiles.exact}} \code{\link{pctiles.a.over.b}} \code{\link{wtd.pctiles.exact}} \code{\link{wtd.pctiles}} \code{\link{wtd.pctiles.fast}}
 }
-

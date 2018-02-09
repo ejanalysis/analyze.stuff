@@ -16,4 +16,3 @@ depending on which operating system is being used (that's all it does right now)
 \seealso{
 \code{\link{os}} which is more powerful and easier to type
 }
-

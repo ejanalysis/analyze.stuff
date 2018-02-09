@@ -21,4 +21,3 @@ Replacement for length(). Finds count of items like length(), but if set na.rm=T
 length2(c(1,2,3,NA))
 length2(c(1,2,3,NA), na.rm=TRUE)
 }
-

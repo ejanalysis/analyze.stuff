@@ -48,4 +48,3 @@ This is just a convenient way to compare two sets (vectors) that overlap,
 \seealso{
 \code{\link{setdiff2}}, \code{\link[dplyr]{setops}}, \code{\link[plotrix]{intersectDiagram}}
 }
-

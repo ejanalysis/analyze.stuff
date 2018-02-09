@@ -53,4 +53,3 @@ object.sizes()
 head(cbind(object.sizes()))
 }
 }
-

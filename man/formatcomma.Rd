@@ -30,4 +30,3 @@ Wrapper for \code{\link{format}} making it easier to use with my typical setting
 \seealso{
 \code{\link{format}}
 }
-

@@ -20,4 +20,3 @@ minNonzero(-1:6)
 minNonzero(data.frame(a=0:10, b=1:11, c=c(0,1:9,NA), d='text', stringsAsFactors = FALSE))
 minNonzero(data.frame(a=0:10, b=1:11, c=c(0,1:9,NA), d='3', stringsAsFactors = TRUE))
 }
-

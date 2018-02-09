@@ -50,4 +50,3 @@ Other functions for above and below: \code{\link{cols.above.count}},
   \code{\link{rows.above.which}},
   \code{\link{rows.below.count}}
 }
-

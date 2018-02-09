@@ -28,4 +28,3 @@ Overlay two simple histograms, for data below vs above a cutoff
   pdf2(log10(bg$proximity.npl), bg$bin.EJ.DISPARITY.proximity.npl.eo, 10, main ='npl for high top 10 pct vs low EJ', xlab='NPL score log10')
   }
 }
-

@@ -22,4 +22,3 @@ Function to let you see directory listing of files/folders ending in r, R, or RD
 \seealso{
 \code{\link{dir2}} \code{\link{dirdirs}}
 }
-

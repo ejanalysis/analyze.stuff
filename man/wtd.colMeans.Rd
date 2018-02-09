@@ -52,4 +52,3 @@ Now based on \code{\link[data.table]{data.table}} unlike \code{\link{wtd.colMean
   wtd.colMeans(mydf2)
   wtd.colMeans(mydf2, na.rm=TRUE)
 }
-

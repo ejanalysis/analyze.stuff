@@ -59,4 +59,3 @@ plot(residuals(z) ~ fitted(z), main = deparse(z$call))
              labels=row.names(mtcars))
 }
 }
-

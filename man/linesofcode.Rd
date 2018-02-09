@@ -32,4 +32,3 @@ This is just a way to summarize how many lines of code appear to be in the .R fi
  x[order(x$code), c('filename', 'package', 'code')]
  }
 }
-

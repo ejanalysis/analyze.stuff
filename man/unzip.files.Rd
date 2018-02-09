@@ -27,4 +27,3 @@ Returns a list of the filepaths extracted to, from each zipfile. Names of list a
 \description{
 Wrapper for \code{\link{unzip}} which unzips a single file.
 }
-

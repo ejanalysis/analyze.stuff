@@ -2,7 +2,7 @@
 % Please edit documentation in R/pdf2.R
 \name{pdf2}
 \alias{pdf2}
-\title{Overlay two simple histograms}
+\title{Overlay two simple histograms (pdf=probability density functions, not pdf filetype)}
 \usage{
 pdf2(x, binx, threshold, n = 100, colors = c("gray", "red"), ...)
 }
@@ -12,6 +12,8 @@ pdf2(x, binx, threshold, n = 100, colors = c("gray", "red"), ...)
 \item{binx}{Variable that defines subsets}
 
 \item{threshold}{Variable that defines cutoff, so binx<threshold is plotted first, in one color, then binx>=threshold in other color is drawn over that}
+
+\item{n}{Default is 100. n is just passed to the hist function.}
 
 \item{colors}{Character vector length 2, with colors for first and second histogram}
 
@@ -25,6 +27,10 @@ Overlay two simple histograms, for data below vs above a cutoff
 }
 \examples{
   \dontrun{
-  pdf2(log10(bg$proximity.npl), bg$bin.EJ.DISPARITY.proximity.npl.eo, 10, main ='npl for high top 10 pct vs low EJ', xlab='NPL score log10')
+  pdf2(
+  log10(bg$proximity.npl),
+  bg$bin.EJ.DISPARITY.proximity.npl.eo, 10,
+  main ='npl for high top 10 pct vs low EJ', xlab='NPL score log10'
+  )
   }
 }

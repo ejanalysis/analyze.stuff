@@ -17,20 +17,21 @@
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found.
 #'   Otherwise result will be NA when any NA is in a vector.
 #' @param dims dims=1 is default. Not used. integer: Which dimensions are regarded as 'rows' or 'columns' to sum over.
-#'   For row*, the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.
+#'   For row, the sum or mean is over dimensions dims+1, ...; for col it is over dimensions 1:dims.
 #' @return If \code{by} is not specified, returns a vector of numbers of length equal to number of columns in df.
 #'   If \code{by} is specified, returns weighted mean for each column in each subset defined via \code{by}.
 #' @examples
+#'   library(analyze.stuff)
 #'   n <- 1e6
 #'   mydf <- data.frame(pop=1000 + abs(rnorm(n, 1000, 200)), v1= runif(n, 0, 1),
-#'     v2= rnorm(n, 100, 15), REGION=c('R1','R2',sample(c('R1', 'R2', 'R3'), n-2, replace=TRUE)),
-#'     stringsAsFactors = FALSE)
-#'   mydf$pop[mydf$REGION=='R2'] <- 4 * mydf$pop[mydf$REGION=='R2']
+#'    v2= rnorm(n, 100, 15), REGION=c('R1','R2',sample(c('R1', 'R2', 'R3'), n-2, replace=TRUE)),
+#'    stringsAsFactors = FALSE)
+#'    mydf$pop[mydf$REGION=='R2'] <- 4 * mydf$pop[mydf$REGION=='R2']
 #'   mydf$v1[mydf$REGION=='R2'] <- 4 * mydf$v1[mydf$REGION=='R2']
 #'   wtd.colMeans(mydf[,1:3])
 #'   wtd.colMeans(mydf[,1:3], wts=mydf$pop)
 #'   wtd.colMeans(mydf, by='REGION')
-#'   wtd.colMeans(mydf[,1:3], by=mydf$REGION, wts=mydf$pop)
+#'   # R HANGS/STUCK: # wtd.colMeans(mydf[1:100,1:3], by=mydf$REGION, wts=mydf$pop)
 #'   mydf2 <- data.frame(a=1:3, b=c(1,2,NA))
 #'   wtd.colMeans(mydf2)
 #'   wtd.colMeans(mydf2, na.rm=TRUE)

@@ -4,8 +4,9 @@
 \alias{pct.below}
 \title{Number or percent of rows (for each col) where value is below cutoff(s)}
 \usage{
-pct.below(df, benchmarks = "mean", benchnames = "cutoff", na.rm = FALSE,
-  or.tied = FALSE, below = TRUE, wts = 1, of.what = "all")
+pct.below(df, benchmarks = "mean", benchnames = "cutoff",
+  na.rm = FALSE, or.tied = FALSE, below = TRUE, wts = 1,
+  of.what = "all")
 }
 \arguments{
 \item{df}{Data.frame or matrix, required.}
@@ -52,3 +53,4 @@ Other functions for above and below: \code{\link{cols.above.count}},
   \code{\link{rows.below.count}},
   \code{\link{rows.below.pct}}
 }
+\concept{functions for above and below}

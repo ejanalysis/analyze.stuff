@@ -4,7 +4,8 @@
 \alias{linesofcode}
 \title{Counts lines of source code in .R files of package source}
 \usage{
-linesofcode(folder = getwd(), packages, recursive = TRUE, sums = FALSE)
+linesofcode(folder = getwd(), packages, recursive = TRUE,
+  sums = FALSE)
 }
 \arguments{
 \item{folder}{Default is current working directory. **This is NOT the base path of the package itself!

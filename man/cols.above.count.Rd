@@ -4,7 +4,8 @@
 \alias{cols.above.count}
 \title{Number of Columns with Value at or above Cutoff}
 \usage{
-cols.above.count(x, cutoff, or.tied = FALSE, na.rm = TRUE, below = FALSE)
+cols.above.count(x, cutoff, or.tied = FALSE, na.rm = TRUE,
+  below = FALSE)
 }
 \arguments{
 \item{x}{Data.frame or matrix of numbers to be compared to cutoff value.}
@@ -61,3 +62,4 @@ Other functions for above and below: \code{\link{cols.above.pct}},
   \code{\link{rows.below.count}},
   \code{\link{rows.below.pct}}
 }
+\concept{functions for above and below}

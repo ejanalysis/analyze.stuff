@@ -4,7 +4,8 @@
 \alias{cols.above.pct}
 \title{Percent of Columns with Value at or above Cutoff}
 \usage{
-cols.above.pct(x, cutoff, or.tied = FALSE, na.rm = TRUE, below = FALSE)
+cols.above.pct(x, cutoff, or.tied = FALSE, na.rm = TRUE,
+  below = FALSE)
 }
 \arguments{
 \item{x}{Data.frame or matrix of numbers to be compared to cutoff value. Must have more than one row and one column?}
@@ -61,3 +62,4 @@ Other functions for above and below: \code{\link{cols.above.count}},
 \author{
 author
 }
+\concept{functions for above and below}

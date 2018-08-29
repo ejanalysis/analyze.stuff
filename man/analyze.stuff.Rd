@@ -4,7 +4,6 @@
 \name{analyze.stuff}
 \alias{analyze.stuff}
 \alias{analyze.stuff-package}
-\alias{analyze.stuff-package}
 \title{Basic Tools for Analyzing Datasets}
 \description{
 This R package provides some useful tools for analyzing data in matrices and data.frames,

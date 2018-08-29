@@ -4,7 +4,8 @@
 \alias{change.fieldnames}
 \title{Change some or all of the colnames of a data.frame or matrix via a 1-1 map}
 \usage{
-change.fieldnames(allnames, oldnames, newnames, file = NA, sort = FALSE)
+change.fieldnames(allnames, oldnames, newnames, file = NA,
+  sort = FALSE)
 }
 \arguments{
 \item{allnames}{Character vector, optional. A vector of all the original fieldnames, such as the results of names(mydataframe).}

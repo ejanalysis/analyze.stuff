@@ -1,6 +1,8 @@
 #' @title Try to download one or more files
 #' @description Attempts to download files, given name(s) all from one specified url, saving them in specified folder.
-#' Just a wrapper that Uses \code{\link{download.file}} since that only downloads a single file.
+#'   Just a wrapper that Uses \code{\link{download.file}} since that only downloads a single file.
+#' @note Could recode to use \code{\pkg{curl}} package, since curl::curl_download() is a replacement for base download.file() with better performance,
+#'   support for encryption (https, ftps), gzip compression, authentication, etc.
 #' @param url The url of folder with files to download, as character string, or a vector:
 #'   If files is specified, url should be the one folder without the filename. Otherwise, a vector of full paths with filenames.
 #' @param files Optional. A character vector of file names to be found at url. If missing, assumes url is full path including filename.
@@ -11,7 +13,7 @@
 #'   But note that may cause problems if zero size file exists already due to earlier failed download.
 #' @param ... optional parameters passed to download.file
 #' @return Returns vector of numbers, each being 1 or 0 or 2 to signify success or failure or no attempt because file already seems to exist locally.
-#' @seealso \code{\link{download.file}}
+#' @seealso \code{\link{download.file}} \code{\link[curl]{curl_download}}
 #' @export
 download.files <- function(url, files, destfiles, todir, silent=FALSE, overwrite=FALSE, ...) {
 

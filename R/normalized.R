@@ -9,7 +9,7 @@
 #' @seealso \code{\link{scale}}
 #' @examples \dontrun{
 #'  mydf_norm <- tbd
-#'  ###
+#'  ## #
 #' }
 #' @export
 normalized <- function(df, wts=NULL, na.rm=TRUE) {

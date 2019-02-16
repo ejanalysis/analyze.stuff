@@ -32,9 +32,9 @@
 #' @export
 installrequired <- function(x, github, gitlatest = FALSE) {
 
-  ##################################
+  ################################# #
   # load (first downloading and installing if necesssary), each of several packages we need, including any from github
-  ##################################
+  ################################# #
 
   if (missing(x)) {
     pkgs       <- NULL # could set defaults here

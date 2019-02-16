@@ -74,7 +74,7 @@ change.fieldnames <- function(allnames, oldnames, newnames, file=NA, sort=FALSE)
 	#if (length(allnames) < length(oldnames)) {cat('Warning: length(allnames) generally should be >= length(oldnames)\n')}
 
   # Done with error-checking or file-creation/editing.
-	################
+	############### #
 
 	# Just replace the ones that match up, so
 	#   if allnames has something not in the oldnames, newnames entries, that is just left unchanged in allnames.

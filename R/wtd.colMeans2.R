@@ -50,7 +50,7 @@ wtd.colMeans2 <- function(x, wts, by, na.rm = FALSE, dims = 1) {
   #   mydata <- data.table(mydf)
   #   x = mydata[, lapply(.SD, function(x, y = pop) {sum(y * x)/sum(y)} ), by = "REGION"]
   #   x
-  ###############################
+  ############################## #
 #   # for fast rollup:  apply a function to every column, or some of them
 #   # Also see slam::rollup
 #
@@ -69,7 +69,7 @@ wtd.colMeans2 <- function(x, wts, by, na.rm = FALSE, dims = 1) {
 #   setDF(tracts.sum)
 #   setDF(bg)
 #
-#   ###############################
+#   ############################## #
 #
 #   # careful:
 #   # > bg.dt[ 'blah', .N, nomatch=0]

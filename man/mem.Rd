@@ -32,9 +32,9 @@ barplot(object.sizes(),
 # draw dot chart
 dotchart(object.sizes(), main="Memory usage by object", xlab="Bytes")
 
-###################################
+################################## #
 # memory.size() and memory.limit() and object.sizes() comparison:
-###################################
+################################## #
 
 # memory.size() to print aggregate memory usage statistics
 

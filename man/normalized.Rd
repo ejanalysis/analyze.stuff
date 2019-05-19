@@ -26,7 +26,7 @@ Uses \code{\link{scale}}
 \examples{
 \dontrun{
  mydf_norm <- tbd
- ###
+ ## #
 }
 }
 \seealso{

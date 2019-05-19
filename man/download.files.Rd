@@ -4,12 +4,16 @@
 \alias{download.files}
 \title{Try to download one or more files}
 \usage{
-download.files(url, files, todir, silent = FALSE, overwrite = FALSE)
+download.files(url, files, destfiles, todir, silent = FALSE,
+  overwrite = FALSE, ...)
 }
 \arguments{
-\item{url}{The url of folder with files to download, as character string}
+\item{url}{The url of folder with files to download, as character string, or a vector:
+If files is specified, url should be the one folder without the filename. Otherwise, a vector of full paths with filenames.}
 
-\item{files}{A character vector of file names.}
+\item{files}{Optional. A character vector of file names to be found at url. If missing, assumes url is full path including filename.}
+
+\item{destfiles}{Optional. A character vector of one or more file names. If missing, it uses same names as in files at url.}
 
 \item{todir}{The folder where downloaded files will be placed, as a character string.}
 
@@ -17,13 +21,15 @@ download.files(url, files, todir, silent = FALSE, overwrite = FALSE)
 
 \item{overwrite}{Optional, logical, FALSE by default. If FALSE, checks to see if file already exists in local folder and does not download if already exists.
 But note that may cause problems if zero size file exists already due to earlier failed download.}
+
+\item{...}{optional parameters passed to download.file}
 }
 \value{
 Returns vector of numbers, each being 1 or 0 or 2 to signify success or failure or no attempt because file already seems to exist locally.
 }
 \description{
-Attempts to download files, given name(s) from specified url, saving them in specified folder.
-Just a wrapper that Uses \code{\link{download.file}} which only downloads a single file.
+Attempts to download files, given name(s) all from one specified url, saving them in specified folder.
+  Just a wrapper that Uses \code{\link{download.file}} since that only downloads a single file.
 }
 \note{
 Could recode to use \code{\pkg{curl}} package, since curl::curl_download() is a replacement for base download.file() with better performance,

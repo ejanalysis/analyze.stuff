@@ -15,24 +15,25 @@
 #' block 	  1	(13 cum)\cr
 #' @param fips Character vector, which can be FIPS codes or other data. Required.
 #' @param length.desired A single numeric value (recycled), or vector of numbers, required, specifying how many characters long each returned string should be.
-#' @return Returns a vector of same length as input parameter
+#' @return Returns a vector of same length as input parameter, NA for NA input elements
 #' @examples
-#' lead.zeroes(c('234','01234','3'), 5)
+#' lead.zeroes(c('234','01234','3', NA, 'TEXT'), 5)
 #' @export
 lead.zeroes <- function(fips, length.desired) {
-	fips <- as.character(fips)
+  navalues <- which(is.na(fips))
+  fips <- as.character(fips)
 	# might trim whitespace?
-	if ( (length(length.desired) >1) & (length(fips) != length(length.desired))) {print("warning: #s of inputs don't match")}
-	if ( any(length.desired==0 | length.desired>=100) ) {stop("error: string lengths must be >0 & <100")}
-	if ( any(nchar(fips) > length.desired) ) {stop("error: some are longer than desired length")}
+	if ( (length(length.desired) > 1) & (length(fips) != length(length.desired))) {print("warning: #s of inputs don't match")}
+	if ( any(length.desired == 0 | length.desired >= 100) ) {stop("error: string lengths must be >0 & <100")}
+	if ( any(nchar(fips) > length.desired, na.rm = TRUE) ) {stop("error: some are longer than desired length")}
 
-	fips <- paste( paste( rep( rep("0", length(length.desired)), length.desired), collapse=""), fips, sep="")
+	fips <- paste( paste( rep( rep("0", length(length.desired)), length.desired), collapse = ""), fips, sep = "")
 	# does that work vectorized?
 
 	# or maybe this, but can't say length.desired[i] unless it has same length as fip & can't handle recycling also:
 	# fips <- for (i in 1:length(fip)) { paste( paste( rep("0", length.desired[i]), collapse=""), fips[i], sep="") }
 
 	fips <- substr(fips, nchar(fips) - length.desired + 1, nchar(fips))
-
+  fips[navalues] <- NA
 	return(fips)
 }

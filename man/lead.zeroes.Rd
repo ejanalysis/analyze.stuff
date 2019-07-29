@@ -12,7 +12,7 @@ lead.zeroes(fips, length.desired)
 \item{length.desired}{A single numeric value (recycled), or vector of numbers, required, specifying how many characters long each returned string should be.}
 }
 \value{
-Returns a vector of same length as input parameter
+Returns a vector of same length as input parameter, NA for NA input elements
 }
 \description{
 Returns the vector that was supplied, but with leading zeroes added where needed to make all elements have specified number of characters.
@@ -29,5 +29,5 @@ block group 	1	(12 cum) (note 12 digits is ambiguous if not sure leading zero is
 block 	  1	(13 cum)\cr
 }
 \examples{
-lead.zeroes(c('234','01234','3'), 5)
+lead.zeroes(c('234','01234','3', NA, 'TEXT'), 5)
 }

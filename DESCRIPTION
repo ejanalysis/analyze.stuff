@@ -1,6 +1,6 @@
 Package: analyze.stuff
 Title: Miscellaneous Tools for Analyzing Data in Rows and Columns
-Version: 0.2.1
+Version: 1.0.0
 Date: 2020-01-01
 Description: Tools that simplify some basic tasks in exploring and analyzing a
     dataset in a matrix or data.frame. Key functions help to change many fieldnames

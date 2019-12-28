@@ -4,8 +4,14 @@
 \alias{unzip.files}
 \title{Unzip multiple zip files}
 \usage{
-unzip.files(zipfile, files = NULL, exdir = ".", unzip = "internal",
-  overwrite = TRUE, ...)
+unzip.files(
+  zipfile,
+  files = NULL,
+  exdir = ".",
+  unzip = "internal",
+  overwrite = TRUE,
+  ...
+)
 }
 \arguments{
 \item{zipfile}{vector of names of files to unzip}

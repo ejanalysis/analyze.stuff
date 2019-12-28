@@ -35,17 +35,17 @@ d=factor(c(2,'3','5')); e=factor(c(2,'three','five')); f=factor(c('2','three','5
 g=factor(c(2,'3','five')); h=factor(c(NA, 3, 'five')); i=1:3;
 j=rep('nonfactor',3); k=c(1,2,'text'); l=c(TRUE, FALSE, TRUE); m=c('2','3','5')
 x=data.frame(a,b,c,d,e,f,g,h,i,j,k,l,m, stringsAsFactors=FALSE)
-cat('\\n')
-cat('\\n'); x; cat('\\n'); cat('\\n')
+cat('\n')
+cat('\n'); x; cat('\n'); cat('\n')
 z=factor.as.numeric(x)
-cat('\\n'); z
-cat('\\n'); str(x)
-cat('\\n'); str(z);
-cat('\\n'); str( factor.as.numeric(x, stringsAsFactors=FALSE) )
-for (i in 1:length(x)) {out<-factor.as.numeric(x[,i]);cat(class(out), out,'\\n') }
+cat('\n'); z
+cat('\n'); str(x)
+cat('\n'); str(z);
+cat('\n'); str( factor.as.numeric(x, stringsAsFactors=FALSE) )
+for (i in 1:length(x)) {out<-factor.as.numeric(x[,i]);cat(class(out), out,'\n') }
 for (i in 1:length(x)) {
   out<-factor.as.numeric(x[,i], stringsAsFactors = FALSE)
-  cat(class(out), out,'\\n')
+  cat(class(out), out,'\n')
 }
 }
 \seealso{

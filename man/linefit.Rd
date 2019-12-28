@@ -4,8 +4,15 @@
 \alias{linefit}
 \title{Add fit lines to a scatter plot}
 \usage{
-linefit(x, y, type = "b", cex = 4, show.lowess = TRUE,
-  show.lm = TRUE, show.line = TRUE)
+linefit(
+  x,
+  y,
+  type = "b",
+  cex = 4,
+  show.lowess = TRUE,
+  show.lm = TRUE,
+  show.line = TRUE
+)
 }
 \arguments{
 \item{x}{x values, required}

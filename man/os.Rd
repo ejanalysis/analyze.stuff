@@ -20,7 +20,7 @@ Answers query about whether operating system is a certain type,
 }
 \examples{
  os()
- if (os('mac')) {cat("Hi, I'm a Mac\\n")} else {cat('I am not a Mac\\n')}
+ if (os('mac')) {cat("Hi, I'm a Mac\n")} else {cat('I am not a Mac\n')}
 }
 \seealso{
 \code{\link{get.os}} which is a bit more limited

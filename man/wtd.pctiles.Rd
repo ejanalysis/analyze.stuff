@@ -4,8 +4,14 @@
 \alias{wtd.pctiles}
 \title{Show the rounded values at 100 weighted percentiles}
 \usage{
-wtd.pctiles(x, wts = NULL, na.rm = TRUE, type = "i/n",
-  probs = (1:100)/100, digits = 3)
+wtd.pctiles(
+  x,
+  wts = NULL,
+  na.rm = TRUE,
+  type = "i/n",
+  probs = (1:100)/100,
+  digits = 3
+)
 }
 \arguments{
 \item{x}{Required, numeric vector (or data.frame) of values whose distribution(s) you want to look at.}

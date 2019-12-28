@@ -4,8 +4,7 @@
 \alias{cols.above.count}
 \title{Number of Columns with Value at or above Cutoff}
 \usage{
-cols.above.count(x, cutoff, or.tied = FALSE, na.rm = TRUE,
-  below = FALSE)
+cols.above.count(x, cutoff, or.tied = FALSE, na.rm = TRUE, below = FALSE)
 }
 \arguments{
 \item{x}{Data.frame or matrix of numbers to be compared to cutoff value.}
@@ -52,14 +51,17 @@ out
 
 \code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
 
-Other functions for above and below: \code{\link{cols.above.pct}},
-  \code{\link{cols.above.which}},
-  \code{\link{count.above}}, \code{\link{count.below}},
-  \code{\link{pct.above}}, \code{\link{pct.below}},
-  \code{\link{rows.above.count}},
-  \code{\link{rows.above.pct}},
-  \code{\link{rows.above.which}},
-  \code{\link{rows.below.count}},
-  \code{\link{rows.below.pct}}
+Other functions for above and below: 
+\code{\link{cols.above.pct}()},
+\code{\link{cols.above.which}()},
+\code{\link{count.above}()},
+\code{\link{count.below}()},
+\code{\link{pct.above}()},
+\code{\link{pct.below}()},
+\code{\link{rows.above.count}()},
+\code{\link{rows.above.pct}()},
+\code{\link{rows.above.which}()},
+\code{\link{rows.below.count}()},
+\code{\link{rows.below.pct}()}
 }
 \concept{functions for above and below}

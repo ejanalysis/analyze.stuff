@@ -4,8 +4,15 @@
 \alias{rows.above.count}
 \title{Number or percent of rows (for each col) where value exceeds cutoff(s)}
 \usage{
-rows.above.count(df, benchmarks = "mean", benchnames = "cutoff",
-  or.tied = FALSE, below = FALSE, wts = 1, na.rm = TRUE)
+rows.above.count(
+  df,
+  benchmarks = "mean",
+  benchnames = "cutoff",
+  or.tied = FALSE,
+  below = FALSE,
+  wts = 1,
+  na.rm = TRUE
+)
 }
 \arguments{
 \item{df}{Data.frame or matrix, required.}
@@ -37,14 +44,17 @@ allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
 
 \code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
 
-Other functions for above and below: \code{\link{cols.above.count}},
-  \code{\link{cols.above.pct}},
-  \code{\link{cols.above.which}},
-  \code{\link{count.above}}, \code{\link{count.below}},
-  \code{\link{pct.above}}, \code{\link{pct.below}},
-  \code{\link{rows.above.pct}},
-  \code{\link{rows.above.which}},
-  \code{\link{rows.below.count}},
-  \code{\link{rows.below.pct}}
+Other functions for above and below: 
+\code{\link{cols.above.count}()},
+\code{\link{cols.above.pct}()},
+\code{\link{cols.above.which}()},
+\code{\link{count.above}()},
+\code{\link{count.below}()},
+\code{\link{pct.above}()},
+\code{\link{pct.below}()},
+\code{\link{rows.above.pct}()},
+\code{\link{rows.above.which}()},
+\code{\link{rows.below.count}()},
+\code{\link{rows.below.pct}()}
 }
 \concept{functions for above and below}

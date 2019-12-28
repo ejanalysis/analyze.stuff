@@ -4,8 +4,15 @@
 \alias{count.words}
 \title{Word Frequency in a Text File}
 \usage{
-count.words(file, wordclump = 1, ignore.case = TRUE, stopwords = "",
-  string, numbers.keep = TRUE, ...)
+count.words(
+  file,
+  wordclump = 1,
+  ignore.case = TRUE,
+  stopwords = "",
+  string,
+  numbers.keep = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file}{Character string filename, with or without path, for text file to be analyzed. Words assumed to be separated by spaces.}

@@ -4,8 +4,15 @@
 \alias{download.files}
 \title{Try to download one or more files}
 \usage{
-download.files(url, files, destfiles, todir, silent = FALSE,
-  overwrite = FALSE, ...)
+download.files(
+  url,
+  files,
+  destfiles,
+  todir,
+  silent = FALSE,
+  overwrite = FALSE,
+  ...
+)
 }
 \arguments{
 \item{url}{The url of folder with files to download, as character string, or a vector:

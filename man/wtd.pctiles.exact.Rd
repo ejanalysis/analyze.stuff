@@ -4,8 +4,13 @@
 \alias{wtd.pctiles.exact}
 \title{Show the values at 100 weighted percentiles}
 \usage{
-wtd.pctiles.exact(x, wts = NULL, na.rm = TRUE, type = "i/n",
-  probs = (1:100)/100)
+wtd.pctiles.exact(
+  x,
+  wts = NULL,
+  na.rm = TRUE,
+  type = "i/n",
+  probs = (1:100)/100
+)
 }
 \arguments{
 \item{x}{Required numeric vector of values whose distribution you want to look at.}

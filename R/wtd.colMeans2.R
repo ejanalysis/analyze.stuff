@@ -11,7 +11,7 @@
 #' @return Returns a vector of numbers of length equal to number of columns in df.
 #' @template meansum
 #' @export
-wtd.colMeans2 <- function(x, wts, by, na.rm = FALSE, dims = 1) {
+wtd.colMeans2 <- function(x, wts, by=NULL, na.rm = FALSE, dims = 1) {
 
   warning(' **** THIS IS WORK IN PROGRESS AS IS wtd.rowMeans() !!! Does not work & also check how NA values are handled ****')
 

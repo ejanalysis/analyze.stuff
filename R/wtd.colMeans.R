@@ -79,7 +79,7 @@
 #'   wtd.colMeans(mydf2)
 #'   wtd.colMeans(mydf2, na.rm = TRUE)
 #' @export
-wtd.colMeans <- function(x, wts, by, na.rm = TRUE, dims = 1) {
+wtd.colMeans <- function(x, wts, by=NULL, na.rm = TRUE, dims = 1) {
 
   # require(data.table)
   if (!missing(wts)) {

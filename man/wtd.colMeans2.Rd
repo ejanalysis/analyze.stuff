@@ -4,7 +4,7 @@
 \alias{wtd.colMeans2}
 \title{Weighted Mean of each Column - WORK IN PROGRESS}
 \usage{
-wtd.colMeans2(x, wts, by, na.rm = FALSE, dims = 1)
+wtd.colMeans2(x, wts, by = NULL, na.rm = FALSE, dims = 1)
 }
 \arguments{
 \item{x}{Data.frame or matrix, required.}

@@ -3,7 +3,7 @@
 #' Convenient way to specify packages to attach, and install any that are not already installed.
 #'  It only installs a package if that package is not already available locally.
 #' @details
-#'  Uses \code{\link{require}} and if necessary uses \code{\link{install.packages}} or \code{\link[devtools]{install_github}}
+#'  Uses \code{\link{require}} and if necessary uses \code{\link{install.packages}} or install_github as explained in \code{\link[devtools]{remote-reexports}}
 #'  If no parameters, prints an example.
 #' @param x vector of package names e.g., c("Hmisc", "data.table")
 #' @param github optional vector of user slash package names e.g., "rstudio/shiny" but those can just be in x now.

@@ -9,10 +9,12 @@
 #'
 #' @param df Matrix or data.frame to examine. Cannot be a single vector currently.
 #' @param min.text Logical, optional, defaults to FALSE. If TRUE, tries to find minimum of numbers stored as text? Slows it down.
+#' @param zone optional. if zone (subgroups) specified, just returns total count and count of NA values -- in each subgroup for each field.
 #' @return Returns a vector of results, one per col of df
+#'   But if zone (subgroups) specified, just returns count of NA values in each subgroup for each field.
 #' @template nachecks
 #' @export
-na.check <- function(df, min.text = FALSE) {
+na.check <- function(df, zone, min.text = FALSE) {
   if (is.vector(df)) {
     stop('cannot yet handle a single vector, only a data.frame or matrix')
   } # would need to adjust code for this case
@@ -28,6 +30,17 @@ na.check <- function(df, min.text = FALSE) {
     warning('converted tbl to data.frame to analyze it')
   }
   # may NEED TO RECODE TO HANDLE VECTOR NOT JUST DATA.FRAME, SO WOULD USE sum() not colSums() etc.
+
+  if (!missing(zone)) {
+    if (NROW(df) != NROW(zone)) {'number of rows in df must be same as length of zone vector'}
+
+    y <- cbind(
+      aggregate(zone, by = list(zone = zone), FUN = length),
+      aggregate(df, by = list(zone = zone), FUN = function(z) sum(is.na(z)))[,-1]
+    )
+    names(y)[1:2] <- c('zone', 'n')
+    return(y)
+  }
 
   cols <-
     colnames(df)    # df <- as.matrix(df) # can't do that since cols can be different types

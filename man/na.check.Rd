@@ -4,15 +4,18 @@
 \alias{na.check}
 \title{Basic info on each col of data.frame}
 \usage{
-na.check(df, min.text = FALSE)
+na.check(df, zone, min.text = FALSE)
 }
 \arguments{
 \item{df}{Matrix or data.frame to examine. Cannot be a single vector currently.}
+
+\item{zone}{optional. if zone (subgroups) specified, just returns total count and count of NA values -- in each subgroup for each field.}
 
 \item{min.text}{Logical, optional, defaults to FALSE. If TRUE, tries to find minimum of numbers stored as text? Slows it down.}
 }
 \value{
 Returns a vector of results, one per col of df
+  But if zone (subgroups) specified, just returns count of NA values in each subgroup for each field.
 }
 \description{
 Returns basic information on each field in a data.frame, like count of rows that are zero, negative,

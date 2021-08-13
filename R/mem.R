@@ -51,7 +51,9 @@ mem <- function(n=10) {
       # format(object.size(get(object.name)), units = "MB")
       # could be used now instead of round( /1e6,3).
     }
-    cat(paste('R is using', memory.size(), 'MB out of limit', memory.limit(), 'MB\n'))
+    if(.Platform$OS.type == "windows") {
+      cat(paste('R is using', memory.size(), 'MB out of limit', memory.limit(), 'MB\n'))
+    }
     cat("Objects using the most memory (in MB):\n")
     ( head(cbind(MB=object.sizes()),n) )
 

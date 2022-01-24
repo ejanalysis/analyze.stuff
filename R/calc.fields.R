@@ -12,6 +12,12 @@
 #' @details
 #' This function returns a matrix or vector of results of applying specified formulas to the fields in the input data.frame.
 #' Each row of data is used in a formula to provide a row of results.
+#'
+#' WARNING: This function did what I needed but probably
+#' fails if mydf has any column names that are also variables
+#' in the calling or global environment?
+#' May need to more carefully specify environment in the eval() and or ls() steps.
+#'
 #' @param mydf Required. A data.frame with strings that are field names (input variables) that may appear in formulas. See example.
 #' @param formulas Required. A vector of strings that are formulas based on input variables and/or variables calculated from previous formulas. See example.
 #' @param keep Optional. A vector of strings that are the input and/or calculated variables to return, in case not all intermediate variables are needed.
@@ -19,15 +25,24 @@
 #' @return A data.frame of new variables where columns are defined by keep (or all calculated variables if keep is not specified).
 #' @seealso \code{\link{change.fieldnames}}
 #' @examples
+#'  myforms <- c('bsquared = b^2', 'that.plus.a=bsquared + a','result <-min(that.plus.a,b)')
+#'  mydat  <- data.frame(a=1:-2, b=2:5)
+#'  x <- calc.fields(mydat, myforms)
+#'  cbind(mydat, x)
+#'  # Return only some of the input/output variables:
+#'  calc.fields(mydf=mydat, formulas=myforms, keep=c('b', 'that.plus') )
+#'
+#' myforms <- c('bplus1 = b+1', 'that.plus.a=bplus1 + a', 'xfold <- ifelse(is.na(a), "(no a)", paste(a,"% !",sep=""))', 'there.is.no.y = y/0')
+#' mydat  <- data.frame(a=c(104:106,NA), b=c(1:3,0))
+#' x <- calc.fields(mydat, myforms)
+#' data.frame(formula = rbind(paste0('  ', myforms, '  ')))
+#' cbind(mydat, x)
+#'
 #' # formulas could be ejscreenformulas$formula from the ejscreen package, for example.
-#'  myforms <- c('calcvar1 = b+1', 'calcvar2=calcvar1 + a', 'calcvar3<- paste(a,"x",sep="")')
 #'  # Saving to and reading from a file that stores all these formulas:
 #'  # write.csv(myforms, file='testforms.csv', row.names = FALSE)
 #'  # myforms <- read.csv('testforms.csv')
-#'  mydat  <- data.frame(a=1:10, b=2:11)
-#'  x <- calc.fields(mydat, myforms); x
-#'  # Return only some of the input/output variables:
-#'  calc.fields(mydf=mydat, formulas=myforms, keep=c('a', 'calcvar2','calcvar3') )
+#'
 #' @export
 calc.fields <- function(mydf, formulas, keep) {
   if (missing(keep)) {
@@ -64,35 +79,43 @@ calc.fields <- function(mydf, formulas, keep) {
       # and it splits up on _ etc.
       # Just a quick workaround used above was to ensure mydf$cancer exists, since we know it conflicts with cancer data in survival package.
 
+      # May need to more carefully specify environment:  eval(  , , envir = ) Want to search in mydf (which is attached above, and in formulas,
+      #  but probably do not want to use variables that are defined globally or where this function was called from?? )
+      # For example, if the formula refers to x and x is in the global env as a data.frame but the formula intended to
+      #  refer to the x that is a colname in mydf... ?
+
       y <- try( eval(parse(text=thisformula) ), silent = TRUE)
       suppressWarnings(
         if (class(y) == "try-error") {
           cat('Cannot use formula: '); print(as.character(parse(text=thisformula)))
         } else {
           eval(parse(text=thisformula) )
+          print(paste0('Using ', thisformula))
         }
-        
-      ) 
+
+      )
     }
 
     # RETURN ONLY THE ONES SUCCESSFULLY CREATED, OUT OF ALL REQUESTED TO BE KEPT
     # attach() allows exists function to see fields in mydf, as specified by keep
     # but it does not allow mget() to obtain them!
 
-    #print(' keep at first: '); print(keep)
-    #print('in memory now: ls() = '); print(ls())
-    #print(' keep now after using exists(): '); print(keep)
+    # print(' keep at first: '); print(keep)
+    # print('in memory now: ls() = '); print(ls())
+    # print(' keep now after using exists(): '); print(keep)
     # note this will crash with error if keep is invalid, such as '' or NA or c('', '') etc.
     keep.from.mydf <- keep[keep %in% names(mydf)]
     keep.other <- keep[!(keep %in% keep.from.mydf)]
-    #print(' keep.from.mydf: '); print(keep.from.mydf)
-    #print(' keep.other: '); print(keep.other)
-    #print('ls() ');print(ls())
-    #print('sapply exists ' ); print(sapply(keep.other, FUN=exists))
+    # print(' keep.from.mydf: '); print(keep.from.mydf)
+    # print(' keep.other: '); print(keep.other)
+    # print('ls() ');print(ls())
+    # print('sapply exists ' ); print(sapply(keep.other, FUN=exists))
     # DOES NOT WORK SO USE ls() instead:  #if (length(keep.other) > 0) {keep.other <- keep.other[sapply(keep.other, FUN=exists)] }
     if (length(keep.other) > 0) {keep.other <- keep.other[keep.other %in% ls()] }
-    # print(' keep.other after check if exists: '); print(keep.other)
-
+#      print(' keep.other after check if exists: '); print(keep.other)
+# print(mydf[ , keep.from.mydf, drop=FALSE])
+# print(mydf[ , keep.from.mydf, drop=TRUE])
+# print(mget(keep.other))
     # COULD ADD WARNINGS HERE ABOUT VARIABLES USER ASKED TO KEEP THAT DO NOT EXIST
 
     if (length(keep.other) > 0) {

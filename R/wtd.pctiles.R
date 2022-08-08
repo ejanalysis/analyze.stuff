@@ -3,7 +3,7 @@
 #' @description
 #' Get a quick look at a weighted distribution by seeing the 100 values that are the weighted percentiles 1-100
 #' @details
-#' Provides weighted percentiles using \code{\link[Hmisc]{wtd.stats}} \cr \cr
+#' Provides weighted percentiles using \code{\link[Hmisc]{wtd.Ecdf}} \cr \cr
 #' #  NOTE: THIS ONLY SHOWS PERCENTILES AND MEAN FOR THE VALID (NOT NA) VALUES !
 #' Defining these types as type=1 and type="i/n" will create simple discontinuous quantiles, without interpolation where there are jumps in the values analyzed.
 #' *** WARNING: Unless set type=1, the default type=7 in which case quantile() FUNCTION INTERPOLATES, WHICH ISN'T OBVIOUS IN EVERY DATASET!
@@ -25,7 +25,7 @@
 #' @param x Required, numeric vector (or data.frame) of values whose distribution(s) you want to look at.
 #' @param wts NULL by default, or vector of numbers (same length as x vector or as a column of x) to use as weights in Hmisc::wtd.quantile
 #' @param na.rm Logical optional TRUE by default, in which case NA values are removed first.
-#' @param type 'i/n' is default. See help for wtd.quantile in \code{\link[Hmisc]{wtd.stats}}
+#' @param type 'i/n' is default. See help for wtd.quantile in \code{\link[Hmisc]{wtd.Ecdf}}
 #' @param probs fractions 0-1, optional, (1:100)/100 by default, define quantiles to use
 #' @param digits Number, 3 by default, specifying how many decimal places to round to in results
 #' @return Returns a data.frame, one row per probs, so 100 by default (1%ile through 100%ile), one col per col of x

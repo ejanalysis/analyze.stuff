@@ -1,0 +1,4 @@
+Name: preparens
+Description: wrap this selected text in (parens) and put cursor before that
+Binding: preparens
+Interactive: true

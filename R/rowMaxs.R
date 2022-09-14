@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Returns maximum value of each row of a data.frame or matrix.
-#'   pmax
+#'
 #' @details This uses do.call(pmax.int). pmax and pmin take one or more vectors as arguments,
 #'   recycle them to common length and return a single vector giving
 #'   the ‘parallel’ maxima (or minima) of the argument vectors.

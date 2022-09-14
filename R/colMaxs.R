@@ -41,7 +41,8 @@ colMaxs <- function(df, na.rm=TRUE) {
 # microbenchmark(colMaxs(testdf))
 
 # library(profvis) # requires latest R version
- # profvis({print(colMaxs(testdf))})
+
+# profvis({print(colMaxs(testdf))})
 #
 # system.time(
 #   print(

@@ -16,7 +16,6 @@ Returns a vector of numbers of length equal to number of rows in df.
 }
 \description{
 Returns maximum value of each row of a data.frame or matrix.
-  pmax
 }
 \details{
 This uses do.call(pmax.int). pmax and pmin take one or more vectors as arguments,

@@ -20,29 +20,30 @@
 #' lead.zeroes(c('234','01234','3', NA, 'TEXT'), 5)
 #' @export
 lead.zeroes <- function(fips, length.desired) {
+  if (length(fips) == 0) return(NULL)
   navalues <- which(is.na(fips))
   fips <- as.character(fips)
   # could trim whitespace?
    if ( (length(length.desired) > 1) & (length(fips) != length(length.desired))) {
     warning("lengths of input vectors don't match, recycling length.desired")
     if (length(length.desired) > length(fips)) stop('length.desired cannot have more elements than fips')
-    
+
   }
   # recycle length.desired to be as long as fips vector
   length.desired <- recycled_vector(length.desired, length(fips))
   if ( any(length.desired == 0 | length.desired >= 100) ) {stop("error: string lengths must be >0 & <100")}
   if ( any(nchar(fips) > length.desired, na.rm = TRUE) ) {stop("error: some are longer than desired length")}
-  
+
   # fips <- paste( paste( rep( rep("0", length(length.desired)), length.desired), collapse = ""), fips, sep = "")
   # would not work vectorized/ multiple length.desired values.
-  
+
   # or maybe this, but can't say length.desired[i] unless it has same length as fip & can't handle recycling also:
   for (i in 1:length(fips)) {
-    fips[i] <- paste( paste( rep("0", length.desired[i]), collapse=""), fips[i], sep="") 
+    fips[i] <- paste( paste( rep("0", length.desired[i]), collapse=""), fips[i], sep="")
     }
-  
+
   fips <- substr(fips, nchar(fips) - length.desired + 1, nchar(fips))
-  
+
   fips[navalues] <- NA
   return(fips)
 }

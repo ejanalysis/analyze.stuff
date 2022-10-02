@@ -66,13 +66,13 @@
 #'
 #' # to find how many PEOPLE are at/above the 95th percentile place
 #' #  (won't be exactly 5% of people, just 5% of places):
-#' mybench2 <- sapply(x, function(z) quantile(z, probs=0.95, na.rm=TRUE))
+#' mybench2 <- sapply(x, function(z) stats::quantile(z, probs=0.95, na.rm=TRUE))
 #' count.above(x, benchmarks=mybench2, benchnames=paste('95th.', names(x), sep=''), wts=mywts )
 #' #
 #' \dontrun{
 #' # to find how many PEOPLE are at/above the MEDIAN place
 #' #  (won't be exactly 50% of people, just 50% of places):
-#' mybench2 <- sapply(x, function(z) quantile(z, probs=0.50, na.rm=TRUE))
+#' mybench2 <- sapply(x, function(z) stats::quantile(z, probs=0.50, na.rm=TRUE))
 #' count.above(x, benchmarks=mybench2, benchnames=paste('median.', names(x), sep=''), wts=mywts )
 #' ##not run## cbind( pct.above(1:100, wts=mywts) )
 #' # That does not recycle weights in this situation of a single vector argument

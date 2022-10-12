@@ -4,32 +4,45 @@
 \alias{cols.above.count}
 \title{Number of Columns with Value at or above Cutoff}
 \usage{
-cols.above.count(x, cutoff, or.tied = FALSE, na.rm = TRUE, below = FALSE)
+cols.above.count(
+  x,
+  cutoff,
+  or.tied = FALSE,
+  na.rm = TRUE,
+  below = FALSE,
+  one.cut.per.col = FALSE
+)
 }
 \arguments{
 \item{x}{Data.frame or matrix of numbers to be compared to cutoff value.}
 
-\item{cutoff}{The numeric threshold or cutoff to which numbers are compared.
-Default is arithmetic mean of row.
-Usually one number, but can be a vector of same length as number of rows,
-in which case each row can use a different cutoff.}
+\item{cutoff}{The numeric threshold(s) or cutoff(s) to which numbers are compared.
+Default is arithmetic mean of row (or mean of column, if one.cut.per.col = TRUE).
+Usually one number.
+Can be a vector of same length as number of rows (if one.cut.per.col=FALSE),
+in which case each row can use a different cutoff.
+Or, if one.cut.per.col = TRUE, then cutoff should be vector as long as the number of columns,
+and each column is compared to its own cutoff.}
 
 \item{or.tied}{Logical. Default is FALSE, which means we check if number in x is greater than the cutoff (>). If TRUE, check if greater than or equal (>=).}
 
 \item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when a row has an NA value in any column.}
 
 \item{below}{Logical. Default is FALSE. If TRUE, uses > or >= cutoff. If FALSE, uses < or <= cutoff.}
+
+\item{one.cut.per.col}{Default is FALSE, which means there is just 1 cutoff same for all cases,
+or cutoff is vector with one per row. If TRUE then cutoff is vector with 1 per column.}
 }
 \value{
 Returns a vector the same size as the number of rows in x.
 }
 \description{
-Find what number of columns have a value at or above some cutoff.
+Find what number of columns have a value at or above some cutoff(s).
 }
 \details{
-For a matrix with a few cols of related data, find what number of columns are at/above (or below) some cutoff.
-Returns a vector of number indicating how many of the columns are at/above the cutoff.
-Can be used in identifying places (rows) where some indicator(s) is/are at/above a cutoff, threshold value.
+For a matrix with a few cols of related data, find what number of columns are at/above (or below) some cutoff(s).
+Returns a vector of number indicating how many of the columns are at/above the cutoff(s).
+Can be used in identifying places (rows) where some indicator(s) is/are at/above one or more cutoffs, threshold values.
 }
 \note{
 Future work: these functions could have wts, na.rm, &

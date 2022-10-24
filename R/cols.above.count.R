@@ -1,4 +1,4 @@
-#' @title Number of Columns with Value at or above Cutoff
+#' @title Number of Columns with Value (at or) above (or below) Cutoff
 #'
 #' @description Find what number of columns have a value at or above some cutoff(s).
 #' @details For a matrix with a few cols of related data, find what number of columns are at/above (or below) some cutoff(s).

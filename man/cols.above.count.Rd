@@ -2,7 +2,7 @@
 % Please edit documentation in R/cols.above.count.R
 \name{cols.above.count}
 \alias{cols.above.count}
-\title{Number of Columns with Value at or above Cutoff}
+\title{Number of Columns with Value (at or) above (or below) Cutoff}
 \usage{
 cols.above.count(
   x,
@@ -63,6 +63,8 @@ out
 \code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} to see, for each column, the count or percent of rows that have values above or below a cutoff.
 
 \code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
+
+colcounter_summary() colcounter_summary_cum() colcounter_summary_pct() colcounter_summary_cum_pct() tablefixed()
 
 Other functions for above and below: 
 \code{\link{cols.above.pct}()},

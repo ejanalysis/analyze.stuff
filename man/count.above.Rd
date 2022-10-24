@@ -88,6 +88,7 @@ cbind(stat= pct.above(1:100, 98 , wts=mywts))
 #  (won't be exactly 5\% of places, just 5\% of people):
 mybench2 <- sapply(x, function(z) Hmisc::wtd.quantile(z, mywts, probs=0.95, na.rm=TRUE))
 count.above(x, benchmarks=mybench2, benchnames=paste('pop.95th.', names(x), sep=''), wts=1 )
+
 # to find how many PLACES are at/above the MEDIAN pop-wtd place
 #  (won't be exactly half of places, just half of people):
 mybench2 <- sapply(x, function(z) Hmisc::wtd.quantile(z, mywts, probs=0.50, na.rm=TRUE))
@@ -120,6 +121,8 @@ pct.above(x, benchnames=mynames, wts=mywts)
 \code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} to see, for each column, the count or percent of rows that have values above or below a cutoff.
 
 \code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
+
+colcounter_summary() colcounter_summary_cum() colcounter_summary_pct() colcounter_summary_cum_pct() tablefixed()
 
 Other functions for above and below: 
 \code{\link{cols.above.count}()},

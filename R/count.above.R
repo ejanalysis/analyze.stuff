@@ -59,6 +59,7 @@
 #' #  (won't be exactly 5% of places, just 5% of people):
 #' mybench2 <- sapply(x, function(z) Hmisc::wtd.quantile(z, mywts, probs=0.95, na.rm=TRUE))
 #' count.above(x, benchmarks=mybench2, benchnames=paste('pop.95th.', names(x), sep=''), wts=1 )
+#'
 #' # to find how many PLACES are at/above the MEDIAN pop-wtd place
 #' #  (won't be exactly half of places, just half of people):
 #' mybench2 <- sapply(x, function(z) Hmisc::wtd.quantile(z, mywts, probs=0.50, na.rm=TRUE))

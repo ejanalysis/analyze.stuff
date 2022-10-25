@@ -9,7 +9,7 @@
 #' @param cutoff The numeric threshold or cutoff to which numbers are compared. Default is arithmetic mean of row. Usually one number, but can be a vector of same length as number of rows, in which case each row can use a different cutoff.
 #' @param or.tied Logical. Default is FALSE, which means we check if number in x is greater than the cutoff (>). If TRUE, check if greater than or equal (>=).
 #' @param below Logical. Default is FALSE. If TRUE, uses > or >= cutoff. If FALSE, uses < or <= cutoff.
-#' @return Returns a logical matrix the same size as x. ** Note this is different than \code{\link{which}} -- That function returns the positions of TRUE elements but this returns TRUE or FALSE for all elements.
+#' @return Returns a logical matrix the same size as x. ** Note this is different than [which()] -- That function returns the positions of TRUE elements but this returns TRUE or FALSE for all elements.
 #' @template abovebelow
 #' @examples
 #' out <- cols.above.which(x<-data.frame(a=1:10, b=rep(7,10), c=7:16), cutoff=7)

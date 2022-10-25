@@ -24,5 +24,5 @@ after <- put.first(before, names(before)[length(before)] ) # put last column fir
 before; after
 }
 \seealso{
-\code{\link{change.fieldnames}}
+\code{\link[=change.fieldnames]{change.fieldnames()}}
 }

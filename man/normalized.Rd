@@ -21,7 +21,7 @@ Provides a data.frame that takes the matrix or data.frame
 and finds the weighted mean of each column and then divides each column of values by the column's weighted mean.
 }
 \details{
-Uses \code{\link{scale}}
+Uses \code{\link[=scale]{scale()}}
 }
 \examples{
 \dontrun{
@@ -30,5 +30,5 @@ Uses \code{\link{scale}}
 }
 }
 \seealso{
-\code{\link{scale}}
+\code{\link[=scale]{scale()}}
 }

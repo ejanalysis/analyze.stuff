@@ -36,7 +36,7 @@ Provides a plot just as a side effect
 Convenient wrapper for lowess(), lm(), and coef(line())
 }
 \details{
-This function adds lines to a scatter plot, using lines(\code{\link{lowess}}(x,y)), abline(\code{\link{lm}}(y~x)), and abline(\code{\link{coef}}(\code{\link{line}}(x,y)))
+This function adds lines to a scatter plot, using lines(\href{x,y}{lowess()}), abline(\href{y~x}{lm()}), and abline(\href{[line()](x,y)}{coef()})
 DOESN'T SEEM TO WORK IF log='xy' was used in original plot()
 NOTE: coef(line())  and lm()  give different results
 }

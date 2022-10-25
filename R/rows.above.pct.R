@@ -1,7 +1,7 @@
 #' @title Number or percent of rows (for each col) where value exceeds cutoff(s)
 #'
 #' @description
-#' Alias for \code{\link{pct.above}}
+#' Alias for [pct.above()]
 #' @param df Data.frame or matrix, required.
 #' @param benchmarks Default is 'mean' but otherwise this must be a number or numeric vector of thresholds to compare values to.
 #' @param benchnames Default is 'cutoff' and this string is used to create colnames for the results, such as above.cutoff.for.field1

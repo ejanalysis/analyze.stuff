@@ -11,7 +11,7 @@ dirr(path = ".", ignore.case = TRUE, ...)
 
 \item{ignore.case}{Logical, TRUE by default, optional. If FALSE, then this is case-sensitive.}
 
-\item{...}{Optional other parameters passed to \code{\link{dir}}}
+\item{...}{Optional other parameters passed to \code{\link[=dir]{dir()}}}
 }
 \value{
 A directory listing.
@@ -20,5 +20,5 @@ A directory listing.
 Function to let you see directory listing of files/folders ending in r, R, or RData
 }
 \seealso{
-\code{\link{dir2}} \code{\link{dirdirs}}
+\code{\link[=dir2]{dir2()}} \code{\link[=dirdirs]{dirdirs()}}
 }

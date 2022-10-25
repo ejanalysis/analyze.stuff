@@ -23,16 +23,16 @@ If TRUE, uses > or >= cutoff.
 If FALSE, uses < or <= cutoff.}
 }
 \value{
-Returns a logical matrix the same size as x. ** Note this is different than \code{\link{which}} --
-  That function returns the positions of TRUE elements but this returns TRUE or FALSE for all elements.
+Returns a logical matrix the same size as x. ** Note this is different than \code{\link[=which]{which()}} --
+That function returns the positions of TRUE elements but this returns TRUE or FALSE for all elements.
 }
 \description{
 Flag which cells are at or above some cutoff(s) or mean.
 }
 \details{
 For a matrix with a few cols of related data, find which cells are at or above (or below) some cutoff.
-  Returns a logical matrix, with TRUE for each cell that is at or above the cutoff.
-  Can be used in identifying places (rows) where some indicator(s) is or are at or above a cutoff, threshold value.
+Returns a logical matrix, with TRUE for each cell that is at or above the cutoff.
+Can be used in identifying places (rows) where some indicator(s) is or are at or above a cutoff, threshold value.
 }
 \note{
 Future work: these functions could have wts, na.rm, &

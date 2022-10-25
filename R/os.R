@@ -5,7 +5,7 @@
 #'  'mac', 'apple', 'osx', 'darwin', 'win', 'windows', 'pc', 'microsoft', 'unix'
 #' @return If queried, returns TRUE or FALSE (or NA if query not recognized).
 #'   If no query, returns 'win', 'mac', or 'unix'
-#' @seealso \code{\link{get.os}} which is a bit more limited
+#' @seealso [get.os()] which is a bit more limited
 #' @examples
 #'  os()
 #'  if (os('mac')) {cat("Hi, I'm a Mac\n")} else {cat('I am not a Mac\n')}

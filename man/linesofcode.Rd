@@ -19,7 +19,7 @@ For example, folder= '~/Documents/R PACKAGES' works but folder= '~/Documents/R P
 }
 \value{
 Returns a data.frame of results, with details depending on sums parameter.
- Also prints summary info if sums=FALSE, and returns detailed info.
+Also prints summary info if sums=FALSE, and returns detailed info.
 }
 \description{
 This is just a way to summarize how many lines of code appear to be in the .R files in the folder that a package is built from.

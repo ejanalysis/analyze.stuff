@@ -27,7 +27,7 @@ count.below(
 
 \item{below}{Logical, TRUE by default, which counts how many are below cutoff (or tied if or.tied). If FALSE, counts how many are above (or tied with) cutoff.}
 
-\item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.}
+\item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df\link{,1}) is an integer multiple of length(wts)  Applies weights to when counting how many.}
 }
 \value{
 Returns a vector of numbers of length equal to number of columns in df.
@@ -36,7 +36,7 @@ Returns a vector of numbers of length equal to number of columns in df.
 Count the number or percent of rows (for each col of a data.frame) where the value is below some specified cutoff(s)
 }
 \details{
-See \code{\link{count.above}} for details, for which this is a wrapper.
+See \code{\link[=count.above]{count.above()}} for details, for which this is a wrapper.
 }
 \note{
 Future work: these functions could have wts, na.rm, &

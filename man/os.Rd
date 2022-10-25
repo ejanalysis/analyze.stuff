@@ -12,16 +12,16 @@ os(x)
 }
 \value{
 If queried, returns TRUE or FALSE (or NA if query not recognized).
-  If no query, returns 'win', 'mac', or 'unix'
+If no query, returns 'win', 'mac', or 'unix'
 }
 \description{
 Answers query about whether operating system is a certain type,
-  or just reports type of operating system.
+or just reports type of operating system.
 }
 \examples{
  os()
  if (os('mac')) {cat("Hi, I'm a Mac\n")} else {cat('I am not a Mac\n')}
 }
 \seealso{
-\code{\link{get.os}} which is a bit more limited
+\code{\link[=get.os]{get.os()}} which is a bit more limited
 }

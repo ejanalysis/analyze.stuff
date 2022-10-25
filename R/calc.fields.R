@@ -23,7 +23,7 @@
 #' @param keep Optional. A vector of strings that are the input and/or calculated variables to return, in case not all intermediate variables are needed.
 #'   Default is all results of formulas but not any input variables.
 #' @return A data.frame of new variables where columns are defined by keep (or all calculated variables if keep is not specified).
-#' @seealso \code{\link{change.fieldnames}}
+#' @seealso [change.fieldnames()]
 #' @examples
 #'  myforms <- c('bsquared = b^2', 'that.plus.a=bsquared + a','result <-min(that.plus.a,b)')
 #'  mydat  <- data.frame(a=1:-2, b=2:5)

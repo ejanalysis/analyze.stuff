@@ -4,7 +4,7 @@
 #' Convenient wrapper for lowess(), lm(), and coef(line())
 #'
 #' @details
-#' This function adds lines to a scatter plot, using lines(\code{\link{lowess}}(x,y)), abline(\code{\link{lm}}(y~x)), and abline(\code{\link{coef}}(\code{\link{line}}(x,y)))
+#' This function adds lines to a scatter plot, using lines([lowess()](x,y)), abline([lm()](y~x)), and abline([coef()]([line()](x,y)))
 #' DOESN'T SEEM TO WORK IF log='xy' was used in original plot()
 #' NOTE: coef(line())  and lm()  give different results
 #' @param x x values, required

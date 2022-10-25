@@ -14,5 +14,5 @@ This function returns a character string "win" or "mac"
 depending on which operating system is being used (that's all it does right now)
 }
 \seealso{
-\code{\link{os}} which is more powerful and easier to type
+\code{\link[=os]{os()}} which is more powerful and easier to type
 }

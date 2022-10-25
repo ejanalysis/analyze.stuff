@@ -15,7 +15,7 @@ findArgs(env, pattern)
 arguments
 }
 \description{
-Get the arguments of a function as shown in help for \code{\link{grep}}
+Get the arguments of a function as shown in help for \code{\link[=grep]{grep()}}
 }
 \examples{
  findArgs("package:base", "warn")

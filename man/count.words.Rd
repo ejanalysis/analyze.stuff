@@ -27,7 +27,7 @@ count.words(
 
 \item{numbers.keep}{Not yet implemented. Would ignore numbers.}
 
-\item{...}{Any other parameters used by \code{\link{scan}} may be passed through. See \url{http://stat.ethz.ch/R-manual/R-devel/library/base/html/scan.html}}
+\item{...}{Any other parameters used by \code{\link[=scan]{scan()}} may be passed through. See \url{http://stat.ethz.ch/R-manual/R-devel/library/base/html/scan.html}}
 }
 \value{
 Returns a data.frame with term (term) and frequencies (freq) sorted by frequency,

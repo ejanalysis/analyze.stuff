@@ -3,7 +3,7 @@
 #' @details The word pause is easier to remember than Sys.sleep, and Sys.sleep does not work on all systems apparently.
 #' @param seconds Time in seconds. Optional, default is 1 second.
 #' @return No value is returned.
-#' @seealso \code{\link{Sys.sleep}}
+#' @seealso [Sys.sleep()]
 #' @export
 pause <- function(seconds=1) {
   x <- FALSE

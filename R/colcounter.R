@@ -7,7 +7,7 @@
 #' @param one.cut.per.col if FALSE, compare 1 cutoff to all of x.
 #'   If TRUE, specify one cutoff per column.
 #' @return vector of counts as long as NROW(x)
-#' @seealso colcounter_summary() colcounter_summary_cum() colcounter_summary_pct() colcounter_summary_cum_pct() tablefixed()
+#' @seealso colcounter_summary_all() colcounter_summary() colcounter_summary_cum() colcounter_summary_pct() colcounter_summary_cum_pct() tablefixed()
 #' @export
 #'
 #' @examples

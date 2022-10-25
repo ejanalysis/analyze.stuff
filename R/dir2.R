@@ -2,9 +2,9 @@
 #' @description Function to let you see directory listing using wildcard search syntax like '*.R'
 #' @param x Query string that can use wildcards to search directory
 #' @param ignore.case Logical, TRUE by default, optional. If FALSE, then this is case-sensitive.
-#' @param ... Optional other parameters passed to \code{\link{dir}}
+#' @param ... Optional other parameters passed to [dir()]
 #' @return A directory listing.
-#' @seealso \code{\link{dirdirs}} \code{\link{dirr}}
+#' @seealso [dirdirs()] [dirr()]
 #' @examples
 #' dir2('*.txt')
 #' dir2('*.txt', path='~')

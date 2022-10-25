@@ -28,7 +28,7 @@ rows.above.pct(
 
 \item{below}{Logical, FALSE by default, which counts how many are above cutoff (or tied if or.tied). If TRUE, counts how many are below (or tied with) cutoff.}
 
-\item{wts}{Number or vector, default is 1. Length must be a factor of # rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.}
+\item{wts}{Number or vector, default is 1. Length must be a factor of # rows in df, so length(df\link{,1}) is an integer multiple of length(wts)  Applies weights to when counting how many.}
 
 \item{of.what}{Optional, character, 'all' by default, defines xxx as the text used in "pct.above.xxx" (or below) for fieldnames in results}
 }
@@ -36,7 +36,7 @@ rows.above.pct(
 Returns a vector of numbers of length equal to number of columns in df.
 }
 \description{
-Alias for \code{\link{pct.above}}
+Alias for \code{\link[=pct.above]{pct.above()}}
 }
 \note{
 Future work: these functions could have wts, na.rm, &

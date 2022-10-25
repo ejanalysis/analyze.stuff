@@ -2,9 +2,9 @@
 #' @description Function to let you see directory listing of files/folders ending in r, R, or RData
 #' @param path Path as character string, optional. Default is current working directory.
 #' @param recursive Logical value, optional, FALSE by default. Should subdirectories be shown.
-#' @param ... Optional other parameters passed to \code{\link{list.dirs}}
+#' @param ... Optional other parameters passed to [list.dirs()]
 #' @return A directory listing
-#' @seealso \code{\link{dir2}} \code{\link{dirr}}
+#' @seealso [dir2()] [dirr()]
 #' @examples
 #' dirdirs()
 #' @export

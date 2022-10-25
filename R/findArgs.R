@@ -1,5 +1,5 @@
 #' @title Get the arguments of a function
-#' @description Get the arguments of a function as shown in help for \code{\link{grep}}
+#' @description Get the arguments of a function as shown in help for [grep()]
 #' @param env e.g., 'package:analyze.stuff' 
 #' @param pattern search query as regular expression
 #' @return arguments

@@ -16,7 +16,7 @@ similar.p(a, b, tol = 99.99, na.rm = FALSE)
 \item{na.rm}{Logical value, optional, FALSE by default. not implemented here yet. Should NA values be removed first, or compared and treated as NA matches NA.}
 }
 \value{
-Data.frame showing what % of rows are "similar" in dataset a vs b, for each column.
+Data.frame showing what \% of rows are "similar" in dataset a vs b, for each column.
 }
 \description{
 Compare two vectors, matrices, or data.frames of numbers to see how often they are similar.
@@ -33,5 +33,5 @@ May want to add a 3d case, where NA can match NA.
  )
 }
 \seealso{
-\code{\link{similar}}, \code{\link{all.equal}}, \code{\link{identical}}, \code{\link{isTRUE}}, \code{\link{==}}, \code{\link{all}}
+\code{\link[=similar]{similar()}}, \code{\link[=all.equal]{all.equal()}}, \code{\link[=identical]{identical()}}, \code{\link[=isTRUE]{isTRUE()}}, \code{\link[===]{==()}}, \code{\link[=all]{all()}}
 }

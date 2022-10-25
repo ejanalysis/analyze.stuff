@@ -23,5 +23,5 @@ Given a matrix or numeric data.frame, round each column to a specified column-sp
  signifarray(data.frame(a=rnorm(10), b=rnorm(10), c=rnorm(10)), 1:3)
 }
 \seealso{
-\code{\link{signif}}
+\code{\link[=signif]{signif()}}
 }

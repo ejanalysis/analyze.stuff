@@ -1,7 +1,7 @@
 #' @title Weighted Mean of each Column - WORK IN PROGRESS
 #' @description
 #' Returns weighted mean of each column of a data.frame or matrix, based on specified weights, one weight per row.
-#' But also see \code{\link[data.table]{data.table}} used for \code{\link{wtd.colMeans}}
+#' But also see [data.table::data.table()] used for [wtd.colMeans()]
 #'
 #' @param x Data.frame or matrix, required.
 #' @param wts Weights, optional, defaults to nothing i.e. unweighted, and if specified must be vector of weights recycled to be same length as NROW(x) # not the name of the weights field in data.frame x, as single character string, e.g., "weightcol"

@@ -15,10 +15,10 @@ expand.gridMatrix(x, y)
 This function returns a matrix and tries to assign colnames based on the two input parameters. If they are variables, it uses those names as colnames. Otherwise it uses "x" and "y" as colnames.
 }
 \description{
-This function is similar to \code{\link{expand.grid}}, in the sense that it returns a 
-  matrix that has 2 columns, one for each input, and one row per combination, cycling through the first field first.
-  It differs from expand.grid in that this returns a matrix not data.frame, only accepts two parameters creating two columns, for now,
-  and lacks the other parameters of expand.grid
+This function is similar to \code{\link[=expand.grid]{expand.grid()}}, in the sense that it returns a
+matrix that has 2 columns, one for each input, and one row per combination, cycling through the first field first.
+It differs from expand.grid in that this returns a matrix not data.frame, only accepts two parameters creating two columns, for now,
+and lacks the other parameters of expand.grid
 }
 \examples{
  expand.gridMatrix(99:103, 1:2) 
@@ -26,5 +26,5 @@ This function is similar to \code{\link{expand.grid}}, in the sense that it retu
  expand.gridMatrix(zz, top) 
 }
 \seealso{
-\code{\link{expand.grid}}
+\code{\link[=expand.grid]{expand.grid()}}
 }

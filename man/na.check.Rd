@@ -15,7 +15,7 @@ na.check(df, zone, min.text = FALSE)
 }
 \value{
 Returns a vector of results, one per col of df
-  But if zone (subgroups) specified, just returns count of NA values in each subgroup for each field.
+But if zone (subgroups) specified, just returns count of NA values in each subgroup for each field.
 }
 \description{
 Returns basic information on each field in a data.frame, like count of rows that are zero, negative,

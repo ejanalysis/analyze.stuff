@@ -43,5 +43,5 @@ df[ change.fieldnames(names(df), c('ID', 'OTHER', 'REGION', 'PCTILE'), sort=TRUE
 #  change.fieldnames is more useful when file specified
 }
 \seealso{
-\code{\link{put.first}} which make it easier to rearrange the order of columns in a data.frame.
+\code{\link[=put.first]{put.first()}} which make it easier to rearrange the order of columns in a data.frame.
 }

@@ -11,7 +11,7 @@ dir2(x, ignore.case = TRUE, ...)
 
 \item{ignore.case}{Logical, TRUE by default, optional. If FALSE, then this is case-sensitive.}
 
-\item{...}{Optional other parameters passed to \code{\link{dir}}}
+\item{...}{Optional other parameters passed to \code{\link[=dir]{dir()}}}
 }
 \value{
 A directory listing.
@@ -26,5 +26,5 @@ dir2()   # shows only files, not folders, if no x is specified.
 dir2(path='~')  # shows only files, not folders, if no x is specified.
 }
 \seealso{
-\code{\link{dirdirs}} \code{\link{dirr}}
+\code{\link[=dirdirs]{dirdirs()}} \code{\link[=dirr]{dirr()}}
 }

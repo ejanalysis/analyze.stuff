@@ -16,7 +16,7 @@ rows.above.which(x, cutoff, or.tied = FALSE, below = FALSE)
 \item{below}{Logical. Default is FALSE. If TRUE, uses > or >= cutoff. If FALSE, uses < or <= cutoff.}
 }
 \value{
-Returns a logical matrix the same size as x. ** Note this is different than \code{\link{which}} -- That function returns the positions of TRUE elements but this returns TRUE or FALSE for all elements.
+Returns a logical matrix the same size as x. ** Note this is different than \code{\link[=which]{which()}} -- That function returns the positions of TRUE elements but this returns TRUE or FALSE for all elements.
 }
 \description{
 Flag which cells are at or above some cutoff(s) or mean.

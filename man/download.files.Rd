@@ -36,12 +36,12 @@ Returns vector of numbers, each being 1 or 0 or 2 to signify success or failure 
 }
 \description{
 Attempts to download files, given name(s) all from one specified url, saving them in specified folder.
-  Just a wrapper that Uses \code{\link{download.file}} since that only downloads a single file.
+Just a wrapper that Uses \code{\link[=download.file]{download.file()}} since that only downloads a single file.
 }
 \note{
 Could recode to use \code{\pkg{curl}} package, since curl::curl_download() is a replacement for base download.file() with better performance,
-  support for encryption (https, ftps), gzip compression, authentication, etc.
+support for encryption (https, ftps), gzip compression, authentication, etc.
 }
 \seealso{
-\code{\link{download.file}} \code{\link[curl]{curl_download}}
+\code{\link[=download.file]{download.file()}} \code{\link[curl:curl_download]{curl::curl_download()}}
 }

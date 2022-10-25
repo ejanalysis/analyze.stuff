@@ -25,5 +25,5 @@ See \url{http://en.wikipedia.org/wiki/Harmonic_mean} for many applications of th
 harmean(c(1,2,4))
 }
 \seealso{
-\code{\link{geomean}}  \code{\link{mean}}  \code{\link{rms}}
+\code{\link[=geomean]{geomean()}}  \code{\link[=mean]{mean()}}  \code{\link[=rms]{rms()}}
 }

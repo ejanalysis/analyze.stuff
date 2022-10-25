@@ -25,7 +25,7 @@ count.above(
 
 \item{below}{Logical, FALSE by default, which counts how many are above cutoff (or tied if or.tied). If TRUE, counts how many are below (or tied with) cutoff.}
 
-\item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.}
+\item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df\link{,1}) is an integer multiple of length(wts)  Applies weights to when counting how many.}
 
 \item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed first. Otherwise result will be NA when any NA is in a col.}
 }
@@ -37,28 +37,28 @@ Count the number or percent of rows (for each col of a data.frame) where the val
 }
 \details{
 \itemize{
-  \item If wts is population counts, for example, this gives the COUNT of people (not rows) for whom value in df[,x] exceeds benchmark for each column x
-  \item If below=FALSE by default, reports on those above (or tied with, if or.tied) cutoff. But if below=TRUE, this reports on those below  (or tied with, if or.tied) cutoff.
-  \item If df (passed to the function) is a data.frame or matrix, the function returns a vector of length= length(df) or number of cols in matrix.
-  \item If df is just a vector, it is treated like a 1-column data.frame, so the function returns a single value.
-  \item If benchmarks (passed to the function) is a data.frame matching df in dimensions, each value is used as the cutoff for the corresponding cell in df.
-  \item If benchmarks is a vector of length= length(df), each value in benchmarks is the cutoff for the corresponding column in df.
-  \item If benchmarks is a shorter vector, it is recycled. (e.g., a vector of length 2 would use the first benchmark as the cutoff for all odd columns of df, the second for all even columns of df).
-  \item If benchmarks is a single numeric value, it is used as the cutoff value in every comparison for all of df.
-  \item If benchmarks is omitted, the default behavior is to use the arithmetic mean value a column of df as the cutoff for that column of df.
-  \item If benchnames is omitted, the word "cutoff" is used by default (unless benchmarks is also omitted).
-  \item If benchnames is specified but benchmarks is not, the benchmarks default to the column means, so benchnames is ignored and "mean" is used instead.
-  \item If wts is omitted the default is 1 which means no weighting. Just row counts.
-  \item If wts is a vector of length= length(df[,1]) then each row of df uses the corresponding weight and count is sum of wts not count of rows.
-  \item If wts is shorter than that, it is recycled but # of rows in df must be an integer multiple of length(wts).
-  \item NA values in df are not counted and are not in the numerator of pct.above() but the denominator of pct.above() is a count of all rows of df, not just the non-NA ones.
- }
+\item If wts is population counts, for example, this gives the COUNT of people (not rows) for whom value in df\link{,x} exceeds benchmark for each column x
+\item If below=FALSE by default, reports on those above (or tied with, if or.tied) cutoff. But if below=TRUE, this reports on those below  (or tied with, if or.tied) cutoff.
+\item If df (passed to the function) is a data.frame or matrix, the function returns a vector of length= length(df) or number of cols in matrix.
+\item If df is just a vector, it is treated like a 1-column data.frame, so the function returns a single value.
+\item If benchmarks (passed to the function) is a data.frame matching df in dimensions, each value is used as the cutoff for the corresponding cell in df.
+\item If benchmarks is a vector of length= length(df), each value in benchmarks is the cutoff for the corresponding column in df.
+\item If benchmarks is a shorter vector, it is recycled. (e.g., a vector of length 2 would use the first benchmark as the cutoff for all odd columns of df, the second for all even columns of df).
+\item If benchmarks is a single numeric value, it is used as the cutoff value in every comparison for all of df.
+\item If benchmarks is omitted, the default behavior is to use the arithmetic mean value a column of df as the cutoff for that column of df.
+\item If benchnames is omitted, the word "cutoff" is used by default (unless benchmarks is also omitted).
+\item If benchnames is specified but benchmarks is not, the benchmarks default to the column means, so benchnames is ignored and "mean" is used instead.
+\item If wts is omitted the default is 1 which means no weighting. Just row counts.
+\item If wts is a vector of length= length(df\link{,1}) then each row of df uses the corresponding weight and count is sum of wts not count of rows.
+\item If wts is shorter than that, it is recycled but # of rows in df must be an integer multiple of length(wts).
+\item NA values in df are not counted and are not in the numerator of pct.above() but the denominator of pct.above() is a count of all rows of df, not just the non-NA ones.
+}
 These could be renamed  rows.above.count(), rows.above.pct(), rows.above.which()
 to follow convention of cols.above.count(), cols.above.pct(), cols.above.which()
 and same using below too, like rows.below.pct() etc.
- and *** should make param names consistent, like x not df, cutoff(s) not benchmarks?, or.tied not gte
- but *** cols versions and all should have wts, na.rm, benchmarks as vector not just 1 number, benchnames, params
- and ** should have a "below" version for each variant
+and *** should make param names consistent, like x not df, cutoff(s) not benchmarks?, or.tied not gte
+but *** cols versions and all should have wts, na.rm, benchmarks as vector not just 1 number, benchnames, params
+and ** should have a "below" version for each variant
 }
 \note{
 Future work: these functions could have wts, na.rm, &

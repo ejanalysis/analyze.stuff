@@ -31,5 +31,5 @@ Otherwise, a list, with the nth element being a vector (length 1 or more) of cha
 Returns a list of the filepaths extracted to, from each zipfile. Names of list are the zip file names.
 }
 \description{
-Wrapper for \code{\link{unzip}} which unzips a single file.
+Wrapper for \code{\link[=unzip]{unzip()}} which unzips a single file.
 }

@@ -11,7 +11,7 @@ dirdirs(path = ".", recursive = FALSE, ...)
 
 \item{recursive}{Logical value, optional, FALSE by default. Should subdirectories be shown.}
 
-\item{...}{Optional other parameters passed to \code{\link{list.dirs}}}
+\item{...}{Optional other parameters passed to \code{\link[=list.dirs]{list.dirs()}}}
 }
 \value{
 A directory listing
@@ -23,5 +23,5 @@ Function to let you see directory listing of files/folders ending in r, R, or RD
 dirdirs()
 }
 \seealso{
-\code{\link{dir2}} \code{\link{dirr}}
+\code{\link[=dir2]{dir2()}} \code{\link[=dirr]{dirr()}}
 }

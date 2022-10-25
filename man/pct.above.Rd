@@ -28,7 +28,7 @@ pct.above(
 
 \item{below}{Logical, FALSE by default, which counts how many are above cutoff (or tied if or.tied). If TRUE, counts how many are below (or tied with) cutoff.}
 
-\item{wts}{Number or vector, default is 1. Length must be a factor of # rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.}
+\item{wts}{Number or vector, default is 1. Length must be a factor of # rows in df, so length(df\link{,1}) is an integer multiple of length(wts)  Applies weights to when counting how many.}
 
 \item{of.what}{Optional, character, 'all' by default, defines xxx as the text used in "pct.above.xxx" (or below) for fieldnames in results}
 }
@@ -51,7 +51,7 @@ below=FALSE by default, reports on those above (or tied with, if or.tied) cutoff
 \item If benchnames is omitted, the word "cutoff" is used by default (unless benchmarks is also omitted).
 \item If benchnames is specified but benchmarks is not, the benchmarks default to the column means, so benchnames is ignored and "mean" is used instead.
 \item If wts is omitted the default is 1 which means no weighting. Just row counts.
-\item If wts is a vector of length= length(df[,1]) then each row of df uses the corresponding weight and count is sum of wts not count of rows.
+\item If wts is a vector of length= length(df\link{,1}) then each row of df uses the corresponding weight and count is sum of wts not count of rows.
 \item If wts is shorter than that, it is recycled but # of rows in df must be an integer multiple of length(wts).
 }
 NA values in df are not counted and are not in the numerator of pct.above() but the denominator of pct.above() is a count of all rows of df, not just the non-NA ones.
@@ -63,8 +63,8 @@ but *** cols versions and all should have wts, na.rm, benchmarks as vector not j
 and ** should have a "below" version for each variant
 
 Note Hmisc::wtd.mean is not exactly same as stats::weighted.mean since na.rm defaults differ \cr
-   Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ.\cr
-     weighted.mean(x, w,            ...,              na.rm = FALSE)
+Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE ) # Note na.rm defaults differ.\cr
+weighted.mean(x, w,            ...,              na.rm = FALSE)
 }
 \note{
 Future work: these functions could have wts, na.rm, &

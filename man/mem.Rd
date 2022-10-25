@@ -14,7 +14,7 @@ Results in printing a list of objects and their sizes
 }
 \description{
 See a list of the largest objects in memory, and how much RAM they are using up
-Uses \code{\link{object.size}}  to return info on memory consumption for largest n objects
+Uses \code{\link[=object.size]{object.size()}}  to return info on memory consumption for largest n objects
 }
 \examples{
 \dontrun{

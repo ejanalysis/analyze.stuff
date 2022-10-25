@@ -1,7 +1,7 @@
 #' @title Weighted Mean of each Column - WORK IN PROGRESS (NA HANDLING NOT YET TESTED)
 #' @description
 #'  Returns weighted mean of each column of a data.frame or matrix, based on specified weights, one weight per row.
-#'  Relies on \code{\link{weighted.mean}} and unlike \code{\link{wtd.colMeans2}} it also uses \code{\link[data.table]{data.table}}
+#'  Relies on [weighted.mean()] and unlike [wtd.colMeans2()] it also uses [data.table::data.table()]
 #' @details ** Not yet handling factor or character fields well. \cr \cr
 #'  For a given column of data values, \cr
 #'   If just some values are NA (but no wts are NA), and na.rm = TRUE as in default, \cr
@@ -23,13 +23,13 @@
 #' @param wts Weights, optional, defaults to 1 which is unweighted, numeric vector of length equal to number of rows
 #' @param by Optional vector, default is none, that can provide a single column name (as character) or character vector of column names,
 #'   specifying what to group by, producing the weighted mean within each group.
-#'   See help for \code{\link[data.table]{data.table}}
+#'   See help for [data.table::data.table()]
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found.
 #'   Otherwise result will be NA when any NA is in a vector.
 #' @param dims dims=1 is default. Not used. integer: Which dimensions are regarded as 'rows' or 'columns' to sum over.
 #'   For row, the sum or mean is over dimensions dims+1, ...; for col it is over dimensions 1:dims.
-#' @return If \code{by} is not specified, returns a vector of numbers of length equal to number of columns in df.
-#'   If \code{by} is specified, returns weighted mean for each column in each subset defined via \code{by}.
+#' @return If `by` is not specified, returns a vector of numbers of length equal to number of columns in df.
+#'   If `by` is specified, returns weighted mean for each column in each subset defined via `by`.
 #' @examples
 #'   # library(analyze.stuff)
 #'   wtd.colMeans(data.frame(a = 1:4, b = c(NA, 2, 3, 4)))

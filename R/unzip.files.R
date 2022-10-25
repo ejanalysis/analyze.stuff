@@ -1,5 +1,5 @@
 #' @title Unzip multiple zip files
-#' @description Wrapper for \code{\link{unzip}} which unzips a single file.
+#' @description Wrapper for [unzip()] which unzips a single file.
 #' @param zipfile vector of names of files to unzip
 #' @param files Optional, NULL by default which signifies all files in each zipfile will be extracted.
 #' Otherwise, a list, with the nth element being a vector (length 1 or more) of character string names of files to extract from the nth zipfile.

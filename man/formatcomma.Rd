@@ -15,18 +15,18 @@ formatcomma(x, big.m = ",", nsmall = 2, drop0trailing = FALSE, ...)
 
 \item{drop0trailing}{Default is FALSE, which means zeroes after the last nonzero digit in the decimal portion are still shown (TRUE would mean 1.2 is shown, not 1.20)}
 
-\item{...}{other parameters passed to \code{\link{format}}}
+\item{...}{other parameters passed to \code{\link[=format]{format()}}}
 }
 \value{
-Same as \code{\link{format}} but with some preselected defaults
+Same as \code{\link[=format]{format()}} but with some preselected defaults
 }
 \description{
-Wrapper for \code{\link{format}} making it easier to use with my typical settings
+Wrapper for \code{\link[=format]{format()}} making it easier to use with my typical settings
 }
 \examples{
  cbind(mynum=formatcomma(c(1452345, 1.2, 4234.12345)))
  cbind(mynum=formatcomma(c(1452345, 1.2, 4234.12345), drop0trailing=FALSE))
 }
 \seealso{
-\code{\link{format}}
+\code{\link[=format]{format()}}
 }

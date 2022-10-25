@@ -33,5 +33,5 @@ May want to add a 3d case, where NA can match NA.
    other2=c(101:109, 110.01) ))
 }
 \seealso{
-\code{\link{similar.p}}, \code{\link{all.equal}}, \code{\link{identical}}, \code{\link{isTRUE}}, \code{\link{==}}, \code{\link{all}}
+\code{\link[=similar.p]{similar.p()}}, \code{\link[=all.equal]{all.equal()}}, \code{\link[=identical]{identical()}}, \code{\link[=isTRUE]{isTRUE()}}, \code{\link[===]{==()}}, \code{\link[=all]{all()}}
 }

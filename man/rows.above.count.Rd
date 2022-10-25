@@ -25,7 +25,7 @@ rows.above.count(
 
 \item{below}{Logical, FALSE by default, which counts how many are above cutoff (or tied if or.tied). If TRUE, counts how many are below (or tied with) cutoff.}
 
-\item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.}
+\item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df\link{,1}) is an integer multiple of length(wts)  Applies weights to when counting how many.}
 
 \item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed first. Otherwise result will be NA when any NA is in a col.}
 }
@@ -33,7 +33,7 @@ rows.above.count(
 Returns a vector of numbers of length equal to number of columns in df.
 }
 \description{
-Alias for \code{\link{count.above}}
+Alias for \code{\link[=count.above]{count.above()}}
 }
 \note{
 Future work: these functions could have wts, na.rm, &

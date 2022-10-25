@@ -25,5 +25,5 @@ See \url{http://en.wikipedia.org/wiki/Root_mean_square} or \url{http://mathworld
 rms(c(1,2,4)) 
 }
 \seealso{
-\code{\link{geomean}}  \code{\link{mean}}  \code{\link{harmean}}
+\code{\link[=geomean]{geomean()}}  \code{\link[=mean]{mean()}}  \code{\link[=harmean]{harmean()}}
 }

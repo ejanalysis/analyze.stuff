@@ -3,7 +3,7 @@
 #'
 #' @param file Character string filename, with or without path, for text file to be analyzed. Words assumed to be separated by spaces.
 #' @param wordclump  number of words per clump, so if wordclump=2, it counts how often each 2-word phrase appears.
-#' @param ... Any other parameters used by \code{\link{scan}} may be passed through. See \url{http://stat.ethz.ch/R-manual/R-devel/library/base/html/scan.html}
+#' @param ... Any other parameters used by [scan()] may be passed through. See <http://stat.ethz.ch/R-manual/R-devel/library/base/html/scan.html>
 #' @param ignore.case Logical, default TRUE which means not case-sensitive.
 #' @param stopwords Vector of words to ignore and not count. Default is none, optional.
 #' @param numbers.keep Not yet implemented. Would ignore numbers.

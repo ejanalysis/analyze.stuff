@@ -19,5 +19,5 @@ Do nothing until time is up. Pause for some reason, wait for a download, etc.
 The word pause is easier to remember than Sys.sleep, and Sys.sleep does not work on all systems apparently.
 }
 \seealso{
-\code{\link{Sys.sleep}}
+\code{\link[=Sys.sleep]{Sys.sleep()}}
 }

@@ -26,7 +26,7 @@
 #' @param na.rm TRUE by default, specifies if NA values should be removed first.
 #' @param digits Number, 3 by default, how many decimal places to round to
 #' @return Returns a data.frame
-#' @seealso  \code{\link{pctiles}} \code{\link{pctiles.exact}} \code{\link{pctiles.a.over.b}} \code{\link{wtd.pctiles.exact}} \code{\link{wtd.pctiles}} \code{\link{wtd.pctiles.fast}}
+#' @seealso  [pctiles()] [pctiles.exact()] [pctiles.a.over.b()] [wtd.pctiles.exact()] [wtd.pctiles()] [wtd.pctiles.fast()]
 #' @examples
 #' #
 #' @export

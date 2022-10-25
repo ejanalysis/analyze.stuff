@@ -12,25 +12,25 @@ installrequired(x, github, gitlatest = FALSE)
 \item{github}{optional vector of user slash package names e.g., "rstudio/shiny" but those can just be in x now.
 If github = 'ej' it installs several specific ones from github (also see \url{http://www.ejanalysis.com}):
 \itemize{
- \item 'rstudio/shiny'
- \item 'ejanalysis/analyze.stuff'
- \item 'ejanalysis/ejanalysis'
- \item 'ejanalysis/proxistat'
- \item 'ejanalysis/ejscreen'
- \item 'ejanalysis/ACSdownload'
- \item 'ejanalysis/countyhealthrankings'
- \item 'ejanalysis/UScensus2010blocks'
+\item 'rstudio/shiny'
+\item 'ejanalysis/analyze.stuff'
+\item 'ejanalysis/ejanalysis'
+\item 'ejanalysis/proxistat'
+\item 'ejanalysis/ejscreen'
+\item 'ejanalysis/ACSdownload'
+\item 'ejanalysis/countyhealthrankings'
+\item 'ejanalysis/UScensus2010blocks'
 }}
 
 \item{gitlatest}{Optional logical, default is FALSE which means not downloaded from github if pkg of that name is already installed. If TRUE, download latest from github even if already installed.}
 }
 \description{
 Convenient way to specify packages to attach, and install any that are not already installed.
- It only installs a package if that package is not already available locally.
+It only installs a package if that package is not already available locally.
 }
 \details{
-Uses \code{\link{require}} and if necessary uses \code{\link{install.packages}} or install_github as explained in \code{\link[devtools]{remote-reexports}}
- If no parameters, prints an example.
+Uses \code{\link[=require]{require()}} and if necessary uses \code{\link[=install.packages]{install.packages()}} or install_github as explained in \code{\link[devtools:remote-reexports]{devtools::remote-reexports()}}
+If no parameters, prints an example.
 }
 \examples{
   \dontrun{

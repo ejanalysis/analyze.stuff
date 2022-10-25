@@ -13,7 +13,7 @@ wtd.colMeans(x, wts, by = NULL, na.rm = TRUE, dims = 1)
 
 \item{by}{Optional vector, default is none, that can provide a single column name (as character) or character vector of column names,
 specifying what to group by, producing the weighted mean within each group.
-See help for \code{\link[data.table]{data.table}}}
+See help for \code{\link[data.table:data.table]{data.table::data.table()}}}
 
 \item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found.
 Otherwise result will be NA when any NA is in a vector.}
@@ -23,29 +23,29 @@ For row, the sum or mean is over dimensions dims+1, ...; for col it is over dime
 }
 \value{
 If \code{by} is not specified, returns a vector of numbers of length equal to number of columns in df.
-  If \code{by} is specified, returns weighted mean for each column in each subset defined via \code{by}.
+If \code{by} is specified, returns weighted mean for each column in each subset defined via \code{by}.
 }
 \description{
 Returns weighted mean of each column of a data.frame or matrix, based on specified weights, one weight per row.
- Relies on \code{\link{weighted.mean}} and unlike \code{\link{wtd.colMeans2}} it also uses \code{\link[data.table]{data.table}}
+Relies on \code{\link[=weighted.mean]{weighted.mean()}} and unlike \code{\link[=wtd.colMeans2]{wtd.colMeans2()}} it also uses \code{\link[data.table:data.table]{data.table::data.table()}}
 }
 \details{
 ** Not yet handling factor or character fields well. \cr \cr
- For a given column of data values, \cr
-  If just some values are NA (but no wts are NA), and na.rm = TRUE as in default, \cr
-   returns a weighted mean of all non-NA values. \cr
-  If just some values are NA (but no wts are NA), and na.rm = FALSE, \cr
-   returns NA. \cr
-  If all values are NA (but no wts are NA), \cr
-   returns NaN. \cr
-  If any weights are NA, it behaves like stats::weighted.mean, so it \cr
-   returns NA, \cr
-   unless each value corresponding to a NA weight is also NA and thus removed. \cr
-   \cr
-  Note Hmisc::wtd.mean is not exactly same as stats::weighted.mean since na.rm defaults differ \cr
-   Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE )  \cr
-   Note na.rm defaults differ. \cr
-   weighted.mean(x, w,            ...,              na.rm = FALSE)
+For a given column of data values, \cr
+If just some values are NA (but no wts are NA), and na.rm = TRUE as in default, \cr
+returns a weighted mean of all non-NA values. \cr
+If just some values are NA (but no wts are NA), and na.rm = FALSE, \cr
+returns NA. \cr
+If all values are NA (but no wts are NA), \cr
+returns NaN. \cr
+If any weights are NA, it behaves like stats::weighted.mean, so it \cr
+returns NA, \cr
+unless each value corresponding to a NA weight is also NA and thus removed. \cr
+\cr
+Note Hmisc::wtd.mean is not exactly same as stats::weighted.mean since na.rm defaults differ \cr
+Hmisc::wtd.mean(x, weights=NULL, normwt="ignored", na.rm = TRUE )  \cr
+Note na.rm defaults differ. \cr
+weighted.mean(x, w,            ...,              na.rm = FALSE)
 }
 \examples{
   # library(analyze.stuff)

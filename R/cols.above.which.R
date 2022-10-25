@@ -15,7 +15,7 @@
 #' @param below Logical. Default is FALSE.
 #'   If TRUE, uses > or >= cutoff.
 #'   If FALSE, uses < or <= cutoff.
-#' @return Returns a logical matrix the same size as x. ** Note this is different than \code{\link{which}} --
+#' @return Returns a logical matrix the same size as x. ** Note this is different than [which()] --
 #'   That function returns the positions of TRUE elements but this returns TRUE or FALSE for all elements.
 #' @template abovebelow
 #' @examples

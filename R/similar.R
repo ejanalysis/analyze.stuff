@@ -12,7 +12,7 @@
 #' @param na.rm Logical value, optional, FALSE by default. not implemented here yet. Should NA values be removed first, or compared and treated as NA matches NA.
 #' @param shownames Logical value, optional, TRUE by default. Not used. Should names be shown in results?
 #' @return Data.frame showing what # of rows are "similar" in dataset a vs b, for each column.
-#' @seealso \code{\link{similar.p}}, \code{\link{all.equal}}, \code{\link{identical}}, \code{\link{isTRUE}}, \code{\link{==}}, \code{\link{all}}
+#' @seealso [similar.p()], [all.equal()], [identical()], [isTRUE()], [==()], [all()]
 #' @examples
 #'  similar.p(1:10, (1:10) * 1.001 )
 #'  similar.p(data.frame(x=1:10, y=101:110), data.frame(other=1.001*(1:10),

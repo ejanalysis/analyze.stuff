@@ -26,5 +26,5 @@ See \url{http://en.wikipedia.org/wiki/Geometric_mean} for many applications.
 geomean(c(4,9)) # is the square root of 4 * 9
 }
 \seealso{
-\code{\link{harmean}}  \code{\link{mean}}  \code{\link{rms}}
+\code{\link[=harmean]{harmean()}}  \code{\link[=mean]{mean()}}  \code{\link[=rms]{rms()}}
 }

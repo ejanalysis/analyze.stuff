@@ -11,7 +11,7 @@
 #' @param tol Number, 99.99 by default, specifying tolerance as a percentage 0-100, such that "similar" is defined as the two values being within 100-tol percent of each other.
 #' @param na.rm Logical value, optional, FALSE by default. not implemented here yet. Should NA values be removed first, or compared and treated as NA matches NA.
 #' @return Data.frame showing what % of rows are "similar" in dataset a vs b, for each column.
-#' @seealso \code{\link{similar}}, \code{\link{all.equal}}, \code{\link{identical}}, \code{\link{isTRUE}}, \code{\link{==}}, \code{\link{all}}
+#' @seealso [similar()], [all.equal()], [identical()], [isTRUE()], [==()], [all()]
 #' @examples
 #'  similar(1:10, (1:10) * 1.001 )
 #'  similar(

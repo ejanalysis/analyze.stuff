@@ -19,11 +19,11 @@ Returns maximum value of each row of a data.frame or matrix.
 }
 \details{
 This uses do.call(pmax.int). pmax and pmin take one or more vectors as arguments,
-  recycle them to common length and return a single vector giving
-  the ‘parallel’ maxima (or minima) of the argument vectors.
-  pmax.int and pmin.int are faster internal versions only used when all arguments are atomic vectors and there are no classes: they drop all attributes.
-  (Note that pmax and pmax.int both fail for raw and complex vectors since these have no ordering.)
-  matrixStats::rowMaxs works for matrix only, not data.frame.
+recycle them to common length and return a single vector giving
+the ‘parallel’ maxima (or minima) of the argument vectors.
+pmax.int and pmin.int are faster internal versions only used when all arguments are atomic vectors and there are no classes: they drop all attributes.
+(Note that pmax and pmax.int both fail for raw and complex vectors since these have no ordering.)
+matrixStats::rowMaxs works for matrix only, not data.frame.
 
 ** NOTE: The useful \link{matrixStats} package will provide the basis for extended rowMins, rowMax, colMins,
 colMaxs functions to be made available through this package.
@@ -38,13 +38,13 @@ providing them methods to handle data.frames, not just matrix class objects,
 and perhaps provide new or different parameters or defaults, such as defaulting to na.rm=TRUE instead of FALSE,
 and handling factor class columns in a data.frame.
 That has not been done yet, so colMaxs() etc. refer to the slower more flexible ones,
-  and the faster matrix-only ones are via matrixStats::colMaxs etc. \cr \cr
+and the faster matrix-only ones are via matrixStats::colMaxs etc. \cr \cr
 ** NOTE: max() and min() and matrixStats::colMaxs from \link{matrixStats} etc. default to na.rm=FALSE,
 but this function defaults to na.rm=TRUE because that just seems more frequently useful. \cr \cr
 ** NOTE: \code{\link{min}} and \code{\link{max}} & this function will handle character elements
 by coercing all others in the column to character, which can be confusing
- -- e.g., note that min(c(8,10,'txt')) returns '10' not '8' and max returns 'txt'
- (also see the help for \code{\link{Comparison}}) \cr \cr
+-- e.g., note that min(c(8,10,'txt')) returns '10' not '8' and max returns 'txt'
+(also see the help for \code{\link{Comparison}}) \cr \cr
 If this worked just like max() and min(), cols that are factors would make this fail.
 max or min of a factor fails, even if as.character() of the factor would return a valid numeric vector.
 That isn't an issue with a matrix, but a data.frame might have numbers stored as factor.
@@ -82,9 +82,9 @@ analyze.stuff::colMaxs( data.frame(a=1:10, b=2))
 }
 \seealso{
 \code{\link{factor.as.numeric}} \code{\link{rowMaxs}}
-  \code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{colMins}}
-  \code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}}
-  \code{\link{cols.above.which}} \code{\link{cols.above.pct}}
+\code{\link{rowMins}} \code{\link{colMaxs}} \code{\link{colMins}}
+\code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}}
+\code{\link{cols.above.which}} \code{\link{cols.above.pct}}
 
 Other functions for max and min of rows and columns: 
 \code{\link{colMaxs}()},

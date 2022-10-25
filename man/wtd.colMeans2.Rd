@@ -15,14 +15,14 @@ wtd.colMeans2(x, wts, by = NULL, na.rm = FALSE, dims = 1)
 
 \item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when any NA is in a vector.}
 
-\item{dims}{dims=1 is default. **Not used.** integer: Which dimensions are regarded as 'rows' or 'columns' to sum over. For row*, the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.}
+\item{dims}{dims=1 is default. \strong{Not used.} integer: Which dimensions are regarded as 'rows' or 'columns' to sum over. For row*, the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.}
 }
 \value{
 Returns a vector of numbers of length equal to number of columns in df.
 }
 \description{
 Returns weighted mean of each column of a data.frame or matrix, based on specified weights, one weight per row.
-But also see \code{\link[data.table]{data.table}} used for \code{\link{wtd.colMeans}}
+But also see \code{\link[data.table:data.table]{data.table::data.table()}} used for \code{\link[=wtd.colMeans]{wtd.colMeans()}}
 }
 \examples{
 x=data.frame(a=c(NA, 2:10), b=rep(100,10), c=rep(3,10))

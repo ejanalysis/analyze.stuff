@@ -3,7 +3,7 @@
 #' @description
 #' Count the number or percent of rows (for each col of a data.frame) where the value is below some specified cutoff(s)
 #' @details
-#' See \code{\link{pct.above}} for details, for which this is a wrapper.
+#' See [pct.above()] for details, for which this is a wrapper.
 #' @param df Data.frame or matrix, required.
 #' @param benchmarks Default is 'mean' but otherwise this must be a number or numeric vector of thresholds to compare values to.
 #' @param benchnames Default is 'cutoff' and this string is used to create colnames for the results

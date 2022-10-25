@@ -56,5 +56,5 @@ cbind(mydat, x)
 
 }
 \seealso{
-\code{\link{change.fieldnames}}
+\code{\link[=change.fieldnames]{change.fieldnames()}}
 }

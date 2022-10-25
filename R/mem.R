@@ -1,7 +1,7 @@
 #' @title See what is using up memory
 #' @description
 #' See a list of the largest objects in memory, and how much RAM they are using up
-#' Uses \code{\link{object.size}}  to return info on memory consumption for largest n objects
+#' Uses [object.size()]  to return info on memory consumption for largest n objects
 #' @param n Numeric, default is 10. How many objects to show (e.g., top 10)
 #' @return Results in printing a list of objects and their sizes
 #' @examples

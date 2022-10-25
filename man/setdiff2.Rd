@@ -22,5 +22,5 @@ setdiff2(1:10, 3:12)
 setdiff2(c('a','b','c'), c('b','c','d'))
 }
 \seealso{
-\code{\link{setdiff}} which is a bit different
+\code{\link[=setdiff]{setdiff()}} which is a bit different
 }

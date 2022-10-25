@@ -14,7 +14,7 @@
 #' with some or all updated if sort=FALSE (default). Uses oldnames and newnames, or file for mapping. If those are not specified, it tries to open an interactive window for editing a mapping table to create and save it as a csv file.\cr\cr
 #' If sort=TRUE, return vector of indexes giving new position of given field, based on sort order of oldnames.
 #' If sort=TRUE, names in oldnames that are not in allnames are ignored with warning, & names in allnames that are left out of oldnames left out of new sort order indexes.
-#' @seealso \code{\link{put.first}} which make it easier to rearrange the order of columns in a data.frame.
+#' @seealso [put.first()] which make it easier to rearrange the order of columns in a data.frame.
 #' @examples
 #' oldnames <- c('PCTILE', 'REGION')
 #' newnames <- c('percentile', 'usregion')

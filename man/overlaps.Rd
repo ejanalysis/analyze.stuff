@@ -16,11 +16,11 @@ union of only the unique elements as rownames, indicating which of those meet ea
 }
 \value{
 Returns a data.frame of counts by default, formatted for viewing as a small table.
-  If values = TRUE, returns a larger data.frame (see \code{values} parameter). See examples.
+If values = TRUE, returns a larger data.frame (see \code{values} parameter). See examples.
 }
 \description{
 This is just a convenient way to compare two sets (vectors) that overlap,
- to count how many are in each set, how many are in a not b, in b not a, in both, etc.
+to count how many are in each set, how many are in a not b, in b not a, in both, etc.
 }
 \examples{
  overlaps( c('Selectric 251','Selectric 245'),
@@ -46,5 +46,5 @@ This is just a convenient way to compare two sets (vectors) that overlap,
  }
 }
 \seealso{
-\code{\link{setdiff2}}, \code{\link[dplyr]{setops}}, \code{\link[plotrix]{intersectDiagram}}
+\code{\link[=setdiff2]{setdiff2()}}, \code{\link[dplyr:setops]{dplyr::setops()}}, \code{\link[plotrix:intersectDiagram]{plotrix::intersectDiagram()}}
 }

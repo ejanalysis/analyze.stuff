@@ -7,8 +7,8 @@
 #' @param values Default is FALSE. If TRUE, output is logical data.frame with
 #'   union of only the unique elements as rownames, indicating which of those meet each criterion.
 #' @return Returns a data.frame of counts by default, formatted for viewing as a small table.
-#'   If values = TRUE, returns a larger data.frame (see \code{values} parameter). See examples.
-#' @seealso \code{\link{setdiff2}}, \code{\link[dplyr]{setops}}, \code{\link[plotrix]{intersectDiagram}}
+#'   If values = TRUE, returns a larger data.frame (see `values` parameter). See examples.
+#' @seealso [setdiff2()], [dplyr::setops()], [plotrix::intersectDiagram()]
 #' @examples
 #'  overlaps( c('Selectric 251','Selectric 245'),
 #'   c('Selectric 245','Selectric 255','Selectric 255'))

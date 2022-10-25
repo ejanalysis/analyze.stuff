@@ -1,9 +1,9 @@
 #' @title Number or percent of rows (for each col) where value is below cutoff(s)
 #'
 #' @description
-#' Alias for \code{\link{count.below}}
+#' Alias for [count.below()]
 #' @details
-#' See \code{\link{count.below}} for details, for which this is a wrapper.
+#' See [count.below()] for details, for which this is a wrapper.
 #' @param df Data.frame or matrix, required.
 #' @param benchmarks Default is 'mean' but otherwise this must be a number or numeric vector of thresholds to compare values to.
 #' @param benchnames Default is 'cutoff' and this string is used to create colnames for the results

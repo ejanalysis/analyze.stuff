@@ -6,7 +6,7 @@
 #' @param x Required data.frame that will have its columns reordered
 #' @param fields required character vector of strings that are among the elements of names(x)
 #' @return Returns a transformed data.frame with cols in new order
-#' @seealso \code{\link{change.fieldnames}}
+#' @seealso [change.fieldnames()]
 #' @examples
 #' before <- data.frame(year=c(2,2,2), ID=3, numbers=4, last=1)
 #' put.first(before, c('ID', 'numbers'))

@@ -4,7 +4,17 @@
 \alias{overlaps}
 \title{Counts for Intersect, Union, etc. for Two Sets}
 \usage{
-overlaps(a, b, values = FALSE)
+overlaps(
+  a,
+  b,
+  values = FALSE,
+  ab_names = c("a", "b"),
+  ab_colors = c("gray", "orange"),
+  venn_draw = TRUE,
+  venn_save = FALSE,
+  filename = "venn.png",
+  ...
+)
 }
 \arguments{
 \item{a}{Required vector, such as list of FIPS character codes.}
@@ -13,6 +23,18 @@ overlaps(a, b, values = FALSE)
 
 \item{values}{Default is FALSE. If TRUE, output is logical data.frame with
 union of only the unique elements as rownames, indicating which of those meet each criterion.}
+
+\item{ab_names}{optional vector of 2 names to use as labels if drawing Venn}
+
+\item{ab_colors}{optional vector of 2 colors if drawing Venn}
+
+\item{venn_draw}{optional, whether to plot the Venn in viewer window}
+
+\item{venn_save}{optional, whether to save a png of the Venn plot}
+
+\item{filename}{optional, name of png file to use if venn_save is TRUE}
+
+\item{...}{optional, passed to png() if venn_save is TRUE}
 }
 \value{
 Returns a data.frame of counts by default, formatted for viewing as a small table.

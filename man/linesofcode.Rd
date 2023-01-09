@@ -4,7 +4,16 @@
 \alias{linesofcode}
 \title{Counts lines of source code in .R files of package source}
 \usage{
-linesofcode(folder = getwd(), packages, recursive = TRUE, sums = FALSE)
+linesofcode(
+  folder = getwd(),
+  packages,
+  recursive = TRUE,
+  sums = FALSE,
+  rfolderonly = FALSE,
+  cropfilename = 40,
+  croppath = 20,
+  showrows = NULL
+)
 }
 \arguments{
 \item{folder}{Default is current working directory. **This is NOT the base path of the package itself!
@@ -16,6 +25,14 @@ For example, folder= '~/Documents/R PACKAGES' works but folder= '~/Documents/R P
 \item{recursive}{Default is TRUE, searches subfolders within specified folder.}
 
 \item{sums}{Default is FALSE, but if TRUE it returns the count of .R files and lines of code for each package found.}
+
+\item{rfolderonly}{optional}
+
+\item{cropfilename}{number of characters displayed in console}
+
+\item{croppath}{number of characters displayed in console}
+
+\item{showrows}{number of rows displayed in console}
 }
 \value{
 Returns a data.frame of results, with details depending on sums parameter.
@@ -27,7 +44,7 @@ This is just a way to summarize how many lines of code appear to be in the .R fi
 \examples{
 
  \dontrun{
- linesofcode(folder= '~/Documents/R PACKAGES', packages=c('analyze.stuff', 'proxistat') )
+ linesofcode(folder= '..', packages=c('analyze.stuff', 'proxistat') )
  x <- linesofcode(folder= '~/Documents/R PACKAGES')
  x[order(x$code), c('filename', 'package', 'code')]
  }

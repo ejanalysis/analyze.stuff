@@ -7,18 +7,21 @@
 #' @param packages Default is all found in folder. Can specify a subset of those by name as character vector.
 #' @param recursive Default is TRUE, searches subfolders within specified folder.
 #' @param sums Default is FALSE, but if TRUE it returns the count of .R files and lines of code for each package found.
+#' @param cropfilename number of characters displayed in console
+#' @param croppath     number of characters displayed in console
+#' @param showrows number of rows displayed in console
+#' @param rfolderonly optional
 #' @return Returns a data.frame of results, with details depending on sums parameter.
 #'  Also prints summary info if sums=FALSE, and returns detailed info.
-#'
 #' @examples
 #'
 #'  \dontrun{
-#'  linesofcode(folder= '~/Documents/R PACKAGES', packages=c('analyze.stuff', 'proxistat') )
+#'  linesofcode(folder= '..', packages=c('analyze.stuff', 'proxistat') )
 #'  x <- linesofcode(folder= '~/Documents/R PACKAGES')
 #'  x[order(x$code), c('filename', 'package', 'code')]
 #'  }
 #' @export
-linesofcode <- function(folder=getwd(), packages, recursive=TRUE, sums=FALSE) {
+linesofcode <- function(folder=getwd(), packages, recursive=TRUE, sums=FALSE, rfolderonly=FALSE, cropfilename=40, croppath=20, showrows=NULL) {
 
   # count lines of code vs comments in a folder of .R files
   # or each of the "packages" directories directly under "folder"
@@ -64,11 +67,11 @@ linesofcode <- function(folder=getwd(), packages, recursive=TRUE, sums=FALSE) {
 
     out <- matrix(nrow=n, ncol = 6)
     out <- as.data.frame(out)
-    names(out) <- c('lines', 'code', 'comments', 'package', 'filename', 'path')
+    names(out) <- c('lines', 'comments', 'code', 'package', 'where', 'filename')
 
     for (i in 1:n) {
 
-      filetext <- readLines(file.path(folder, Rfilenames[i]))
+      filetext <- suppressWarnings(  readLines(file.path(folder, Rfilenames[i])) )
       linecount <- length(filetext)
       commentcount <-  sum( grepl(pattern = '^#', x =  filetext, ignore.case = TRUE) )
       codecount <- linecount - commentcount
@@ -76,25 +79,39 @@ linesofcode <- function(folder=getwd(), packages, recursive=TRUE, sums=FALSE) {
       out[i, 'lines'] <- linecount
       out[i, 'comments'] <- commentcount
       out[i, 'code'] <- codecount
-      out[i, 'path'] <- Rfilenames[i]
       out[i, 'package'] <- pkgname[i]
+      out[i, 'where'] <- gsub(justfilename[i], "", gsub(pkgname[i], "", Rfilenames[i]))
       out[i, 'filename'] <- justfilename[i]
       #out[i, ''] <- x
       #cat('Lines: ', linecount, ' in', Rfilenames[i], '(', codecount, 'code +', commentcount, 'comments)', '\n')
     }
+    out <- out[order(out$lines, decreasing = T), ]
+    rownames(out) <- NULL
+
+    if (rfolderonly) {out <- out[out$where == "/R/", ]}
 
     mysums <- cbind(
-      Hmisc::summarize(out$lines, by=out$package, FUN=sum),
+      Hmisc::summarize(out$lines,    by=out$package, FUN=sum),
       Hmisc::summarize(out$filename, by=out$package, FUN=length)
     )
-    mysums <- mysums[ , c(1,4,2)]
+    mysums <- mysums[ , c("out$package", "out$filename", "out$lines")]
     names(mysums) <- c("package", "filename", "lines")
-
+    mysums <- mysums[order(mysums$lines, decreasing = T), ]
+    rownames(mysums) <- NULL
     if (sums) {
       return(mysums)
     } else {
       cat('\n'); print( mysums ); cat('\n')
-      return(out)
+      cropped <- out
+      cropit <- function(x,n) {x[nchar(x) > n+3] <- paste0(substr(x[nchar(x) > n+3],1,n), "..." ); return(x)}
+      cropped$filename  <- cropit(cropped$filename, cropfilename)
+      cropped$where    <- cropit(cropped$where,     croppath)
+      if (is.null(showrows)) {
+        showrows <- 1 + findInterval(sum(cropped$lines)/2, cumsum(cropped$lines))
+        cat("\nMost of the code is in these files: \n\n")}
+      print(cropped[1:(min(NROW(cropped), showrows )),])
+      cat("\n Full list is returned invisibly \n")
+      invisible(out)
     }
 
   } else {

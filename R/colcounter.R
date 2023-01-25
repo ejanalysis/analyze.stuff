@@ -14,7 +14,7 @@
 #'   \dontrun{
 #'  pdata <- data.frame(a=rep(80,4),b=rep(93,4), col3=c(49,98,100,100))
 #'   ### pdata <- EJAM::blockgroupstats[ , names_e_pctile]
-#'   ## or ## pdata <- ejscreen::bg22plus[ , ejscreen::names.e.pctile]
+#'   ## or ## pdata <- ejscreen::bg22[ , ejscreen::names.e.pctile]
 #'  pcuts <-  5 * (0:20)  # <- as.vector(keystats_e['highcut', ])
 #' colcounter_summary(        pdata, pcuts)
 #' colcounter_summary_pct(    pdata, pcuts)

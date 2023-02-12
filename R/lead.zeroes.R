@@ -20,6 +20,11 @@
 #' lead.zeroes(c('234','01234','3', NA, 'TEXT'), 5)
 #' @export
 lead.zeroes <- function(fips, length.desired) {
+
+  # Very simple way to do this just for county fips that should be 5 digits,
+  #   fips <- substr ( as.numeric(fips) + 100000, 2,7)
+
+
   if (length(fips) == 0) return(NULL)
   navalues <- which(is.na(fips))
   fips <- as.character(fips)

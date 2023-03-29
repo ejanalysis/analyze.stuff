@@ -46,7 +46,7 @@ overlaps <- function(a, b, values = FALSE,
   #     a not b  setdiff(a,b) gives uniques
   #     b not a  setdiff(b,a) gives uniques
   #     a or b,  union(a,b) gives uniques
-plot()
+
   a.in.b <- a %in% b
   b.in.a <- b %in% a
 
@@ -80,9 +80,12 @@ plot()
   }
 
   if (venn_draw) {
+    grid::grid.newpage()
     VennDiagram::draw.pairwise.venn(
-      area1 = results['unique', ]$in.a, area2 = results['unique', ]$in.b,
-      cross.area = results['unique', ]$overlap, category = ab_names,
+      area1 = results['unique', ]$in.a,
+      area2 = results['unique', ]$in.b,
+      cross.area = results['unique', ]$overlap,
+      category = ab_names,
       fill = ab_colors
     )
   }

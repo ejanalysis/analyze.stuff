@@ -9,13 +9,22 @@
 #' @param venn_draw optional, whether to plot the Venn in viewer window
 #' @param venn_save optional, whether to save a png of the Venn plot
 #' @param filename optional, name of png file to use if venn_save is TRUE
-#' @param ... optional, passed to png() if venn_save is TRUE
+#' @param ... optional, passed to [VennDiagram::draw.pairwise.venn()]
 #' @param values Default is FALSE. If TRUE, output is logical data.frame with
 #'   union of only the unique elements as rownames, indicating which of those meet each criterion.
+#' @param overlapcount if number is provided, a and b are interpreted as counts and
+#'   overlapcount is interpreted as count of intersection, and
+#'   parameter called values is ignored.
 #' @return Returns a data.frame of counts by default, formatted for viewing as a small table.
-#'   If values = TRUE, returns a larger data.frame (see `values` parameter). See examples.
+#'   If values = TRUE, returns a larger data.frame (see `values` parameter).
+#'   If overlapcount provided, returns nothing. See examples.
 #' @seealso [setdiff2()], [dplyr::setops()], [plotrix::intersectDiagram()]
 #' @examples
+#'  overlaps(11022+48541, 8748+48541, overlapcount= 48541, ab_names = c(
+#'  "59,563 block groups have\n any Suppl EJ index\n >=90th pctile in State",
+#'  "57,289 block groups have\n any Suppl EJ index\n >=90th pctile in US"),
+#'   ab_colors = c("lightblue", "yellow"))
+#'
 #'  overlaps( c('Selectric 251','Selectric 245'),
 #'   c('Selectric 245','Selectric 255','Selectric 255'))
 #'  overlaps( c('Selectric 251','Selectric 245'),
@@ -40,7 +49,47 @@
 #' @export
 overlaps <- function(a, b, values = FALSE,
                      ab_names=c('a','b'), ab_colors=c('gray', 'orange'),
-                     venn_draw=TRUE, venn_save=FALSE, filename='venn.png', ...) {
+                     venn_draw=TRUE, venn_save=FALSE, filename='venn.png', overlapcount=NULL,   ...) {
+
+  if (!is.null(overlapcount)) {
+    if (venn_draw) {
+      grid::grid.newpage()
+      VennDiagram::draw.pairwise.venn(
+        area1 = a,
+        area2 = b,
+        cross.area = overlapcount,
+        category = ab_names,
+        fill = ab_colors, ...
+      )
+    }
+    if (venn_save) {
+      myplot <- VennDiagram::draw.pairwise.venn(
+        area1 = a,
+        area2 = b,
+        cross.area = overlapcount,
+        category = ab_names,
+        fill = ab_colors, ...
+      )
+
+      # tiff(
+      #   filename = tempfile(
+      #     pattern = 'venn',
+      #     fileext = '.tiff'
+      #   ),
+      #   compression = "lzw")
+      # grid.draw(myplot)
+      # dev.off()
+
+
+      png(filename = filename)
+    grid.draw(myplot)
+      dev.off()
+    }
+    return()
+  }
+
+
+
 
   #     a and b, intersect(a,b) gives uniques
   #     a not b  setdiff(a,b) gives uniques
@@ -86,15 +135,19 @@ overlaps <- function(a, b, values = FALSE,
       area2 = results['unique', ]$in.b,
       cross.area = results['unique', ]$overlap,
       category = ab_names,
-      fill = ab_colors
+      fill = ab_colors,
+      ...
     )
   }
   if (venn_save) {
-    png(filename = filename, ...)
+    png(filename = filename )
     VennDiagram::draw.pairwise.venn(
-      area1 = results['unique', ]$in.a, area2 = results['unique', ]$in.b,
-      cross.area = results['unique', ]$overlap, category = ab_names,
-      fill = ab_colors
+      area1 = results['unique', ]$in.a,
+      area2 = results['unique', ]$in.b,
+      cross.area = results['unique', ]$overlap,
+      category = ab_names,
+      fill = ab_colors,
+      ...
     )
     dev.off()
   }

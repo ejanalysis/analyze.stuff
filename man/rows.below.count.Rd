@@ -40,7 +40,7 @@ See \code{\link[=count.below]{count.below()}} for details, for which this is a w
 }
 \note{
 Future work: these functions could have wts, na.rm, &
-allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
+allow cutpoints or benchmarks as a vector (not just 1 number), & have benchnames.
 }
 \seealso{
 \code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} to see, for each column, the count or percent of rows that have values above or below a cutoff.

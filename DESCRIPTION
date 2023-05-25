@@ -6,7 +6,7 @@ Description: Tools that simplify some basic tasks in exploring and analyzing a
     dataset in a matrix or data.frame. Key functions help to change many fieldnames
     to new names using a map of old to new names, create many calculated fields
     based on formulas specified or saved as text fields (character vector),
-    see how many rows or cols have values above certain cutoffs, get rowMaxs,
+    see how many rows or cols have values above certain cutpoints, get rowMaxs,
     colMaxs, wtd.rowMeans, wtd.colMeans, see a table of values at 100 weighted
     percentiles, see how many values are NA or non-NA in each column, etc.
 Imports:

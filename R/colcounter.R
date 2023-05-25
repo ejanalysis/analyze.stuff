@@ -45,7 +45,7 @@ colcounter <- function(x, cutoff, or.tied=TRUE, na.rm=TRUE, below=FALSE, one.cut
   }
   if (one.cut.per.col) {
     if (length(cutoff) != NCOL(x)) {stop('length of cutoff should be same as number of columns in x if one.cut.per.col=T')}
-    x <- t(as.matrix(x)) # this allows it to compare vector of N cutoffs to N columns
+    x <- t(as.matrix(x)) # this allows it to compare vector of N cutpoints to N columns
   } else {
     if (length(cutoff) != NROW(x) & length(cutoff) != 1) {stop('length of cutoff should be 1 or same as number of columns in x, if one.cut.per.col=F')}
   }

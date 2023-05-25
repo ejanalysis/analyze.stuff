@@ -68,7 +68,7 @@ weighted.mean(x, w,            ...,              na.rm = FALSE)
 }
 \note{
 Future work: these functions could have wts, na.rm, &
-allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
+allow cutpoints or benchmarks as a vector (not just 1 number), & have benchnames.
 }
 \examples{
 x <- data.frame(a=1:20, b=10, c=c(1:9,100:110))

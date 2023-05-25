@@ -42,11 +42,11 @@ Find what number of columns have a value at or above some cutoff(s).
 \details{
 For a matrix with a few cols of related data, find what number of columns are at/above (or below) some cutoff(s).
 Returns a vector of number indicating how many of the columns are at/above the cutoff(s).
-Can be used in identifying places (rows) where some indicator(s) is/are at/above one or more cutoffs, threshold values.
+Can be used in identifying places (rows) where some indicator(s) is/are at/above one or more cutpoints, threshold values.
 }
 \note{
 Future work: these functions could have wts, na.rm, &
-allow cutoffs or benchmarks as a vector (not just 1 number), & have benchnames.
+allow cutpoints or benchmarks as a vector (not just 1 number), & have benchnames.
 }
 \examples{
 out <- cols.above.count(x<-data.frame(a=1:10, b=rep(7,10), c=7:16), cutoff=7)

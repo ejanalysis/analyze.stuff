@@ -3,23 +3,23 @@
 #' @description Find what number of columns have a value at or above some cutoff(s).
 #' @details For a matrix with a few cols of related data, find what number of columns are at/above (or below) some cutoff(s).
 #' Returns a vector of number indicating how many of the columns are at/above the cutoff(s).
-#' Can be used in identifying places (rows) where some indicator(s) is/are at/above one or more cutoffs, threshold values.
+#' Can be used in identifying places (rows) where some indicator(s) is/are at/above one or more cutpoints, threshold values.
 #'
-#' @param x Data.frame or matrix of numbers to be compared to cutoff value.
+#' @param x Data.frame or matrix of numbers to be compared to cutpoint value.
 #'
-#' @param cutoff The numeric threshold(s) or cutoff(s) to which numbers are compared.
+#' @param cutoff The numeric threshold(s) or cutpoint(s) to which numbers are compared.
 #'   Default is arithmetic mean of row (or mean of column, if one.cut.per.col = TRUE).
 #'   Usually one number.
 #'   Can be a vector of same length as number of rows (if one.cut.per.col=FALSE),
-#'   in which case each row can use a different cutoff.
-#'   Or, if one.cut.per.col = TRUE, then cutoff should be vector as long as the number of columns,
-#'   and each column is compared to its own cutoff.
+#'   in which case each row can use a different cutpoint
+#'   Or, if one.cut.per.col = TRUE, then cutpoint should be vector as long as the number of columns,
+#'   and each column is compared to its own cutpoint
 #' @param one.cut.per.col Default is FALSE, which means there is just 1 cutoff same for all cases,
 #'   or cutoff is vector with one per row. If TRUE then cutoff is vector with 1 per column.
 #'
-#' @param or.tied Logical. Default is FALSE, which means we check if number in x is greater than the cutoff (>). If TRUE, check if greater than or equal (>=).
+#' @param or.tied Logical. Default is FALSE, which means we check if number in x is greater than the cutpoint (>). If TRUE, check if greater than or equal (>=).
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when a row has an NA value in any column.
-#' @param below Logical. Default is FALSE. If TRUE, uses > or >= cutoff. If FALSE, uses < or <= cutoff.
+#' @param below Logical. Default is FALSE. If TRUE, uses > or >= cutpoint If FALSE, uses < or <= cutpoint
 #' @return Returns a vector the same size as the number of rows in x.
 #' @template abovebelow
 #' @examples
@@ -44,7 +44,7 @@ cols.above.count <- function(x, cutoff, or.tied=FALSE, na.rm=TRUE, below=FALSE, 
     }
   if (one.cut.per.col) {
     if (length(cutoff) != NCOL(x)) {stop('length of cutoff should be same as number of columns in x if one.cut.per.col=T')}
-    x <- t(as.matrix(x)) # this allows it to compare vector of N cutoffs to N columns
+    x <- t(as.matrix(x)) # this allows it to compare vector of N cutpoints to N columns
   } else {
     if (length(cutoff) != NROW(x) & length(cutoff) != 1) {stop('length of cutoff should be 1 or same as number of columns in x, if one.cut.per.col=F')}
   }

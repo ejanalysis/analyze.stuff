@@ -4,7 +4,7 @@
 #'   so you can for example easily combine tables of counts where some
 #'   did not include all integers.
 #' @details When using a dataset like EJScreen with 12 indicators of interest,
-#'   and counting how many of the 12 are above various cutoffs,
+#'   and counting how many of the 12 are above various cutpoints,
 #'   there may be zero rows that have exactly 8 above some cutoff, for example.
 #'   This function makes it easier to combine those tables into a summary
 #'   where 0-12 are in each table while table() would only return integers

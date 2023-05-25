@@ -1,17 +1,17 @@
-#' Summarize how many rows have N columns at or above (or below) various cutoffs?
+#' Summarize how many rows have N columns at or above (or below) various cutpoints?
 #' Like colcounter or cols.above.count
-#'   but will handle multiple cutoffs to compare to each indicator, etc.
+#'   but will handle multiple cutpoints to compare to each indicator, etc.
 #'   Table of counts, percents, cumulative counts, cumulative percents
 #'   of places with N, or at least N, of the indicators
 #'   at or above the benchmark(s)
-#' @param x Data.frame or matrix of numbers to be compared to cutoff value,
+#' @param x Data.frame or matrix of numbers to be compared to cutpoint value,
 #'   like percentiles for example.
-#' @param cutofflist vector of numeric cutoff values to compare to
-#' @param or.tied if TRUE, include ties (value in x equals cutoff)
+#' @param cutofflist vector of numeric cutpoint values to compare to
+#' @param or.tied if TRUE, include ties (value in x equals cutpoint)
 #' @param na.rm if TRUE, used by [colcounter()] to count only the non-NA columns in given row
-#' @param below if TRUE, count x below cutoff not above cutoff
-#' @param one.cut.per.col if FALSE, compare each cutoff to all of x.
-#'   If TRUE, specify one cutoff to use for each column.
+#' @param below if TRUE, count x below cutpoint not above cutpoint
+#' @param one.cut.per.col if FALSE, compare each cutpoint to all of x.
+#'   If TRUE, specify one cutpoint to use for each column.
 #' @seealso [colcounter_summary_all()] [colcounter_summary()] [colcounter_summary_cum()] [colcounter_summary_pct()] [colcounter_summary_cum_pct()]
 #' @seealso [tablefixed()]
 #' @return A table of frequency counts
@@ -56,16 +56,16 @@ colcounter_summary <- function(x, cutofflist, or.tied=TRUE, na.rm=TRUE, below=FA
 }
 ######################################## #
 
-#' Summarize how many rows have AT LEAST N columns at or above (or below) various cutoffs
+#' Summarize how many rows have AT LEAST N columns at or above (or below) various cutpoints
 #' See colcounter_summary() for more info and examples.
-#' @param x Data.frame or matrix of numbers to be compared to cutoff value,
+#' @param x Data.frame or matrix of numbers to be compared to cutpoint value,
 #'   like percentiles for example.
-#' @param cutofflist vector of numeric cutoff values to compare to
-#' @param or.tied if TRUE, include ties (value in x equals cutoff)
+#' @param cutofflist vector of numeric cutpoint values to compare to
+#' @param or.tied if TRUE, include ties (value in x equals cutpoint)
 #' @param na.rm if TRUE, used by colcounter to count only the non-NA columns in given row
-#' @param below if TRUE, count x below cutoff not above cutoff
-#' @param one.cut.per.col if FALSE, compare each cutoff to all of x.
-#'   If TRUE, specify one cutoff to use for each column.
+#' @param below if TRUE, count x below cutpoint not above cutpoint
+#' @param one.cut.per.col if FALSE, compare each cutpoint to all of x.
+#'   If TRUE, specify one cutpoint to use for each column.
 #' @seealso colcounter_summary_all() colcounter_summary() colcounter_summary_cum() colcounter_summary_pct() colcounter_summary_cum_pct()
 #' @return A table of cumulative frequency counts
 #' @export
@@ -75,7 +75,7 @@ colcounter_summary_cum <- function(x, cutofflist, or.tied=TRUE, na.rm=TRUE, belo
         MARGIN = 2, FUN = function(thiscol) rev(cumsum(rev(thiscol))))
 }
 
-#' Summarize what percent of rows have N columns at or above (or below) various cutoffs
+#' Summarize what percent of rows have N columns at or above (or below) various cutpoints
 #' @details See examples for colcounter_summary_cum_pct()
 #' @param x Data.frame or matrix of numbers to be compared to cutoff value,
 #'   like percentiles for example.
@@ -89,7 +89,7 @@ colcounter_summary_pct <- function(x, cutofflist, ...)  {
   100 * round(colcounter_summary(x, cutofflist = cutofflist, ...) / NROW(x), 2)
   }
 
-#' Summarize what percent of rows have AT LEAST N columns at or above (or below) various cutoffs
+#' Summarize what percent of rows have AT LEAST N columns at or above (or below) various cutpoints
 #'
 #' @param x Data.frame or matrix of numbers to be compared to cutoff value,
 #'   like percentiles for example.
@@ -105,7 +105,7 @@ colcounter_summary_cum_pct <- function(x, cutofflist, ...) {
 
 
 
-#' Summarize count (and percent) of rows with exactly (and at least) N cols >= various cutoffs
+#' Summarize count (and percent) of rows with exactly (and at least) N cols >= various cutpoints
 #' A wrapper for 4 functions: Returns four tables,
 #'   using colcounter_summary(), colcounter_summary_pct(),
 #'   colcounter_summary_cum(), colcounter_summary_cum_pct()

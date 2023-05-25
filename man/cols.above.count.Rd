@@ -14,21 +14,21 @@ cols.above.count(
 )
 }
 \arguments{
-\item{x}{Data.frame or matrix of numbers to be compared to cutoff value.}
+\item{x}{Data.frame or matrix of numbers to be compared to cutpoint value.}
 
-\item{cutoff}{The numeric threshold(s) or cutoff(s) to which numbers are compared.
+\item{cutoff}{The numeric threshold(s) or cutpoint(s) to which numbers are compared.
 Default is arithmetic mean of row (or mean of column, if one.cut.per.col = TRUE).
 Usually one number.
 Can be a vector of same length as number of rows (if one.cut.per.col=FALSE),
-in which case each row can use a different cutoff.
-Or, if one.cut.per.col = TRUE, then cutoff should be vector as long as the number of columns,
-and each column is compared to its own cutoff.}
+in which case each row can use a different cutpoint
+Or, if one.cut.per.col = TRUE, then cutpoint should be vector as long as the number of columns,
+and each column is compared to its own cutpoint}
 
-\item{or.tied}{Logical. Default is FALSE, which means we check if number in x is greater than the cutoff (>). If TRUE, check if greater than or equal (>=).}
+\item{or.tied}{Logical. Default is FALSE, which means we check if number in x is greater than the cutpoint (>). If TRUE, check if greater than or equal (>=).}
 
 \item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when a row has an NA value in any column.}
 
-\item{below}{Logical. Default is FALSE. If TRUE, uses > or >= cutoff. If FALSE, uses < or <= cutoff.}
+\item{below}{Logical. Default is FALSE. If TRUE, uses > or >= cutpoint If FALSE, uses < or <= cutpoint}
 
 \item{one.cut.per.col}{Default is FALSE, which means there is just 1 cutoff same for all cases,
 or cutoff is vector with one per row. If TRUE then cutoff is vector with 1 per column.}

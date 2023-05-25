@@ -13,6 +13,7 @@ overlaps(
   venn_draw = TRUE,
   venn_save = FALSE,
   filename = "venn.png",
+  overlapcount = NULL,
   ...
 )
 }
@@ -34,17 +35,27 @@ union of only the unique elements as rownames, indicating which of those meet ea
 
 \item{filename}{optional, name of png file to use if venn_save is TRUE}
 
-\item{...}{optional, passed to png() if venn_save is TRUE}
+\item{overlapcount}{if number is provided, a and b are interpreted as counts and
+overlapcount is interpreted as count of intersection, and
+parameter called values is ignored.}
+
+\item{...}{optional, passed to \code{\link[VennDiagram:draw.pairwise.venn]{VennDiagram::draw.pairwise.venn()}}}
 }
 \value{
 Returns a data.frame of counts by default, formatted for viewing as a small table.
-If values = TRUE, returns a larger data.frame (see \code{values} parameter). See examples.
+If values = TRUE, returns a larger data.frame (see \code{values} parameter).
+If overlapcount provided, returns nothing. See examples.
 }
 \description{
 This is just a convenient way to compare two sets (vectors) that overlap,
 to count how many are in each set, how many are in a not b, in b not a, in both, etc.
 }
 \examples{
+ overlaps(11022+48541, 8748+48541, overlapcount= 48541, ab_names = c(
+ "59,563 block groups have\n any Suppl EJ index\n >=90th pctile in State",
+ "57,289 block groups have\n any Suppl EJ index\n >=90th pctile in US"),
+  ab_colors = c("lightblue", "yellow"))
+
  overlaps( c('Selectric 251','Selectric 245'),
   c('Selectric 245','Selectric 255','Selectric 255'))
  overlaps( c('Selectric 251','Selectric 245'),

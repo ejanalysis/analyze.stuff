@@ -1,7 +1,8 @@
-#' @title Create calculated fields by specifying formulas
+#' @title Create calculated fields by specifying formulas as text, strings
 #'
 #' @description
-#' Create calculated fields from formulas that are specified as character strings, returning data.frame of specified results (not all intermediate variables necessarily)
+#' Create calculated fields from formulas that are specified as character strings,
+#' returning data.frame of specified results (not all intermediate variables necessarily)
 #' e.g., create calculated demographic variables from raw American Community Survey counts.
 #' This function is useful if you are working with a dataset with numerous fields,
 #' and you want to calculate numerous derived fields from those original fields,
@@ -10,6 +11,9 @@
 #' to calculate a new version of all of your derived fields.
 #'
 #' @details
+#'
+#' See source code for idea to use a more robust solution to working with a formula stored as text.
+#'
 #' This function returns a matrix or vector of results of applying specified formulas to the fields in the input data.frame.
 #' Each row of data is used in a formula to provide a row of results.
 #'
@@ -45,6 +49,38 @@
 #'
 #' @export
 calc.fields <- function(mydf, formulas, keep) {
+
+  # TRY INSTEAD USING SOMETHING LIKE THIS:
+  #  # found at https://stackoverflow.com/questions/1743698/evaluate-expression-given-as-a-string
+  #
+  # eval_text_expression <- function(text_expression, data_list, eval_envir = NULL) {
+  #   # argument checks
+  #   stopifnot(is.character(text_expression) && length(text_expression) == 1)
+  #   stopifnot(is.list(data_list))
+  #   stopifnot(length(data_list) == 0 || (!is.null(names(data_list)) && all(names(data_list) != "")))
+  #   stopifnot(all(!(lapply(data_list, typeof) %in% c('closure', 'builtin'))))
+  #   stopifnot(is.null(eval_envir) || is.environment(eval_envir))
+  #   # default environment for convenience
+  #   if (is.null(eval_envir)) {
+  #     arithmetic_funcs <- list("+" = `+`, "-" = `-`, "*" = `*`, "/" = `/`, "^" = `^`, "(" = `(`)
+  #     eval_envir = rlang::new_environment(data = arithmetic_funcs, parent = rlang::empty_env())
+  #   }
+  #   # load data objects into evaluation environment, then evaluate expression
+  #   eval_envir <- list2env(data_list, envir = eval_envir)
+  #   eval(parse(text = text_expression, keep.source = FALSE), eval_envir)
+  # }
+  #
+  # eval_text_expression("(a+b)^c - d", list(a = 1, b = 2, c = 3, d = 4))
+  # # [1] 23
+  # eval_text_expression("list.files()", list())
+  # # Error in list.files() : could not find function "list.files"
+  # eval_text_expression("list.files()", list(), eval_envir = rlang::new_environment(list("list.files" = list.files)))
+  # # succeeds in listing my files if i explicitly allow it
+  #
+
+
+
+
   if (missing(keep)) {
     # This will only work if the calculated variable is followed by a space, or = sign, or <- in the formula
     keep <- substr(formulas, 1, regexpr('[<= ]', formulas) -1)

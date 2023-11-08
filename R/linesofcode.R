@@ -1,4 +1,4 @@
-#' @title Counts lines of source code in .R files of package source
+#' @title Counts lines of source code in .R files of package source - NOT TESTED
 #' @description
 #'  This is just a way to summarize how many lines of code appear to be in the .R files in the folder that a package is built from.
 #' @param folder Default is current working directory. **This is NOT the base path of the package itself!

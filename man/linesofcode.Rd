@@ -2,7 +2,7 @@
 % Please edit documentation in R/linesofcode.R
 \name{linesofcode}
 \alias{linesofcode}
-\title{Counts lines of source code in .R files of package source}
+\title{Counts lines of source code in .R files of package source - NOT TESTED}
 \usage{
 linesofcode(
   folder = getwd(),

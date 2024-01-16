@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc.fields.R
 \name{calc.fields}
 \alias{calc.fields}
-\title{Create calculated fields by specifying formulas}
+\title{Create calculated fields by specifying formulas as text, strings}
 \usage{
 calc.fields(mydf, formulas, keep)
 }
@@ -18,7 +18,8 @@ Default is all results of formulas but not any input variables.}
 A data.frame of new variables where columns are defined by keep (or all calculated variables if keep is not specified).
 }
 \description{
-Create calculated fields from formulas that are specified as character strings, returning data.frame of specified results (not all intermediate variables necessarily)
+Create calculated fields from formulas that are specified as character strings,
+returning data.frame of specified results (not all intermediate variables necessarily)
 e.g., create calculated demographic variables from raw American Community Survey counts.
 This function is useful if you are working with a dataset with numerous fields,
 and you want to calculate numerous derived fields from those original fields,
@@ -27,6 +28,8 @@ You could read in the formulas from the file, and apply them to a new version of
 to calculate a new version of all of your derived fields.
 }
 \details{
+See source code for idea to use a more robust solution to working with a formula stored as text.
+
 This function returns a matrix or vector of results of applying specified formulas to the fields in the input data.frame.
 Each row of data is used in a formula to provide a row of results.
 

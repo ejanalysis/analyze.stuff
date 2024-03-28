@@ -21,7 +21,10 @@
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when a row has an NA value in any column.
 #' @param below Logical. Default is FALSE. If TRUE, uses > or >= cutpoint If FALSE, uses < or <= cutpoint
 #' @return Returns a vector the same size as the number of rows in x.
-#' @template abovebelow
+#' @seealso [count.above()]  [pct.above()] [pct.below()] to see, for each column, the count or percent of rows that have values above or below a cutoff.
+#' @seealso [cols.above.count()] [cols.above.which()] [cols.above.pct()] to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
+#' @seealso [colcounter_summary()] [colcounter_summary_cum()] [colcounter_summary_pct()] [colcounter_summary_cum_pct()]  [tablefixed()]
+#' 
 #' @examples
 #' out <- cols.above.count(x<-data.frame(a=1:10, b=rep(7,10), c=7:16), cutoff=7)
 #' out
@@ -32,7 +35,9 @@
 #' out <- cols.above.count(data.frame(a=1:10, b=rep(7,10), c=7:16) )
 #'  # Compares each number in each row to the row's mean.
 #' out
+#'
 #' @export
+#'
 cols.above.count <- function(x, cutoff, or.tied=FALSE, na.rm=TRUE, below=FALSE, one.cut.per.col=FALSE) {
   if (is.null(dim(x))) {numcols <- 1; stop('expected data.frame as x but has only 1 dimension')} else {numcols <- dim(x)[2]}
   if (missing(cutoff)) {

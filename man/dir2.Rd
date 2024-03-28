@@ -24,6 +24,7 @@ dir2('*.txt')
 dir2('*.txt', path='~')
 dir2()   # shows only files, not folders, if no x is specified.
 dir2(path='~')  # shows only files, not folders, if no x is specified.
+
 }
 \seealso{
 \code{\link[=dirdirs]{dirdirs()}} \code{\link[=dirr]{dirr()}}

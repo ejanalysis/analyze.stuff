@@ -7,12 +7,21 @@
 #' @param benchnames Default is 'cutoff' and this string is used to create colnames for the results
 #' @param or.tied Logical, FALSE by default, reporting on those < cutoff. But, if or.tied=TRUE, this reports on those <= cutoff.
 #' @param below Logical, TRUE by default, which counts how many are below cutoff (or tied if or.tied). If FALSE, counts how many are above (or tied with) cutoff.
-#' @param wts Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df[,1]) is an integer multiple of length(wts)  Applies weights to when counting how many.
+#' @param wts Number or vector, default is 1. Length must be a factor of number of rows in df, so `length(df[,1])` is an integer multiple of length(wts)  Applies weights to when counting how many.
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed first. Otherwise result will be NA when any NA is in a col.
 #' @param of.what Optional, character, 'all' by default, defines xxx as the text used in "pct.above.xxx" (or below) for fieldnames in results
 #' @return Returns a vector of numbers of length equal to number of columns in df.
-#' @template abovebelow
+#' @seealso [count.above()]  [pct.above()] [pct.below()] to see, for each column, the count or percent of rows that have values above or below a cutoff.
+#' @seealso [cols.above.count()] [cols.above.which()] [cols.above.pct()] to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
+#' @seealso [colcounter_summary()] [colcounter_summary_cum()] [colcounter_summary_pct()] [colcounter_summary_cum_pct()]  [tablefixed()]
+#'
 #' @export
+#'
 rows.below.pct <- function(df, benchmarks='mean', benchnames='cutoff', na.rm=FALSE, or.tied=FALSE, below=FALSE, wts=1, of.what='all') {
-  pct.below(df=df, benchmarks=benchmarks, benchnames=benchnames, na.rm=na.rm, or.tied=or.tied, below=below, wts=wts, of.what=of.what)
+
+  pct.below(df = df,
+            benchmarks = benchmarks, benchnames = benchnames,
+            na.rm = na.rm, or.tied = or.tied, below = below,
+            wts = wts,
+            of.what = of.what)
 }

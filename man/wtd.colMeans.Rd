@@ -50,48 +50,70 @@ weighted.mean(x, w,            ...,              na.rm = FALSE)
 \examples{
   # library(analyze.stuff)
   wtd.colMeans(data.frame(a = 1:4, b = c(NA, 2, 3, 4)))
-  wtd.colMeans(data.frame(a = 1:4, b = c(NA, 2, 3, 4)),    wts = c(1,1,1,1))
-  wtd.colMeans(data.frame(a = 1:4, b = c(NA, 2, 3, 4)),    wts = c(NA,1,1,1))
-  wtd.colMeans(data.frame(a = 1:4, b = c(NA, 2, 3, 4)),    wts = c(1,NA,1,1))
-  wtd.colMeans(data.frame(a = 1:4, b = c(NA, 2, NA, 4)),   wts = c(1,1,1,1))
+  wtd.colMeans(data.frame(a = 1:4, b = c(NA, 2, 3, 4)),  wts = c(1,1,1,1))
+  wtd.colMeans(data.frame(a = 1:4, b = c(NA, 2, 3, 4)),  wts = c(NA,1,1,1))
+  wtd.colMeans(data.frame(a = 1:4, b = c(NA, 2, 3, 4)),  wts = c(1,NA,1,1))
+  wtd.colMeans(data.frame(a = 1:4, b = c(NA, 2, NA, 4)), wts = c(1,1,1,1))
   wtd.colMeans(data.frame(a = 1:4, b = c(NA, NA, NA, NA)), wts = c(1,1,1,1))
 
   # tests of wtd.colMeans
 
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4))))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)),    wts = c(1,1,1,1)))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, NA, 4)),   wts = c(1,1,1,1)))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, NA, NA, NA)), wts = c(1,1,1,1)))
+suppressWarnings({
 
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)),    wts = c(NA,1,1,1)))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)),    wts = c(1,NA,1,1)))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)),    wts = c(1,NA,NA,NA)))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)),    wts = c(NA,NA,NA,NA)))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, NA, NA, NA)), wts = c(NA,NA,NA,NA)))
+wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)))
 
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)), na.rm = FALSE))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)),    wts = c(1,1,1,1), na.rm = FALSE))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, NA, 4)),   wts = c(1,1,1,1), na.rm = FALSE))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, NA, NA, NA)), wts = c(1,1,1,1), na.rm = FALSE))
+wtd.colMeans(data.frame(a = 1:4,
+  someNA = c(NA, 2, 3, 4)),    wts = c(1,1,1,1))
+wtd.colMeans(data.frame(a = 1:4,
+  someNA = c(NA, 2, NA, 4)),   wts = c(1,1,1,1))
+wtd.colMeans(data.frame(a = 1:4,
+  someNA = c(NA, NA, NA, NA)), wts = c(1,1,1,1))
 
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)),    wts = c(NA,1,1,1), na.rm = FALSE))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)),    wts = c(1,NA,1,1), na.rm = FALSE))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)),    wts = c(1,NA,NA,NA), na.rm = FALSE))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, 2, 3, 4)),    wts = c(NA,NA,NA,NA), na.rm = FALSE))
-  suppressWarnings(wtd.colMeans(data.frame(a = 1:4, someNA = c(NA, NA, NA, NA)), wts = c(NA,NA,NA,NA), na.rm = FALSE))
+wtd.colMeans(data.frame(a = 1:4,
+  someNA = c(NA, 2, 3, 4)),    wts = c(NA,1,1,1))
+wtd.colMeans(data.frame(a = 1:4,
+  someNA = c(NA, 2, 3, 4)),    wts = c(1,NA,1,1))
+wtd.colMeans(data.frame(a = 1:4,
+someNA = c(NA, 2, 3, 4)),    wts = c(1,NA,NA,NA))
+wtd.colMeans(data.frame(a = 1:4,
+  someNA = c(NA, 2, 3, 4)),    wts = c(NA,NA,NA,NA))
+wtd.colMeans(data.frame(a = 1:4,
+  someNA = c(NA, NA, NA, NA)), wts = c(NA,NA,NA,NA))
 
+wtd.colMeans(data.frame(a = 1:4,
+  someNA = c(NA, 2, 3, 4)), na.rm = FALSE)
+wtd.colMeans(data.frame(a = 1:4,
+  someNA = c(NA, 2, 3, 4)),    wts = c(1,1,1,1), na.rm = FALSE)
+wtd.colMeans(data.frame(a = 1:4,
+  someNA = c(NA, 2, NA, 4)),   wts = c(1,1,1,1), na.rm = FALSE)
+wtd.colMeans(data.frame(a = 1:4,
+  someNA = c(NA, NA, NA, NA)), wts = c(1,1,1,1), na.rm = FALSE)
 
+ wtd.colMeans(data.frame(a = 1:4,
+   someNA = c(NA, 2, 3, 4)),    wts = c(NA,1,1,1), na.rm = FALSE)
+ wtd.colMeans(data.frame(a = 1:4,
+   someNA = c(NA, 2, 3, 4)),    wts = c(1,NA,1,1), na.rm = FALSE)
+ wtd.colMeans(data.frame(a = 1:4,
+   someNA = c(NA, 2, 3, 4)),    wts = c(1,NA,NA,NA), na.rm = FALSE)
+ wtd.colMeans(data.frame(a = 1:4,
+   someNA = c(NA, 2, 3, 4)),    wts = c(NA,NA,NA,NA), na.rm = FALSE)
+ wtd.colMeans(data.frame(a = 1:4,
+   someNA = c(NA, NA, NA, NA)), wts = c(NA,NA,NA,NA), na.rm = FALSE)
+})
   n <- 1e6
-  mydf <- data.frame(pop = 1000 + abs(rnorm(n, 1000, 200)), v1 = runif(n, 0, 1),
+  mydf <- data.frame(pop = 1000 + abs(rnorm(n, 1000, 200)),
+   v1 = runif(n, 0, 1),
    v2 = rnorm(n, 100, 15),
-   REGION = c('R1', 'R2', sample(c('R1', 'R2', 'R3'), n-2, replace = TRUE)),
+   REGION = c('R1', 'R2', sample(c('R1', 'R2', 'R3'), n-2,
+   replace = TRUE)),
    stringsAsFactors = FALSE)
    mydf$pop[mydf$REGION == 'R2'] <- 4 * mydf$pop[mydf$REGION == 'R2']
   mydf$v1[mydf$REGION == 'R2'] <- 4 * mydf$v1[mydf$REGION == 'R2']
   wtd.colMeans(mydf[ , 1:3])
   wtd.colMeans(mydf[ , 1:3], wts = mydf$pop)
   wtd.colMeans(mydf, by = 'REGION')
-  # R HANGS/STUCK: # wtd.colMeans(mydf[1:100, 1:3], by = mydf$REGION, wts = mydf$pop)
+  # R HANGS/STUCK: # wtd.colMeans(mydf[1:100, 1:3], by = mydf$REGION,
+   # wts = mydf$pop)
   mydf2 <- data.frame(a = 1:3, b = c(1, 2, NA))
   wtd.colMeans(mydf2)
   wtd.colMeans(mydf2, na.rm = TRUE)

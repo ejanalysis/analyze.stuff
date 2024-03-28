@@ -30,20 +30,23 @@
 #'  overlaps( c('Selectric 251','Selectric 245'),
 #'   c('Selectric 245','Selectric 255','Selectric 255'), values = TRUE)
 #'  overlaps(state.abb[1:3], state.abb[3:4])
-#'  colSums( overlaps(state.abb[1:3], state.abb[3:4], values = TRUE) )
-#'  colSums( overlaps(state.abb[1:3], state.abb[c(3:4,4,4,4,4,4)], values = TRUE) )
+#'    colSums( overlaps(state.abb[1:3], state.abb[3:4], values = TRUE)[,-1] )
+#'  colSums( overlaps(state.abb[1:3], state.abb[c(3:4,4,4,4,4,4)],
+#'  values = TRUE)[,-1] )
 #'  overlaps(state.abb[1:3], state.abb[c(3:4,4,4,4,4,4)])
 #'  overlaps(state.abb[1:3], state.abb[3:4], values = TRUE)
 #'  \dontrun{
 #'   overlaps(ejanalysis::get.state.info()$ST, state.abb)
 #'   data(fips.state, package='acs')
-#'   overlaps(lead.zeroes(fips.state$STATE,2), ejanalysis::get.state.info()$FIPS.ST)
+#'   overlaps(lead.zeroes(fips.state$STATE,2),
+#'     ejanalysis::get.state.info()$FIPS.ST)
 #'   data(fips.county, package='acs')
 #'   overlaps(ejanalysis::get.county.info()$FIPS.COUNTY,
 #'     paste(analyze.stuff::lead.zeroes(fips.county$State.ANSI,2),
 #'     analyze.stuff::lead.zeroes(fips.county$County.ANSI,3), sep=''))
 #'
-#'   colSums( overlaps(ejanalysis::get.state.info()$ST, c(999, state.abb), values = TRUE) [ , 2:8])
+#'   colSums( overlaps(ejanalysis::get.state.info()$ST, c(999, state.abb),
+#'   values = TRUE)[ , 2:8])
 #'
 #'  }
 #' @export
@@ -82,13 +85,11 @@ overlaps <- function(a, b, values = FALSE,
 
 
       png(filename = filename)
-    grid.draw(myplot)
+      grid::grid.draw(myplot)
       dev.off()
     }
     return()
   }
-
-
 
 
   #     a and b, intersect(a,b) gives uniques

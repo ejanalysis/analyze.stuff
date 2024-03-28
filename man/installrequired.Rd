@@ -29,7 +29,7 @@ Convenient way to specify packages to attach, and install any that are not alrea
 It only installs a package if that package is not already available locally.
 }
 \details{
-Uses \code{\link[=require]{require()}} and if necessary uses \code{\link[=install.packages]{install.packages()}} or install_github as explained in \code{\link[devtools:remote-reexports]{devtools::remote-reexports()}}
+Uses \code{\link[=require]{require()}} and if necessary uses \code{\link[utils:install.packages]{utils::install.packages()}} or install_github as explained in \code{\link[devtools:remote-reexports]{devtools::remote-reexports()}}
 If no parameters, prints an example.
 }
 \examples{

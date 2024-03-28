@@ -15,6 +15,6 @@
 harmean <- function(x, na.rm=FALSE) {
   if (!missing(na.rm) & is.numeric(na.rm)) {stop('a single vector, x, must be specified')}
   if(na.rm) {n=sum(!is.na(x))} else {n=length(x)}
-  return(n / sum(1/x, na.rm=na.rm))
+  return(n / sum(1/x, na.rm = na.rm))
   # harmonic mean
 }

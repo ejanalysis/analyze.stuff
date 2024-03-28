@@ -37,9 +37,9 @@ wtd.pctiles.exact <- function(x, wts=NULL, na.rm=TRUE, type="i/n", probs=(1:100)
 
   #if (is.na(wts)) {wts <- rep(1, length(x))}
 
-  cbind(Hmisc::wtd.quantile(x, wts, type=type, probs=probs, na.rm=na.rm))
+  cbind(Hmisc::wtd.quantile(x, wts, type=type, probs=probs, na.rm = na.rm))
 
   # could enhance this to take matrix or data.frame as input to have a vectorized function that gets wtd.pctiles for each of several columns, always using the same wts column though.
-  # one way is not really vectorized, but just packaged as sapply(x, FUN=Hmisc::wtd.quantile(x, wts, type="i/n", probs=(1:100)/100, na.rm=na.rm) ) )
+  # one way is not really vectorized, but just packaged as sapply(x, FUN=Hmisc::wtd.quantile(x, wts, type="i/n", probs=(1:100)/100, na.rm = na.rm) ) )
   # not too slow in terms of overhead if # of columns is limited, which it normally would be.
 }

@@ -29,7 +29,7 @@ If files is specified, url should be the one folder without the filename. Otherw
 \item{overwrite}{Optional, logical, FALSE by default. If FALSE, checks to see if file already exists in local folder and does not download if already exists.
 But note that may cause problems if zero size file exists already due to earlier failed download.}
 
-\item{...}{optional parameters passed to download.file}
+\item{...}{optional parameters passed to utils::download.file}
 }
 \value{
 Returns vector of numbers, each being 1 or 0 or 2 to signify success or failure or no attempt because file already seems to exist locally.
@@ -39,9 +39,9 @@ Attempts to download files, given name(s) all from one specified url, saving the
 Just a wrapper that Uses \code{\link[=download.file]{download.file()}} since that only downloads a single file.
 }
 \note{
-Could recode to use \code{\pkg{curl}} package, since curl::curl_download() is a replacement for base download.file() with better performance,
+Could recode to use the curl package, since \code{\link[curl:curl_download]{curl::curl_download()}} is a replacement for base \code{\link[=download.file]{download.file()}} with better performance,
 support for encryption (https, ftps), gzip compression, authentication, etc.
 }
 \seealso{
-\code{\link[=download.file]{download.file()}} \code{\link[curl:curl_download]{curl::curl_download()}}
+\code{\link[utils:download.file]{utils::download.file()}} \code{\link[curl:curl_download]{curl::curl_download()}}
 }

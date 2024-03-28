@@ -12,9 +12,20 @@
 #' @param zone optional. if zone (subgroups) specified, just returns total count and count of NA values -- in each subgroup for each field.
 #' @return Returns a vector of results, one per col of df
 #'   But if zone (subgroups) specified, just returns count of NA values in each subgroup for each field.
-#' @template nachecks
+#' @examples
+#' \dontrun{
+#' system.time(x = na.check(data.frame(a = -1:1e6, b = 'text', c = c(NA, 1, 2)), min.text = FALSE) )
+#' system.time(x = na.check2(data.frame(a = -1:1e6, b = 'text', c = c(NA, 1, 2)), min.text = TRUE) )
+#' na.check(data.frame(a = -1:10, b = 'text', c = c(NA, 1, 2)))
+#' na.check2(data.frame(a = -1:10, b = 'text', c = c(NA, 1, 2)))
+#' }
+#' @seealso [matrixStats::signTabulate()] [minNonzero()] and
+#'   experimental variations on na.check: [na.check()]  [na.check2()]
+#'
 #' @export
+#'
 na.check <- function(df, zone, min.text = FALSE) {
+
   if (is.vector(df)) {
     stop('cannot yet handle a single vector, only a data.frame or matrix')
   } # would need to adjust code for this case

@@ -14,5 +14,5 @@
 #' @export
 rms <- function(x, na.rm=FALSE) {
   if (!missing(na.rm) & is.numeric(na.rm)) {stop('a single vector, x, must be specified')}
-  sqrt(mean(x^2, na.rm=na.rm))
+  sqrt(mean(x^2, na.rm = na.rm))
 }

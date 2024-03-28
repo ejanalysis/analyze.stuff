@@ -37,7 +37,8 @@ w=c(1.1, 2, NA, rep(1, 7))
 print(cbind(x,w, wtd=w*x))
 rbind(cbind(x, w), cbind(wtd.colMeans(x, w, na.rm=TRUE), w='wtd.colMeans') )
 print(w*cbind(x,w))
+
 }
 \seealso{
-\code{\link{wtd.colMeans}} \code{\link{wtd.rowMeans}} \code{\link{wtd.rowSums}} \code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMins}}
+\code{\link[=wtd.colMeans]{wtd.colMeans()}} \code{\link[=wtd.rowMeans]{wtd.rowMeans()}} \code{\link[=wtd.rowSums]{wtd.rowSums()}} \code{\link[=rowMaxs]{rowMaxs()}} \code{\link[=rowMins]{rowMins()}} \code{\link[=colMins]{colMins()}}
 }

@@ -10,10 +10,13 @@
 #' dir2('*.txt', path='~')
 #' dir2()   # shows only files, not folders, if no x is specified.
 #' dir2(path='~')  # shows only files, not folders, if no x is specified.
+#'
 #' @export
+#'
 dir2  <- function(x, ignore.case=TRUE, ...) {
+
  if (missing(x)) {x <- '*.*'}
   #if () { return( cbind(list.dirs(recursive=FALSE))) } # would show only directories not files
-  return(cbind(dir(pattern=glob2rx(x), ignore.case=ignore.case, ...)))
+  return(cbind(dir(pattern = utils::glob2rx(x), ignore.case = ignore.case, ...)))
 }
 

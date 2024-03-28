@@ -4,18 +4,20 @@
 \alias{lead.zeroes}
 \title{Add leading zeroes as needed}
 \usage{
-lead.zeroes(fips, length.desired)
+lead.zeroes(fips, length.desired = NULL)
 }
 \arguments{
 \item{fips}{Character vector, which can be FIPS codes or other data. Required.}
 
-\item{length.desired}{A single numeric value (recycled), or vector of numbers, required, specifying how many characters long each returned string should be.}
+\item{length.desired}{NOT USED ANYMORE. INFERRED.
+Was a single numeric value (recycled), or vector of numbers, required, specifying how many characters long each returned string should be.}
 }
 \value{
 Returns a vector of same length as input parameter, NA for NA input elements
 }
 \description{
-Returns the vector that was supplied, but with leading zeroes added where needed to make all elements have specified number of characters.
+Returns the vector that was supplied, but with leading zeroes added where needed
+to make all elements have right number of characters.
 }
 \details{
 This function can be useful in working with Census data where FIPS codes are often used.

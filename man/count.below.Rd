@@ -27,7 +27,7 @@ count.below(
 
 \item{below}{Logical, TRUE by default, which counts how many are below cutoff (or tied if or.tied). If FALSE, counts how many are above (or tied with) cutoff.}
 
-\item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df\link{,1}) is an integer multiple of length(wts)  Applies weights to when counting how many.}
+\item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so \code{length(df[,1])} is an integer multiple of length(wts)  Applies weights to when counting how many.}
 }
 \value{
 Returns a vector of numbers of length equal to number of columns in df.
@@ -38,28 +38,10 @@ Count the number or percent of rows (for each col of a data.frame) where the val
 \details{
 See \code{\link[=count.above]{count.above()}} for details, for which this is a wrapper.
 }
-\note{
-Future work: these functions could have wts, na.rm, &
-allow cutpoints or benchmarks as a vector (not just 1 number), & have benchnames.
-}
 \seealso{
-\code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} to see, for each column, the count or percent of rows that have values above or below a cutoff.
+\code{\link[=count.above]{count.above()}}  \code{\link[=pct.above]{pct.above()}} \code{\link[=pct.below]{pct.below()}} to see, for each column, the count or percent of rows that have values above or below a cutoff.
 
-\code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
+\code{\link[=cols.above.count]{cols.above.count()}} \code{\link[=cols.above.which]{cols.above.which()}} \code{\link[=cols.above.pct]{cols.above.pct()}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
 
-colcounter_summary() colcounter_summary_cum() colcounter_summary_pct() colcounter_summary_cum_pct() tablefixed()
-
-Other functions for above and below: 
-\code{\link{cols.above.count}()},
-\code{\link{cols.above.pct}()},
-\code{\link{cols.above.which}()},
-\code{\link{count.above}()},
-\code{\link{pct.above}()},
-\code{\link{pct.below}()},
-\code{\link{rows.above.count}()},
-\code{\link{rows.above.pct}()},
-\code{\link{rows.above.which}()},
-\code{\link{rows.below.count}()},
-\code{\link{rows.below.pct}()}
+\code{\link[=colcounter_summary]{colcounter_summary()}} \code{\link[=colcounter_summary_cum]{colcounter_summary_cum()}} \code{\link[=colcounter_summary_pct]{colcounter_summary_pct()}} \code{\link[=colcounter_summary_cum_pct]{colcounter_summary_cum_pct()}}  \code{\link[=tablefixed]{tablefixed()}}
 }
-\concept{functions for above and below}

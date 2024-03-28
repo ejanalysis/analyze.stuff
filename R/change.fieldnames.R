@@ -31,12 +31,12 @@ change.fieldnames <- function(allnames, oldnames, newnames, file=NA, sort=FALSE)
 
 	if (!is.na(file)) {
 	  if (!missing(oldnames) | !missing(newnames)) {stop('Cannot specify file and also oldnames or newnames')}
-	  changes <- read.csv(file, as.is=TRUE)
+	  changes <- utils::read.csv(file, as.is = TRUE)
 	  if (!( ('oldnames' %in% names(changes) ) & ('newnames' %in% names(changes)) )) {
-      if (sort==FALSE) { stop('file must have columns named oldnames and newnames') }
+      if (sort == FALSE) { stop('file must have columns named oldnames and newnames') }
 	  }
 
-	  if (sort==FALSE) {
+	  if (sort == FALSE) {
 	    oldnames <- changes$oldnames
       newnames <- changes$newnames
 	  } else {
@@ -52,14 +52,14 @@ change.fieldnames <- function(allnames, oldnames, newnames, file=NA, sort=FALSE)
 	if (!is.vector(allnames) | any(!is.character(allnames))) {stop('allnames must be a vector of character type fieldnames')}
 
 	if (!sort) {
-    if (is.na(file) & sum(missing(oldnames), missing(newnames))==1 ) {
+    if (is.na(file) & sum(missing(oldnames), missing(newnames)) == 1 ) {
       stop('Must specify oldnames, newnames in 2-column csv file or as parameters, or specify none of the 3 for interactive editing of names (unless sort=TRUE)')
     }
 	}
 
 	if (is.na(file) & missing(oldnames) & missing(newnames)) {
-	  changes <- edit(data.frame(oldnames=allnames, newnames=allnames, stringsAsFactors=FALSE))
-	  write.csv(changes, file='saved fieldnames.csv', row.names=FALSE)
+	  changes <- utils::edit(data.frame(oldnames = allnames, newnames = allnames, stringsAsFactors = FALSE))
+	  utils::write.csv(changes, file = 'saved fieldnames.csv', row.names = FALSE)
 	  cat('\n old and new names saved in csv file called:   "saved fieldnames.csv"\n')
 	  oldnames <- changes[ , 1]
 	  newnames <- changes[ , 2]
@@ -67,8 +67,8 @@ change.fieldnames <- function(allnames, oldnames, newnames, file=NA, sort=FALSE)
 
 	if (!is.vector(oldnames) | any(!is.character(oldnames))) {stop('oldnames must be a vector of character type fieldnames\n')}
 	if (!sort) { if (!is.vector(newnames) | any(!is.character(newnames))) {stop('newnames must be a vector of character type fieldnames\n')} }
-	if (!sort) { if (length(oldnames)!=length(newnames)) {stop('oldnames and newnames must be the same length\n')} }
-	if (!sort) { if (length(allnames)==0 | length(oldnames)==0 | length(newnames)==0  ) {stop('no input can be length zero\n')} }
+	if (!sort) { if (length(oldnames) != length(newnames)) {stop('oldnames and newnames must be the same length\n')} }
+	if (!sort) { if (length(allnames) == 0 | length(oldnames) == 0 | length(newnames) == 0  ) {stop('no input can be length zero\n')} }
 
   # This warning appears too often and does not really indicate a problem anyway
 	#if (length(allnames) < length(oldnames)) {cat('Warning: length(allnames) generally should be >= length(oldnames)\n')}

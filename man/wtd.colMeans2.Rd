@@ -15,7 +15,8 @@ wtd.colMeans2(x, wts, by = NULL, na.rm = FALSE, dims = 1)
 
 \item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when any NA is in a vector.}
 
-\item{dims}{dims=1 is default. \strong{Not used.} integer: Which dimensions are regarded as 'rows' or 'columns' to sum over. For row*, the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.}
+\item{dims}{dims=1 is default. Not used.  integer: Which dimensions are regarded as 'rows' or 'columns' to sum over. For row,
+the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.}
 }
 \value{
 Returns a vector of numbers of length equal to number of columns in df.
@@ -40,7 +41,8 @@ w=c(1.1, 2, NA, rep(1, 7))
 print(cbind(x,w, wtd=w*x))
 rbind(cbind(x, w), cbind(wtd.colMeans(x, w, na.rm=TRUE), w='wtd.colMeans') )
 print(w*cbind(x,w))
+
 }
 \seealso{
-\code{\link{wtd.colMeans}} \code{\link{wtd.rowMeans}} \code{\link{wtd.rowSums}} \code{\link{rowMaxs}} \code{\link{rowMins}} \code{\link{colMins}}
+\code{\link[=wtd.colMeans]{wtd.colMeans()}} \code{\link[=wtd.rowMeans]{wtd.rowMeans()}} \code{\link[=wtd.rowSums]{wtd.rowSums()}} \code{\link[=rowMaxs]{rowMaxs()}} \code{\link[=rowMins]{rowMins()}} \code{\link[=colMins]{colMins()}}
 }

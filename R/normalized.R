@@ -17,5 +17,5 @@ normalized <- function(df, wts=NULL, na.rm=TRUE) {
   if (is.vector(df)) {df <- as.data.frame(df)}
   if (!is.null(wts) & NROW(df)!=length(wts)) {stop('wts must be same length as number of rows in df (or elements of df if it is a vector)')}
 
-  scale(df, sapply(df, FUN=function(x) {Hmisc::wtd.mean(x, wts, na.rm=na.rm)}), center=FALSE)
+  scale(df, sapply(df, FUN=function(x) {Hmisc::wtd.mean(x, wts, na.rm = na.rm)}), center=FALSE)
 }

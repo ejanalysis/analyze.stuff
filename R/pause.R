@@ -5,11 +5,11 @@
 #' @return No value is returned.
 #' @seealso [Sys.sleep()]
 #' @export
-pause <- function(seconds=1) {
+pause <- function(seconds = 1) {
   x <- FALSE
-  x <- try({Sys.sleep(seconds); TRUE}, silent=TRUE)
-  if (class(x)=="try-error") {
-    start=Sys.time()
+  x <- try({Sys.sleep(seconds); TRUE}, silent = TRUE)
+  if (inherits(x, "try-error")) {
+    start = Sys.time()
     while (Sys.time() - start < seconds) { }
   }
   return(NULL)

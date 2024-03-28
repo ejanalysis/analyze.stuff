@@ -47,7 +47,7 @@ similar <- function(a,b,tol=99.99, na.rm=FALSE, shownames=TRUE) {
     if (is.numeric( a.col ) && is.numeric(b.col)) {
       abspctdifs <- abs(ifelse(a.col + b.col==0, 0, (a.col - b.col) / ((a.col + b.col) / 2)))
       out[i] <- (sum( abspctdifs <  (100 - tol) / 100, na.rm=TRUE)); cat('  ')
-      # don't say na.rm=na.rm passed from similar.p() or just a param here, since that would make %similar be reported as NA if any NA, instead of as 100% of non-NA values
+      # don't say na.rm = na.rm passed from similar.p() or just a param here, since that would make %similar be reported as NA if any NA, instead of as 100% of non-NA values
     } else {
       out[i] <- NA
     }

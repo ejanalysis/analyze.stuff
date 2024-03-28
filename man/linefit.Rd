@@ -19,7 +19,7 @@ linefit(
 
 \item{y}{y values, required}
 
-\item{type}{passed through to lines() for the lowess}
+\item{type}{passed through to \code{\link[graphics:lines]{graphics::lines()}} for the \code{\link[stats:lowess]{stats::lowess()}}}
 
 \item{cex}{scaling for lowess}
 
@@ -33,11 +33,14 @@ linefit(
 Provides a plot just as a side effect
 }
 \description{
-Convenient wrapper for lowess(), lm(), and coef(line())
+Convenient wrapper for stats::lowess(), stats::lm(), and stats::coef(stats::line())
 }
 \details{
-This function adds lines to a scatter plot, using lines(\href{x,y}{lowess()}), abline(\href{y~x}{lm()}), and abline(\href{[line()](x,y)}{coef()})
-DOESN'T SEEM TO WORK IF log='xy' was used in original plot()
+This function adds lines to a scatter plot, using
+lines(\href{x,y}{stats::lowess()}),
+abline(\href{y~x}{stats::lm()}), and
+abline(\href{[stats::line()](x,y)}{stats::coef()})
+DOESN'T SEEM TO WORK IF log = 'xy' was used in original plot()
 NOTE: coef(line())  and lm()  give different results
 }
 \examples{
@@ -60,9 +63,9 @@ plot(residuals(z) ~ fitted(z), main = deparse(z$call))
 # Enhanced Scatterplot of MPG vs. Weight
 # by Number of Car Cylinders
  library(car)
- scatterplot(mpg ~ wt | cyl, data=mtcars,
-             xlab="Weight of Car", ylab="Miles Per Gallon",
-             main="Enhanced Scatter Plot",
-             labels=row.names(mtcars))
+ scatterplot(mpg ~ wt | cyl, data = mtcars,
+             xlab = "Weight of Car", ylab = "Miles Per Gallon",
+             main = "Enhanced Scatter Plot",
+             labels = row.names(mtcars))
 }
 }

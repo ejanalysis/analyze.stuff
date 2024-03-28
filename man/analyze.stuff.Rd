@@ -11,21 +11,22 @@ such as functions to find the weighted mean of each column of data, add leading 
 find what percent of rows are above some cutoff for each column.
 }
 \details{
-Key functions include \cr
+Key functions include:
 \itemize{
 \item \code{\link[=change.fieldnames]{change.fieldnames()}}: Change many fieldnames using map of current to new ones
-\item \code{\link[=calc.fields]{calc.fields()}}: Create many new calculated fields from data.frame fields by specifying a list of formulas
+\item \code{\link[=calc.fields]{calc.fields()}}: Create many new calculated fields from data.frame fields by specifying a list of formulas.
 \item \code{\link[=similar.p]{similar.p()}}, \code{\link[=setdiff2]{setdiff2()}}: Compare two datasets or sets
-\item \code{\link[=rows.above.count]{rows.above.count()}}, \code{\link[=rows.above.pct]{rows.above.pct()}}: How many rows have values above a cutoff
-\item \code{\link[=cols.above.count]{cols.above.count()}}, \code{\link[=cols.above.pct]{cols.above.pct()}}: How many cols have values above a cutoff
-\item \code{\link[=rowMaxs]{rowMaxs()}}, \code{\link[=colMaxs]{colMaxs()}}, \code{\link[=rowMins]{rowMins()}}, \code{\link[=colMins]{colMins()}}: Max or min of each row or col in data.frame or matrix
+\item \code{\link[=rows.above.count]{rows.above.count()}}, \code{\link[=rows.above.pct]{rows.above.pct()}}: How many rows have values above a cutoff?
+\item \code{\link[=cols.above.count]{cols.above.count()}}, \code{\link[=cols.above.pct]{cols.above.pct()}}: How many cols have values above a cutoff?
+\item \code{\link[=rowMaxs]{rowMaxs()}}, \code{\link[=colMaxs]{colMaxs()}}, \code{\link[=rowMins]{rowMins()}}, \code{\link[=colMins]{colMins()}}: Max or min of each row or col in data.frame or matrix (but note that matrixStats package has similar functions)
 \item \code{\link[=wtd.rowMeans]{wtd.rowMeans()}}, \code{\link[=wtd.colMeans]{wtd.colMeans()}}: Weighted mean of each row or col
 \item \code{\link[=pctiles]{pctiles()}}, \code{\link[=wtd.pctiles]{wtd.pctiles()}}: See a table of values at 100 percentiles, for each field.
-\item \code{\link[=na.check]{na.check()}}, \code{\link[=length2]{length2()}}: How many NA or non-NA values in each column
-\item \code{\link[=mem]{mem()}}: What objects are taking up the most memory
+\item \code{\link[=na.check]{na.check()}}, \code{\link[=length2]{length2()}}: How many NA or non-NA values in each column?
+\item \code{\link[=mem]{mem()}}: What objects are taking up the most memory?
 \item \code{\link[=dir2]{dir2()}}, \code{\link[=dirr]{dirr()}}, \code{\link[=dirdirs]{dirdirs()}}: Directory listing with wildcards, just R-related files, subfolders, etc.
 }
-May add later:  \cr
+
+May add later:
 \itemize{
 \item cols.below.count
 \item cols.below.pct
@@ -43,9 +44,18 @@ May add later:  \cr
 \url{http://www.ejanalysis.com}\cr
 
 **Acknowledgements: \cr
-The package \pkg{sp} function spDists documented in \code{\link[sp:spDistsN1]{sp::spDistsN1()}}. The \link{matrixStats} package provides versions of rowMins, rowMax, colMins, colMaxs and related functions.
-This package could at some point provide data.frame methods that extend those, but for now it replaces them with slower versions that work on data.frames.
-Source: Henrik Bengtsson (2015). matrixStats: Methods that Apply to Rows and Columns of a Matrix. R package version 0.13.1-9000. \url{https://github.com/HenrikBengtsson/matrixStats}
+The matrixStats package provides versions of rowMins, rowMax, colMins, colMaxs and related functions.
+This package replaces them with slower but more flexible versions that work on data.frames.
+Source: Henrik Bengtsson (2015). matrixStats: Methods that Apply to Rows and Columns of a Matrix.
+R package version 0.13.1-9000. \url{https://github.com/HenrikBengtsson/matrixStats}
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/ejanalysis/analyze.stuff}
+  \item Report bugs at \url{https://github.com/ejanalysis/analyze.stuff/issues}
+}
+
 }
 \author{
 info@ejanalysis.com \href{mailto:info@ejanalysis.com}{info@ejanalysis.com}

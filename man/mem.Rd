@@ -2,41 +2,45 @@
 % Please edit documentation in R/mem.R
 \name{mem}
 \alias{mem}
-\title{See what is using up memory}
+\title{See what is using up memory but just for 1 environment}
 \usage{
-mem(n = 10)
+mem(n = 10, env = .GlobalEnv)
 }
 \arguments{
 \item{n}{Numeric, default is 10. How many objects to show (e.g., top 10)}
+
+\item{env}{The environment to check, defaulting to .GlobalEnv but
+could be something like env = as.environment(3) or 3}
 }
 \value{
-Results in printing a list of objects and their sizes
+prints a list of objects and their sizes
 }
 \description{
 See a list of the largest objects in memory, and how much RAM they are using up
 Uses \code{\link[=object.size]{object.size()}}  to return info on memory consumption for largest n objects
 }
 \examples{
-\dontrun{
- mem()
+  \dontrun{
+mem()
 mem(15)
-
-# draw pie chart
-pie(object.sizes(), main="Memory usage by object")
+mem(env = 2)
 
 # draw bar plot
-barplot(object.sizes(),
+y = mem()
+barplot(y,
         main="Memory usage by object", ylab="Bytes", xlab="Variable name",
-        col=heat.colors(length(object.sizes())))
+        col=heat.colors(length(y)))
 
-# draw dot chart
-dotchart(object.sizes(), main="Memory usage by object", xlab="Bytes")
+# draw pie chart again
+pie(mem(), main = "Memory usage by object")
+
 
 ################################## #
 # memory.size() and memory.limit() and object.sizes() comparison:
 ################################## #
 
-# memory.size() to print aggregate memory usage statistics
+memory.size() to print aggregate memory usage statistics
+
 
 print(paste('R is using', memory.size(), 'MB out of limit', memory.limit(), 'MB'))
 
@@ -52,4 +56,5 @@ object.sizes()
 #	see a list of the top few variables:
 head(cbind(object.sizes()))
 }
+
 }

@@ -51,7 +51,7 @@ colcounter_summary <- function(x, cutofflist, or.tied=TRUE, na.rm=TRUE, below=FA
     }
   )
   colnames(countpersite_table) <-  cutofflist
-  dimnames(countpersite_table) <- list(count.of.cols=rownames(countpersite_table), cutoff=cutofflist)
+  dimnames(countpersite_table) <- list(count.of.cols = rownames(countpersite_table), cutoff = cutofflist)
   return(countpersite_table)
 }
 ######################################## #
@@ -116,7 +116,7 @@ colcounter_summary_cum_pct <- function(x, cutofflist, ...) {
 #'   like or.tied=TRUE, na.rm=TRUE, below=FALSE, one.cut.per.col=FALSE
 #' @seealso colcounter_summary_all() colcounter_summary() colcounter_summary_cum() colcounter_summary_pct() colcounter_summary_cum_pct()
 #' @examples
-#'     # df <- ejscreen::bg22[ , ejscreen::names.ej.pctile]
+#'   # df <- ejscreen::bg22[ , ejscreen::names.ej.pctile]
 #'  df <- data.frame(a=rep(80,4),b=rep(93,4), col3=c(49,98,100,100))
 #'  bench <- 5 * (0:20)
 #'  a3 <- colcounter_summary_all(df, bench)
@@ -125,6 +125,23 @@ colcounter_summary_cum_pct <- function(x, cutofflist, ...) {
 #'  a3['0',,]; a3[1,,]
 #'  a3[dim(a3)[1],,]
 #'  # a3['12',,]; a3[13,,]
+#'
+#'  pdata <- structure(list(
+#'    pctile.pm = c(66, 66, 67, 67, 68),
+#'    pctile.o3 = c(17, 17, 17, 17, 17),
+#'    pctile.cancer = c(97, 97, 97, 97, 97),
+#'    pctile.resp = c(95, 95, 95, 95, 95),
+#'    pctile.dpm = c(34, 34, 39, 39, 46),
+#'    pctile.pctpre1960 = c(39, 59, 44, 57, 33),
+#'    pctile.traffic.score = c(35, 3, 5, 60, 26),
+#'    pctile.proximity.npl = c(55, 52, 54, 57, 56),
+#'    pctile.proximity.rmp = c(13,11, 11, 14, 12),
+#'    pctile.proximity.tsdf = c(47, 42, 48, 55,54),
+#'    pctile.proximity.npdes = c(NA_real_, NA_real_,
+#'      NA_real_, NA_real_, NA_real_),
+#'    pctile.ust = c(48, 0, 48, 68, 43)),
+#'    row.names = c(NA, 5L), class = "data.frame")
+#'  pcuts <-  5 * (0:20)
 #'
 #'  barplot(colcounter_summary_cum_pct(pdata, pcuts)[ , '80'],
 #'     ylab='% of places', xlab='# of indicators at/above cutoff',
@@ -135,24 +152,38 @@ colcounter_summary_cum_pct <- function(x, cutofflist, ...) {
 #'     main='# of places with exactly N/12 indicators >=95th percentile')
 #'
 #'   # pdata <- ejscreen::bg22[ , ejscreen::names.e.pctile]
-#'   colcounter_summary_cum_pct(pdata,c(50,80,90,95))
+#'   colcounter_summary_cum_pct(pdata, c(50,80,90,95))
 #'   xs <- 1:12
-#'   plot(x=xs, y=colcounter_summary_cum_pct(pdata, 50)[xs+1], type='b', col='gray', ylim=c(0, 100),
-#'     main='% of places with at least x/12 indicators >=Nth percentile', ylab='% of places', xlab='# of indicators')
-#'   points(xs, colcounter_summary_cum_pct(pdata, 80)[xs+1], type='b', col='blue')
-#'   points(xs, colcounter_summary_cum_pct(pdata, 90)[xs+1], type='b', col='orange')
-#'   points(xs, colcounter_summary_cum_pct(pdata, 95)[xs+1], type='b', col='red')
-#'   legend(x = 'topright', legend = paste0('>= ', c(50, 80, 90, 95),'th percentile'), fill = c('gray', 'blue', 'orange', 'red'))
+#'   plot(x=xs, y=colcounter_summary_cum_pct(pdata, 50)[xs+1],
+#'     type='b', col='gray', ylim=c(0, 100),
+#'     main='% of places with at least x/12 indicators >=Nth percentile',
+#'     ylab='% of places', xlab='# of indicators')
+#'   points(xs, colcounter_summary_cum_pct(pdata, 80)[xs+1], type='b',
+#'     col='blue')
+#'   points(xs, colcounter_summary_cum_pct(pdata, 90)[xs+1], type='b',
+#'     col='orange')
+#'   points(xs, colcounter_summary_cum_pct(pdata, 95)[xs+1], type='b',
+#'     col='red')
+#'   legend(x = 'topright', legend = paste0(
+#'     '>= ', c(50, 80, 90, 95),'th percentile'),
+#'     fill = c('gray', 'blue', 'orange', 'red'))
 #'
 #'   # pdata <- ejscreen::bg22[ , ejscreen::names.ej.pctile]
 #'   colcounter_summary_cum_pct(pdata,c(50,80,90,95))
 #'   xs <- 1:12
-#'   plot(x=xs, y=colcounter_summary_cum_pct(pdata, 50)[xs+1], type='b', col='gray', ylim=c(0, 40),
-#'     main='% of places with at least x/12 indicators >=Nth percentile', ylab='% of places', xlab='# of indicators')
-#'   points(xs, colcounter_summary_cum_pct(pdata, 80)[xs+1], type='b', col='blue')
-#'   points(xs, colcounter_summary_cum_pct(pdata, 90)[xs+1], type='b', col='orange')
-#'   points(xs, colcounter_summary_cum_pct(pdata, 95)[xs+1], type='b', col='red')
-#'   legend(x = 'topright', legend = paste0('>= ', c(50, 80, 90, 95),'th percentile'), fill = c('gray', 'blue', 'orange', 'red'))
+#'   plot(x=xs, y=colcounter_summary_cum_pct(pdata, 50)[xs+1], type='b',
+#'     col='gray', ylim=c(0, 40),
+#'     main='% of places with at least x/12 indicators >=Nth percentile',
+#'       ylab='% of places', xlab='# of indicators')
+#'   points(xs, colcounter_summary_cum_pct(pdata, 80)[xs+1], type='b',
+#'     col='blue')
+#'   points(xs, colcounter_summary_cum_pct(pdata, 90)[xs+1], type='b',
+#'     col='orange')
+#'   points(xs, colcounter_summary_cum_pct(pdata, 95)[xs+1], type='b',
+#'     col='red')
+#'   legend(x = 'topright', legend = paste0(
+#'      '>= ', c(50, 80, 90, 95),'th percentile'),
+#'     fill = c('gray', 'blue', 'orange', 'red'))
 #'
 #' @export
 #'
@@ -164,8 +195,8 @@ colcounter_summary_all <- function(x, cutofflist, ...) {
     cum_pct = colcounter_summary_cum_pct(x, cutofflist = cutofflist, ...)
   )
   bincount <- length(0:NCOL(x))
-  arrayall <- array(NA, dim=c(bincount, length(cutofflist), 4))
+  arrayall <- array(NA, dim = c(bincount, length(cutofflist), 4))
   for (i in 1:4) {arrayall[ ,, i] <- listall[[i]]}
-  dimnames(arrayall) <- list(count=0:NCOL(x), cut=cutofflist, stat=c('count', 'cum', 'pct', 'cum_pct'))
+  dimnames(arrayall) <- list(count = 0:NCOL(x), cut = cutofflist, stat = c('count', 'cum', 'pct', 'cum_pct'))
   arrayall
 }

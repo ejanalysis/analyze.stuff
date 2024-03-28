@@ -9,11 +9,21 @@
 #' this version fails to handle fields that are factor class!?
 #' @param df Matrix or data.frame to examine. Cannot be a single vector currently.
 #' @return Returns a vector of results, one per col of df
-#' @template nachecks
-#' @export
+#' @examples
+#' \dontrun{
+#' system.time(x = na.check(data.frame(a = -1:1e6, b = 'text', c = c(NA, 1, 2)), min.text = FALSE) )
+#' system.time(x = na.check2(data.frame(a = -1:1e6, b = 'text', c = c(NA, 1, 2)), min.text = TRUE) )
+#' na.check(data.frame(a = -1:10, b = 'text', c = c(NA, 1, 2)))
+#' na.check2(data.frame(a = -1:10, b = 'text', c = c(NA, 1, 2)))
+#' }
+#' @seealso [matrixStats::signTabulate()] [minNonzero()] and
+#'   experimental variations on na.check: [na.check()]  [na.check2()]
+#'
+#'   @export
+#'
 na.check2 = function(df) {
 
-  cols=names(df)
+  cols = names(df)
   #df <- as.matrix(df)
 
   myfun <- function(x) {
@@ -22,20 +32,20 @@ na.check2 = function(df) {
       sum(!is.na(x)),
       sum(is.na(x)),
       round(100 * sum(!is.na(x)) / length(x), 1),
-      sum(x==0, na.rm=TRUE),
-      sum(x < 0, na.rm=TRUE),
+      sum(x == 0, na.rm = TRUE),
+      sum(x < 0, na.rm = TRUE),
       sum(is.infinite(x)),
-      sum(x=='', na.rm=TRUE),
-      sum(x!='', na.rm=TRUE),
-      round(100 * sum(x!='', na.rm=TRUE) / length(x), 1),
+      sum(x == '', na.rm = TRUE),
+      sum(x != '', na.rm = TRUE),
+      round(100 * sum(x != '', na.rm = TRUE) / length(x), 1),
       sum(!is.na(unique(x))),
-      ifelse(all(x==0) | all(is.na(x)), NA, min(x[!is.na(x) & x!=0]))
+      ifelse(all(x == 0) | all(is.na(x)), NA, min(x[!is.na(x) & x != 0]))
     )
   }
 
   # FASTER THAN na.check(), but returns character fields
 
-  results <- matrix( sapply(df[ , cols], FUN=myfun), nrow=length(cols), byrow=TRUE)
+  results <- matrix( sapply(df[ , cols], FUN = myfun), nrow = length(cols), byrow = TRUE)
   rownames(results) <- cols
   colnames(results) <- c(
     'bcount',

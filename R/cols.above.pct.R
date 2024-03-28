@@ -11,7 +11,10 @@
 #' @param below Logical. Default is FALSE. If TRUE, uses > or >= cutoff. If FALSE, uses < or <= cutoff.
 #' @param na.rm Logical, default TRUE. Should NA values be removed before analysis.
 #' @return Returns a vector the same size as the number of rows in x.
-#' @template abovebelow
+#' @seealso [count.above()]  [pct.above()] [pct.below()] to see, for each column, the count or percent of rows that have values above or below a cutoff.
+#' @seealso [cols.above.count()] [cols.above.which()] [cols.above.pct()] to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
+#' @seealso [colcounter_summary()] [colcounter_summary_cum()] [colcounter_summary_pct()] [colcounter_summary_cum_pct()]  [tablefixed()]
+#' 
 #' @examples
 #' out <- cols.above.pct(x<-data.frame(a=1:10, b=rep(7,10), c=7:16), cutoff=7)
 #' out
@@ -22,9 +25,11 @@
 #' out <- cols.above.pct(data.frame(a=1:10, b=rep(7,10), c=7:16) )
 #'  # Compares each number in each row to the row's mean.
 #' out
+#'
 #' @export
+#'
 cols.above.pct <- function(x, cutoff, or.tied=FALSE, na.rm=TRUE, below=FALSE) {
-  count.per.row <- cols.above.count(x=x, cutoff=cutoff, or.tied=or.tied, na.rm=na.rm, below=below)
+  count.per.row <- cols.above.count(x=x, cutoff=cutoff, or.tied=or.tied, na.rm = na.rm, below=below)
   pct.of.cols.per.row <- count.per.row / length(x[1,])
   return(pct.of.cols.per.row)
 }

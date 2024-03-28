@@ -49,7 +49,7 @@ similar.p <- function(a,b,tol=99.99, na.rm=FALSE) {
         #print(similar(as.vector(a.col), as.vector(b.col), tol, shownames=FALSE) )
 
         if (na.rm) {denom <- sum(!is.na(a.col + b.col)) } else {denom <- length(a.col)}
-        out[i] <- 100 * similar(a.col, b.col, tol, shownames=FALSE, na.rm=na.rm) / denom # added na.rm here to pass to similar()
+        out[i] <- 100 * similar(a.col, b.col, tol, shownames=FALSE, na.rm = na.rm) / denom # added na.rm here to pass to similar()
         } else {
         out[i] <- NA # cat('non numeric')
              }

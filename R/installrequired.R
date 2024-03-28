@@ -3,7 +3,7 @@
 #' Convenient way to specify packages to attach, and install any that are not already installed.
 #'  It only installs a package if that package is not already available locally.
 #' @details
-#'  Uses [require()] and if necessary uses [install.packages()] or install_github as explained in [devtools::remote-reexports()]
+#'  Uses [require()] and if necessary uses [utils::install.packages()] or install_github as explained in [devtools::remote-reexports()]
 #'  If no parameters, prints an example.
 #' @param x vector of package names e.g., c("Hmisc", "data.table")
 #' @param github optional vector of user slash package names e.g., "rstudio/shiny" but those can just be in x now.
@@ -69,17 +69,30 @@ installrequired <- function(x, github, gitlatest = FALSE) {
   # load each pkg, first installing if necessary
 
   for (mypkg in pkgs) {
-    if (!library(mypkg, character.only = TRUE, logical.return = TRUE)) {install.packages(mypkg); library(mypkg, character.only = TRUE)}
+    if (!library(mypkg, character.only = TRUE, logical.return = TRUE)) {
+
+      x =  try(utils::install.packages(mypkg, ))
+      if (inherits(x, "try-error")) {
+        warning("cannot install ", mypkg)
+      } else {
+        library(mypkg, character.only = TRUE)
+      }
+    }
   }
 
   for (mypkg in pkgsgithub) {
     if (!library( gsub('^.*/', '', mypkg), character.only = TRUE, logical.return = TRUE) | gitlatest) {
       # install devtools if do not already have it
-      if (!library('devtools', logical.return = TRUE)) {
-        install.packages('devtools')
-        #library('devtools') # get at least the cran version of devtools to help get pkgs from github
+      # if (!library('devtools', logical.return = TRUE)) {
+      #   utils::install.packages('devtools')
+      #   #library('devtools') # get at least the cran version of devtools to help get pkgs from github
+      # }
+      x =  try(devtools::install_github(mypkg))
+      if (inherits(x, "try-error")) {
+        warning("cannot install ", mypkg)
+      } else {
+        library(mypkg, character.only = TRUE)
       }
-      devtools::install_github(mypkg)
     }
   }
   return(NULL)

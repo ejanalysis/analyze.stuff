@@ -15,5 +15,5 @@
 #' @export
 geomean <- function(x, na.rm=FALSE) {
   if (!missing(na.rm) & is.numeric(na.rm)) {stop('a single vector, x, must be specified')}
-  if(na.rm) {n=sum(!is.na(x))} else {n=length(x)}; return(prod(x, na.rm=na.rm)^(1 / n))
+  if(na.rm) {n=sum(!is.na(x))} else {n=length(x)}; return(prod(x, na.rm = na.rm)^(1 / n))
 }

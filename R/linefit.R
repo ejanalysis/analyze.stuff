@@ -1,15 +1,18 @@
 #' @title Add fit lines to a scatter plot
 #'
 #' @description
-#' Convenient wrapper for lowess(), lm(), and coef(line())
+#' Convenient wrapper for stats::lowess(), stats::lm(), and stats::coef(stats::line())
 #'
 #' @details
-#' This function adds lines to a scatter plot, using lines([lowess()](x,y)), abline([lm()](y~x)), and abline([coef()]([line()](x,y)))
-#' DOESN'T SEEM TO WORK IF log='xy' was used in original plot()
+#' This function adds lines to a scatter plot, using
+#' lines([stats::lowess()](x,y)),
+#' abline([stats::lm()](y~x)), and
+#' abline([stats::coef()]([stats::line()](x,y)))
+#' DOESN'T SEEM TO WORK IF log = 'xy' was used in original plot()
 #' NOTE: coef(line())  and lm()  give different results
 #' @param x x values, required
 #' @param y y values, required
-#' @param type passed through to lines() for the lowess
+#' @param type passed through to [graphics::lines()] for the [stats::lowess()]
 #' @param cex scaling for lowess
 #' @param show.lowess Logical value, optional, TRUE by default. Defines if lowess is shown
 #' @param show.lm Logical value, optional, TRUE by default. Defines if lm line is shown
@@ -35,14 +38,14 @@
 #' # Enhanced Scatterplot of MPG vs. Weight
 #' # by Number of Car Cylinders
 #'  library(car)
-#'  scatterplot(mpg ~ wt | cyl, data=mtcars,
-#'              xlab="Weight of Car", ylab="Miles Per Gallon",
-#'              main="Enhanced Scatter Plot",
-#'              labels=row.names(mtcars))
+#'  scatterplot(mpg ~ wt | cyl, data = mtcars,
+#'              xlab = "Weight of Car", ylab = "Miles Per Gallon",
+#'              main = "Enhanced Scatter Plot",
+#'              labels = row.names(mtcars))
 #' }
 #' @export
-linefit <- function(x, y, type='b', cex=4, show.lowess=TRUE, show.lm=TRUE, show.line=TRUE) {
-  if (show.lowess) { lines(lowess(x, y), type=type, col="blue", pch='.', cex=cex) } # lowess line (x, y)
-  if (show.lm)     { abline(lm(y ~ x, na.action=na.exclude), col="dark green") } # regression line (y ~ x)
-  if (show.line)   { abline(coef(line(x,y)), col='light green') }
+linefit <- function(x, y, type = 'b', cex = 4, show.lowess = TRUE, show.lm = TRUE, show.line = TRUE) {
+  if (show.lowess) { lines(lowess(x, y), type = type, col = "blue", pch = '.', cex = cex) } # lowess line (x, y)
+  if (show.lm)     { abline(lm(y ~ x, na.action = na.exclude), col = "dark green") } # regression line (y ~ x)
+  if (show.line)   { abline(coef(line(x,y)), col = 'light green') }
 }

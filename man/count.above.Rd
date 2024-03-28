@@ -25,7 +25,7 @@ count.above(
 
 \item{below}{Logical, FALSE by default, which counts how many are above cutoff (or tied if or.tied). If TRUE, counts how many are below (or tied with) cutoff.}
 
-\item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so length(df\link{,1}) is an integer multiple of length(wts)  Applies weights to when counting how many.}
+\item{wts}{Number or vector, default is 1. Length must be a factor of number of rows in df, so \code{length(df[,1])} is an integer multiple of length(wts)  Applies weights to when counting how many.}
 
 \item{na.rm}{Logical value, optional, TRUE by default. Defines whether NA values should be removed first. Otherwise result will be NA when any NA is in a col.}
 }
@@ -37,7 +37,7 @@ Count the number or percent of rows (for each col of a data.frame) where the val
 }
 \details{
 \itemize{
-\item If wts is population counts, for example, this gives the COUNT of people (not rows) for whom value in df\link{,x} exceeds benchmark for each column x
+\item If wts is population counts, for example, this gives the COUNT of people (not rows) for whom value in \code{df[,x]} exceeds benchmark for each column x
 \item If below=FALSE by default, reports on those above (or tied with, if or.tied) cutoff. But if below=TRUE, this reports on those below  (or tied with, if or.tied) cutoff.
 \item If df (passed to the function) is a data.frame or matrix, the function returns a vector of length= length(df) or number of cols in matrix.
 \item If df is just a vector, it is treated like a 1-column data.frame, so the function returns a single value.
@@ -49,7 +49,7 @@ Count the number or percent of rows (for each col of a data.frame) where the val
 \item If benchnames is omitted, the word "cutoff" is used by default (unless benchmarks is also omitted).
 \item If benchnames is specified but benchmarks is not, the benchmarks default to the column means, so benchnames is ignored and "mean" is used instead.
 \item If wts is omitted the default is 1 which means no weighting. Just row counts.
-\item If wts is a vector of length= length(df\link{,1}) then each row of df uses the corresponding weight and count is sum of wts not count of rows.
+\item If wts is a vector of length= \code{length(df[,1])} then each row of df uses the corresponding weight and count is sum of wts not count of rows.
 \item If wts is shorter than that, it is recycled but # of rows in df must be an integer multiple of length(wts).
 \item NA values in df are not counted and are not in the numerator of pct.above() but the denominator of pct.above() is a count of all rows of df, not just the non-NA ones.
 }
@@ -59,10 +59,6 @@ and same using below too, like rows.below.pct() etc.
 and *** should make param names consistent, like x not df, cutoff(s) not benchmarks?, or.tied not gte
 but *** cols versions and all should have wts, na.rm, benchmarks as vector not just 1 number, benchnames, params
 and ** should have a "below" version for each variant
-}
-\note{
-Future work: these functions could have wts, na.rm, &
-allow cutpoints or benchmarks as a vector (not just 1 number), & have benchnames.
 }
 \examples{
 x <- data.frame(a=1:20, b=10, c=c(1:9,100:110))
@@ -84,57 +80,51 @@ cbind(stat= pct.above(1:100, 98 , wts=mywts))
  # If only a single vector is passed,
  # not a data.frame "Warning: df is a vector... converting to data.frame"
 
-# to find how many PLACES are at/above the 95th population-weighted percentile
+# to find how many PLACES are at/above the 95th pop-weighted percentile
 #  (won't be exactly 5\% of places, just 5\% of people):
-mybench2 <- sapply(x, function(z) Hmisc::wtd.quantile(z, mywts, probs=0.95, na.rm=TRUE))
-count.above(x, benchmarks=mybench2, benchnames=paste('pop.95th.', names(x), sep=''), wts=1 )
+mybench2 <- sapply(x, function(z) Hmisc::wtd.quantile(
+  z, mywts, probs=0.95, na.rm=TRUE))
+count.above(x, benchmarks=mybench2,
+  benchnames=paste('pop.95th.', names(x), sep=''), wts=1 )
 
 # to find how many PLACES are at/above the MEDIAN pop-wtd place
 #  (won't be exactly half of places, just half of people):
-mybench2 <- sapply(x, function(z) Hmisc::wtd.quantile(z, mywts, probs=0.50, na.rm=TRUE))
-count.above(x, benchmarks=mybench2, benchnames=paste('pop.median.', names(x), sep=''), wts=1 )
+mybench2 <- sapply(x, function(z) Hmisc::wtd.quantile(
+  z, mywts, probs=0.50, na.rm=TRUE))
+count.above(x, benchmarks=mybench2,
+  benchnames=paste('pop.median.', names(x), sep=''), wts=1 )
 
 # to find how many PEOPLE are at/above the 95th percentile place
 #  (won't be exactly 5\% of people, just 5\% of places):
-mybench2 <- sapply(x, function(z) stats::quantile(z, probs=0.95, na.rm=TRUE))
-count.above(x, benchmarks=mybench2, benchnames=paste('95th.', names(x), sep=''), wts=mywts )
+mybench2 = sapply(x, function(z) stats::quantile(z, probs=0.95, na.rm=TRUE))
+count.above(x, benchmarks=mybench2,
+  benchnames=paste('95th.', names(x), sep=''), wts=mywts )
 #
 \dontrun{
 # to find how many PEOPLE are at/above the MEDIAN place
 #  (won't be exactly 50\% of people, just 50\% of places):
-mybench2 <- sapply(x, function(z) stats::quantile(z, probs=0.50, na.rm=TRUE))
-count.above(x, benchmarks=mybench2, benchnames=paste('median.', names(x), sep=''), wts=mywts )
+mybench2 = sapply(x, function(z) stats::quantile(z, probs=0.50, na.rm=TRUE))
+count.above(x, benchmarks=mybench2,
+benchnames=paste('median.', names(x), sep=''), wts=mywts )
 ##not run## cbind( pct.above(1:100, wts=mywts) )
-# That does not recycle weights in this situation of a single vector argument
-count.above(data.frame(a=c(1:10, NA)), 2, wts=mywts)   # does not work if NA values
+# That does not recycle wts in situation of a single vector argument
+count.above(data.frame(a=c(1:10, NA)), 2, wts=mywts) # fails if NA values
 cbind( pct.above(data.frame(a=c(1:10, NA)), 0 , wts=mywts))
-  # Gives "Error: wts must be a vector whose length is a factor of # rows in df,
-  # so length(df[,1]) is an integer multiple of length(wts) "
+  # "Error: wts must be a vector whose length is a factor of # rows in df,
+  # so `length(df[,1])` is an integer multiple of length(wts) "
 pct.above(data.frame(a=c(NA, NA, NA)), 3, wts=mywts)
-  # Gives "Error - df is a single NA value or single column with only NA values"
-count.above(x, c(3,1), wts=mywts) # 3,1 is recycled as 3,1,3 since x has 3 cols
+  # "Error - df is a single NA value or single column with only NA values"
+count.above(x, c(3,1), wts=mywts)
+# 3,1 is recycled as 3,1,3 since x has 3 cols
 pct.above(x, benchnames=mynames, wts=mywts)
   # ignores names since default benchmarks are column means
 }
+
 }
 \seealso{
-\code{\link{count.above}} \code{\link{pct.above}} \code{\link{pct.below}} to see, for each column, the count or percent of rows that have values above or below a cutoff.
+\code{\link[=count.above]{count.above()}}  \code{\link[=pct.above]{pct.above()}} \code{\link[=pct.below]{pct.below()}} to see, for each column, the count or percent of rows that have values above or below a cutoff.
 
-\code{\link{cols.above.count}} \code{\link{cols.above.which}} \code{\link{cols.above.pct}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
+\code{\link[=cols.above.count]{cols.above.count()}} \code{\link[=cols.above.which]{cols.above.which()}} \code{\link[=cols.above.pct]{cols.above.pct()}} to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
 
-colcounter_summary() colcounter_summary_cum() colcounter_summary_pct() colcounter_summary_cum_pct() tablefixed()
-
-Other functions for above and below: 
-\code{\link{cols.above.count}()},
-\code{\link{cols.above.pct}()},
-\code{\link{cols.above.which}()},
-\code{\link{count.below}()},
-\code{\link{pct.above}()},
-\code{\link{pct.below}()},
-\code{\link{rows.above.count}()},
-\code{\link{rows.above.pct}()},
-\code{\link{rows.above.which}()},
-\code{\link{rows.below.count}()},
-\code{\link{rows.below.pct}()}
+\code{\link[=colcounter_summary]{colcounter_summary()}} \code{\link[=colcounter_summary_cum]{colcounter_summary_cum()}} \code{\link[=colcounter_summary_pct]{colcounter_summary_pct()}} \code{\link[=colcounter_summary_cum_pct]{colcounter_summary_cum_pct()}}  \code{\link[=tablefixed]{tablefixed()}}
 }
-\concept{functions for above and below}

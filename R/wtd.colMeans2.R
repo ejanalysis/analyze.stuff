@@ -7,37 +7,56 @@
 #' @param wts Weights, optional, defaults to nothing i.e. unweighted, and if specified must be vector of weights recycled to be same length as NROW(x) # not the name of the weights field in data.frame x, as single character string, e.g., "weightcol"
 #' @param by Optional vector, default is none, that can provide a single column name (as character) or character vector of column names,
 #' @param na.rm Logical value, optional, TRUE by default. Defines whether NA values should be removed before result is found. Otherwise result will be NA when any NA is in a vector.
-#' @param dims dims=1 is default. **Not used.** integer: Which dimensions are regarded as 'rows' or 'columns' to sum over. For row*, the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.
+#' @param dims dims=1 is default. Not used.  integer: Which dimensions are regarded as 'rows' or 'columns' to sum over. For row,
+#'   the sum or mean is over dimensions dims+1, ...; for col* it is over dimensions 1:dims.
 #' @return Returns a vector of numbers of length equal to number of columns in df.
-#' @template meansum
+#' @seealso [wtd.colMeans()] [wtd.rowMeans()] [wtd.rowSums()] [rowMaxs()] [rowMins()] [colMins()]
+#' @examples
+#' x=data.frame(a=c(NA, 2:10), b=rep(100,10), c=rep(3,10))
+#' w=c(1.1, 2, NA)
+#' cbind(x, wtd.rowMeans(x, w) )
+#' cbind(x, wtd.rowSums(x, w) )
+#' x=data.frame(a=c(NA, 2:4), b=rep(100,4), c=rep(3,4))
+#' w=c(1.1, 2, NA, 0)
+#' print(cbind(x,w, wtd=w*x))
+#' print(wtd.colMeans(x, w, na.rm=TRUE))
+#' #rbind(cbind(x,w,wtd=w*x), c(wtd.colMeans(x,w,na.rm=TRUE), 'wtd.colMeans', rep(NA,length(w))))
+#'
+#' x=data.frame(a=c(NA, 2:10), b=rep(100,10), c=rep(3,10))
+#' w=c(1.1, 2, NA, rep(1, 7))
+#' print(cbind(x,w, wtd=w*x))
+#' rbind(cbind(x, w), cbind(wtd.colMeans(x, w, na.rm=TRUE), w='wtd.colMeans') )
+#' print(w*cbind(x,w))
+#'
 #' @export
+#'
 wtd.colMeans2 <- function(x, wts, by=NULL, na.rm = FALSE, dims = 1) {
 
   warning(' **** THIS IS WORK IN PROGRESS AS IS wtd.rowMeans() !!! Does not work & also check how NA values are handled ****')
 
   if (!missing(wts)) {
-    x <- data.frame(x, wtcolname=wts, stringsAsFactors=FALSE)
+    x <- data.frame(x, wtcolname = wts, stringsAsFactors = FALSE)
     wts <- 'wtcolname'
   }
 
   myfun <- function(x, weights, na.rm) {
-    colMeans(x * t(weights), na.rm=na.rm, dims=dims) *
-      colSums(!is.na(x), na.rm=na.rm, dims=dims) /
-      sum(weights, na.rm=na.rm)
+    colMeans(x * t(weights), na.rm = na.rm, dims = dims) *
+      colSums(!is.na(x), na.rm = na.rm, dims = dims) /
+      sum(weights, na.rm = na.rm)
   }
 
   if (missing(by)) {
-    if (missing(wts)){
+    if (missing(wts)) {
       myfun(x, 1, na.rm)
     } else {
       print('here')
-      return( myfun(x, weights=x[ , wts], na.rm=na.rm) )
+      return( myfun(x, weights = x[ , wts], na.rm = na.rm) )
     }
   } else {
-    if (missing(wts)){
-      aggregate(x, by=list(x[ , by]), FUN=function(y) myfun(y, rep(1, NROW(y) ), na.rm = na.rm))
+    if (missing(wts)) {
+      aggregate(x, by = list(x[ , by]), FUN = function(y) myfun(y, rep(1, NROW(y) ), na.rm = na.rm))
     } else {
-      aggregate(x, by=list(x[ , by]), FUN=function(y) myfun(y, y[ , wts], na.rm = na.rm))
+      aggregate(x, by = list(x[ , by]), FUN = function(y) myfun(y, y[ , wts], na.rm = na.rm))
     }
   }
 
@@ -79,9 +98,9 @@ wtd.colMeans2 <- function(x, wts, by=NULL, na.rm = FALSE, dims = 1) {
 #
 #
   #colSums(!is.na(x)) instead of length(w) might use all rows of given col where value in that col is not NA
-  # t(wtd.rowMeans(t(x), wts, na.rm=na.rm, dims=dims)) #problem: treats value as zero if any in row is NA? ? ?
+  # t(wtd.rowMeans(t(x), wts, na.rm = na.rm, dims=dims)) #problem: treats value as zero if any in row is NA? ? ?
   # this might not work right handling NA VALUES IN wts vs in x ???****
-  # instead of length(w) might want length2(w, na.rm=na.rm) or just na.rm=TRUE ???
+  # instead of length(w) might want length2(w, na.rm = na.rm) or just na.rm=TRUE ???
 
   # *** Question:  see notes in wtd.rowMeans()
 

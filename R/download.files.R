@@ -1,7 +1,7 @@
 #' @title Try to download one or more files
 #' @description Attempts to download files, given name(s) all from one specified url, saving them in specified folder.
 #'   Just a wrapper that Uses [download.file()] since that only downloads a single file.
-#' @note Could recode to use \code{\pkg{curl}} package, since curl::curl_download() is a replacement for base download.file() with better performance,
+#' @note Could recode to use the curl package, since [curl::curl_download()] is a replacement for base [download.file()] with better performance,
 #'   support for encryption (https, ftps), gzip compression, authentication, etc.
 #' @param url The url of folder with files to download, as character string, or a vector:
 #'   If files is specified, url should be the one folder without the filename. Otherwise, a vector of full paths with filenames.
@@ -11,9 +11,9 @@
 #' @param silent Logical, optional, FALSE by default. Prints a message using cat() if TRUE.
 #' @param overwrite Optional, logical, FALSE by default. If FALSE, checks to see if file already exists in local folder and does not download if already exists.
 #'   But note that may cause problems if zero size file exists already due to earlier failed download.
-#' @param ... optional parameters passed to download.file
+#' @param ... optional parameters passed to utils::download.file
 #' @return Returns vector of numbers, each being 1 or 0 or 2 to signify success or failure or no attempt because file already seems to exist locally.
-#' @seealso [download.file()] [curl::curl_download()]
+#' @seealso [utils::download.file()] [curl::curl_download()]
 #' @export
 download.files <- function(url, files, destfiles, todir, silent=FALSE, overwrite=FALSE, ...) {
 
@@ -42,13 +42,13 @@ download.files <- function(url, files, destfiles, todir, silent=FALSE, overwrite
         warning(paste('Cannot find local or remote copy of ', file.path(urls, files[i]), '\nnor\n', file.path(urls, files[i])) )
         downloadDone[i] <- 0
       } else {
-        downloadDone[i] <- download.file( file.path(urls, files[i]), file.path(todir, destfiles[i]), ...)
+        downloadDone[i] <- utils::download.file( file.path(urls, files[i]), file.path(todir, destfiles[i]), ...)
         pause(3)
       }
     } else {
       if (overwrite) {
         # already have local copy but want to overwrite (but note did not check if exists remotely)
-        downloadDone[i] <- download.file( file.path(urls, files[i]), file.path(todir, destfiles[i]), ...)
+        downloadDone[i] <- utils::download.file( file.path(urls, files[i]), file.path(todir, destfiles[i]), ...)
         pause(3)
       } else {
         # already have local copy and do not want to overwrite

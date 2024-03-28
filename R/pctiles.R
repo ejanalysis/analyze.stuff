@@ -31,5 +31,5 @@
 #' #
 #' @export
 pctiles <- function(x, probs=(1:100)/100, na.rm=TRUE, digits=3) {
-  return( cbind(round(quantile(x, type=1, probs=probs, na.rm=na.rm), digits)) )
+  return( cbind(round(quantile(x, type=1, probs=probs, na.rm = na.rm), digits)) )
 }

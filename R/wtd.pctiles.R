@@ -35,17 +35,17 @@ wtd.pctiles <- function(x, wts=NULL, na.rm=TRUE, type="i/n", probs=(1:100)/100, 
   #if (is.na(wts)) {wts <- rep(1, length(x))}
   if (NCOL(x) > 1) {
     # get the rownames right - sapply drops them
-    results1 <- cbind(round(Hmisc::wtd.quantile(x[ , 1], wts, type=type, probs=probs, na.rm=na.rm), digits))
+    results1 <- cbind(round(Hmisc::wtd.quantile(x[ , 1], wts, type=type, probs=probs, na.rm = na.rm), digits))
     if (NCOL(x) != 2) {
-      results <- sapply(x[ , -1], function(z) wtd.pctiles(z, wts = wts, type=type, probs=probs, na.rm=na.rm, digits = digits), simplify = TRUE)
+      results <- sapply(x[ , -1], function(z) wtd.pctiles(z, wts = wts, type=type, probs=probs, na.rm = na.rm, digits = digits), simplify = TRUE)
     } else {
-      results <- cbind(round(Hmisc::wtd.quantile(x[ , 2], wts, type=type, probs=probs, na.rm=na.rm), digits))
+      results <- cbind(round(Hmisc::wtd.quantile(x[ , 2], wts, type=type, probs=probs, na.rm = na.rm), digits))
     }
     results <- cbind(results1, results)
     colnames(results) <- colnames(x)
     return(results)
   } else {
-    results <- cbind(round(Hmisc::wtd.quantile(x, wts, type=type, probs=probs, na.rm=na.rm), digits))
+    results <- cbind(round(Hmisc::wtd.quantile(x, wts, type=type, probs=probs, na.rm = na.rm), digits))
     if (!is.null(colnames(x)[1])) {colnames(results)[1] <- colnames(x)[1]}
     return(results)
   }

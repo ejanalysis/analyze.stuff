@@ -10,7 +10,10 @@
 #' @param or.tied Logical. Default is FALSE, which means we check if number in x is greater than the cutoff (>). If TRUE, check if greater than or equal (>=).
 #' @param below Logical. Default is FALSE. If TRUE, uses > or >= cutoff. If FALSE, uses < or <= cutoff.
 #' @return Returns a logical matrix the same size as x. ** Note this is different than [which()] -- That function returns the positions of TRUE elements but this returns TRUE or FALSE for all elements.
-#' @template abovebelow
+#' @seealso [count.above()]  [pct.above()] [pct.below()] to see, for each column, the count or percent of rows that have values above or below a cutoff.
+#' @seealso [cols.above.count()] [cols.above.which()] [cols.above.pct()] to see, for each row, the count or which or fraction of columns with numbers at/above/below cutoff.
+#' @seealso [colcounter_summary()] [colcounter_summary_cum()] [colcounter_summary_pct()] [colcounter_summary_cum_pct()]  [tablefixed()]
+#' 
 #' @examples
 #' out <- cols.above.which(x<-data.frame(a=1:10, b=rep(7,10), c=7:16), cutoff=7)
 #' out
@@ -21,8 +24,11 @@
 #' out <- cols.above.which(data.frame(a=1:10, b=rep(7,10), c=7:16) )
 #'  # Compares each number in each row to the row's mean.
 #' out
+#'
 #' @export
+#'
 rows.above.which <- function(x, cutoff, or.tied=FALSE, below=FALSE) {
+
   if (is.null(dim(x))) {stop('expected data.frame or matrix as x but has only 1 dimension')}
   if (missing(cutoff)) {cutoff <- colMeans(x)}
   if (below) {

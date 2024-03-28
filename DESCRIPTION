@@ -1,7 +1,6 @@
 Package: analyze.stuff
 Title: Miscellaneous Tools for Analyzing Data in Rows and Columns
-Version: 2.1.0
-Date: 2022-07-07
+Version: 2.1.1
 Description: Tools that simplify some basic tasks in exploring and analyzing a
     dataset in a matrix or data.frame. Key functions help to change many fieldnames
     to new names using a map of old to new names, create many calculated fields
@@ -12,13 +11,16 @@ Description: Tools that simplify some basic tasks in exploring and analyzing a
 Imports:
     Hmisc,
     matrixStats, 
-    data.table
-Suggests:
-    sp
+    data.table,
+    VennDiagram,
+    devtools,
+    rstudioapi,
+    xfun,
+    devtools
 URL: https://github.com/ejanalysis/analyze.stuff
 BugReports: https://github.com/ejanalysis/analyze.stuff/issues
 Depends: R (>= 3.1.0)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 License: MIT + file LICENSE
 Repository: GitHub
 Author: info@ejanalysis.com

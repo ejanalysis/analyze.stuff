@@ -16,3 +16,6 @@
 .Rproj.user
 *.Rprofile
 *.log
+*.idx
+*.ilg
+*.ind

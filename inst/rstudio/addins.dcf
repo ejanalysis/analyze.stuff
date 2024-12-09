@@ -2,3 +2,8 @@ Name: preparens
 Description: wrap this selected text in (parens) and put cursor before that
 Binding: preparens
 Interactive: true
+
+Name: radiobox
+Description: radio buttons dialogue shiny app
+Binding: radiobox
+Interactive: true
